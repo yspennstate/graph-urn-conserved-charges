@@ -1,0 +1,19 @@
+L=4 rings=4000 runs=20000 seed=1
+mean M      -0.0180  (s.e. 0.0182; exact 0)
+Var M       6.6308  (exact L*pi^2/6 = 6.5797; s.e. about 0.0663)
+excess kurt +0.5876  (exact 12/(5L) = 0.6000)
+KS distance 0.0049  (about 0.0096 at the 5% level)
+min count   1
+Var p       0.05867  (exact pi^2/32 - 1/4 = 0.05843)
+L=10 rings=20000 runs=10000 seed=2
+mean M      -0.0714  (s.e. 0.0406; exact 0)
+Var M       16.5140  (exact L*pi^2/6 = 16.4493; s.e. about 0.2335)
+excess kurt +0.0797  (exact 12/(5L) = 0.2400)
+KS distance 0.0119  (about 0.0136 at the 5% level)
+min count   1
+L=50 rings=100000 runs=4000 seed=3
+mean M      +0.0031  (s.e. 0.1431; exact 0)
+Var M       81.9404  (exact L*pi^2/6 = 82.2467; s.e. about 1.8322)
+excess kurt +0.0626  (exact 12/(5L) = 0.0480)
+KS distance 0.0076  (about 0.0215 at the 5% level)
+min count   1

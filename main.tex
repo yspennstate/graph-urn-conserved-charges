@@ -1,105 +1,181 @@
 \documentclass[11pt]{amsart}
-\usepackage{amsmath,amssymb,amsthm,url}
+\usepackage{amsmath,amssymb,amsthm,url,booktabs}
 \newtheorem{theorem}{Theorem}\newtheorem{lemma}[theorem]{Lemma}\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
 \title{Conserved charges in linearly reinforced graph urns}
 \author{Yitzchak Shmalo}
 \address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
+\subjclass[2020]{60K35, 60G42, 62L20}
+\keywords{P\'olya urn, reinforcement, graph-based competition, martingale, stochastic approximation}
 \begin{document}
 \begin{abstract}
-In the graph-based P\'olya urn with linear reinforcement (WARM with $\alpha=1$), every vector $\sigma$ in the kernel of the
-unsigned vertex--edge incidence matrix yields an exact martingale $\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic
-number. These charges are the flat directions of the Lyapunov function, and they determine which equilibrium the process
-selects. On the even cycle $C_{L}$ the limit is $(1+u,1-u,\dots)$ with $L\,\mathrm{artanh}(u)$ equal to the terminal value
-of the charge, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to a centred Gaussian as $L\to\infty$. For large even
-cycles this describes the law of the random limit, in the continuous-time form of the question raised by Chen and Lucas
-and by Lima for the discrete-time urn.
+In the graph-based P\'olya urn with linear reinforcement (WARM with $\alpha=1$) in continuous time, every vector $\sigma$
+in the kernel of the unsigned vertex--edge incidence matrix yields an exact martingale $M_\sigma=\sum_e\sigma_e H(N_e-1)$,
+where $H$ is the harmonic number. On every finite graph its terminal value has the law of $\sum_e\sigma_e\log W_e$ with
+independent standard exponential variables $W_e$. On the even cycle $C_L$ the normalised counts converge to
+$(1+u,1-u,\dots)$ with $L\,\mathrm{artanh}(u)$ equal to the terminal value of the charge, so that $u=\tanh(M/L)$ where $M$
+is a sum of $L/2$ independent standard logistic variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to
+the centred normal law with variance $\pi^2/6$. This gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of
+the urn studied by Chen and Lucas and by Lima. On the integer line the expected quadratic variation of the charge per
+vertex is $\pi^2/6$.
 \end{abstract}
 \maketitle
 
 \section{The model and the result}
 In the urn with graph-based competition of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{HHKR} (WARM), each edge
 of a graph carries a count, each vertex carries a Poisson clock, and when a vertex rings it reinforces one of its edges
-with probability proportional to $N_e^\alpha$. For $\alpha>1$ the counts localise; at $\alpha=1$ the process sits at the
-boundary of that regime. The discrete-time urn, in which every edge adds a ball to one of its two endpoints at each
-step, was introduced by Bena\"im, Benjamini, Chen and Lima \cite{BBCL}. At $\alpha=1$ it was studied by Chen and Lucas \cite{CL}, who proved convergence on regular bipartite graphs to a
-random point of a segment of equilibria and left the law of that point open, and by Lima \cite{Lima}, who completed the
-convergence proof for balanced bipartite graphs and asked for the distribution of the limit (his Question~1). On the
-infinite line, Kleptsyn conjectures that the normalised counts of the critical process converge to $1$
-\cite[Section~5]{AletOP}.
+with probability proportional to $N_e^\alpha$. The discrete-time urn, in which every edge adds a ball to one of its two
+endpoints at each step, was introduced by Bena\"im, Benjamini, Chen and Lima \cite{BBCL}. At $\alpha=1$ it was studied
+by Chen and Lucas \cite{CL}, who proved convergence on regular bipartite graphs to a random point of a segment of
+equilibria and left the law of that point open, and by Lima \cite{Lima}, who completed the convergence proof for
+balanced bipartite graphs and asked for the distribution of the limit (his Question~1). On a cycle the two models are
+related by exchanging vertices and edges: the bins of the discrete-time urn on $C_L$ correspond to the edges of WARM on
+$C_L$, and its competing pairs to the vertices of WARM. The discrete-time urn updates every pair at each step, whereas
+WARM updates one vertex at a time at Poisson times. The results below concern WARM; no transfer of the limit law to the
+synchronous urn is proved. On the infinite line, Kleptsyn conjectures that the normalised counts of the critical process
+converge to $1$ \cite[Section~5]{AletOP}.
 
-The random limit is fixed by conserved charges. For every $\sigma$ in the kernel of the unsigned
-incidence matrix, $\sum_e\sigma_eH(N_e-1)$ is an exact martingale (Theorem~\ref{thm:mart}); up to a vanishing error it
-equals $\sum_e\sigma_e\log(N_e/t)$, which is conserved by the mean-field flow. On the even cycle $C_L$ the kernel is
-one-dimensional and the limit is $(1+u_\infty,1-u_\infty,\dots)$ with $L\,\mathrm{artanh}(u_\infty)$ equal to the terminal
-value $M_\infty$ of the charge (Theorem~\ref{thm:conv}). The quadratic variation of $M$ is a sum of local terms, and
-a law of large numbers for it gives $\sqrt L\,\mathrm{artanh}(u_\infty)\Rightarrow\mathcal N(0,c)$, where $c$ is the
-expected quadratic variation per vertex of the process on $\mathbb{Z}$ (Theorem~\ref{thm:clt}). Section~\ref{sec:num}
-reports simulations: the predicted variance on cycles, random limits on $C_4$ and $K_4$ whose dimension matches the
-kernel, and the slow decay of the alternating envelope on long cycles that the charges predict for the line.
+The random limit is fixed by conserved charges. For every $\sigma$ in the kernel of the unsigned incidence matrix,
+$M_\sigma=\sum_e\sigma_eH(N_e-1)$ is an exact martingale whose quadratic variation never exceeds
+$\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}); up to a vanishing error it equals $\sum_e\sigma_e\log(N_e/t)$, which
+is conserved by the mean-field flow. Its terminal value has an explicit law on every finite graph:
+$\mathbb{E}e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e)$, so that the charges jointly have the law of
+$(\sum_e\sigma_e\log W_e)_\sigma$ with independent standard exponential $W_e$ (Theorem~\ref{thm:law}). On the even cycle
+$C_L$ the kernel is one-dimensional, the normalised counts converge to $(1+u_\infty,1-u_\infty,\dots)$ with
+$L\,\mathrm{artanh}(u_\infty)=M_\infty$ (Theorem~\ref{thm:conv}), and therefore $u_\infty=\tanh(M_\infty/L)$ with
+$M_\infty$ a sum of $L/2$ independent standard logistic variables (Corollary~\ref{cor:cycle}). In particular
+$\sqrt L\,\mathrm{artanh}(u_\infty)\Rightarrow\mathcal N(0,\pi^2/6)$, and $\pi^2/6$ is the expected quadratic variation
+of the charge per vertex, on every even cycle and on $\mathbb{Z}$ (Proposition~\ref{prop:line}).
+Section~\ref{sec:num} reports simulations: the terminal law on cycles, random limits on $C_4$ and $K_4$ whose dimension
+matches the kernel, and the slow decay of the alternating envelope on long cycles that the charges predict for the
+line.
 
 \section{The charge martingales}
-Let $G=(V,E)$ be a finite graph. Each vertex carries an independent rate-one Poisson clock; when the clock of $v$ rings,
-one edge $e\ni v$ is chosen with probability $N_e/S_v$, where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All
-counts start at $1$. Write $X_e(t)=N_e(t)/t$ and let $B$ be the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$.
+Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
+independent rate-one Poisson clock; when the clock of $v$ rings, one edge $e\ni v$ is chosen with probability $N_e/S_v$,
+where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All counts start at $1$. Constants $C,C',C'',c$ are finite,
+random where stated, and may differ between proofs. Write $X_e(t)=N_e(t)/t$, let $B$ be
+the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$, and let $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, $H=H^{(1)}$.
 
 \begin{theorem}\label{thm:mart}
 Let $\sigma\in\mathbb{R}^E$ satisfy $\sum_{e\ni v}\sigma_e=0$ for every $v$. Then
-\[ M_\sigma(t)=\sum_{e\in E}\sigma_e\,H(N_e(t)-1),\qquad H(n)=\sum_{k=1}^n\frac1k, \]
-is a martingale with $M_\sigma(0)=0$, jumps bounded by $\max_e|\sigma_e|$, and predictable quadratic variation
-\[ \langle M_\sigma\rangle_t=\int_0^t\sum_{v\in V}\frac{1}{S_v(s)}\sum_{e\ni v}\frac{\sigma_e^2}{N_e(s)}\,ds . \]
+\[ M_\sigma(t)=\sum_{e\in E}\sigma_e\,H(N_e(t)-1) \]
+is a martingale with $M_\sigma(0)=0$, jumps bounded by $\max_e|\sigma_e|$, predictable quadratic variation
+\[ \langle M_\sigma\rangle_t=\int_0^t\sum_{v\in V}\frac{1}{S_v(s)}\sum_{e\ni v}\frac{\sigma_e^2}{N_e(s)}\,ds , \]
+and quadratic variation $[M_\sigma]_t=\sum_e\sigma_e^2H^{(2)}(N_e(t)-1)\le\zeta(2)\sum_e\sigma_e^2$. In particular
+$M_\sigma$ is bounded in $L^2$.
 \end{theorem}
 \begin{proof}
 When $N_e$ moves from $n$ to $n+1$, $H(N_e-1)$ increases by $1/n$. A ring at $v$ therefore changes $M_\sigma$ by
 $\sigma_e/N_e$ with probability $N_e/S_v$, for each $e\ni v$. The conditional mean of the change is
-$S_v^{-1}\sum_{e\ni v}\sigma_e=0$, and its conditional second moment is $S_v^{-1}\sum_{e\ni v}\sigma_e^2/N_e$. The jump
-rates are bounded by $|V|$ and the jumps by $\max_e|\sigma_e|$, so the compensated sums are martingales.
+$S_v^{-1}\sum_{e\ni v}\sigma_e=0$, and its conditional second moment is $S_v^{-1}\sum_{e\ni v}\sigma_e^2/N_e$. On $[0,T]$
+the number of rings is Poisson with mean $|V|T$ and every jump is at most $\max_e|\sigma_e|$, so the compensated sums are
+square-integrable martingales. The jump at the passage of $N_e$ from $n$ to $n+1$ is $\sigma_e/n$, and each value $n$ is
+passed at most once, which gives the formula and the bound for $[M_\sigma]_t$; hence
+$\mathbb{E}M_\sigma(t)^2=\mathbb{E}[M_\sigma]_t\le\zeta(2)\sum_e\sigma_e^2$.
 \end{proof}
 
-The space of such $\sigma$ is $\ker B$, of dimension $|E|-|V|+\beta$, with $\beta$ the number of bipartite components.
-It is nonzero exactly when some component contains an even cycle or two odd cycles. Summing the vertex constraints
-gives $\sum_e\sigma_e=0$ for $\sigma\in\ker B$, and $H(n-1)=\psi(n)+\gamma$, so
+For $\sigma\notin\ker B$ the same computation gives the drift $\sum_v(B\sigma)_v/S_v$, which is not zero in general.
+The space $\ker B$ has dimension $|E|-|V|+\beta$, with $\beta$ the number of bipartite components. It is nonzero exactly
+when some component contains an even cycle or two odd cycles. Summing the vertex constraints gives $\sum_e\sigma_e=0$
+for $\sigma\in\ker B$, and $H(n-1)=\psi(n)+\gamma$, where $\psi$ is the digamma function and $\gamma$ is Euler's constant, so
 \begin{equation}\label{eq:link}
 \sum_e\sigma_e\log X_e(t)=M_\sigma(t)+\sum_e\sigma_e\bigl(\log N_e(t)-\psi(N_e(t))\bigr),
 \end{equation}
 with $\log n-\psi(n)=\tfrac1{2n}+O(n^{-2})$. The charges $\sum_e\sigma_e\log X_e$ are therefore martingales up to a term
-that vanishes as every count grows. In the mean-field equation $\dot x_e=x_e\sum_{v\in e}S_v^{-1}-x_e$ (time $\log t$)
-they are exactly conserved: $\frac{d}{d\tau}\sum_e\sigma_e\log x_e=\sum_v S_v^{-1}\sum_{e\ni v}\sigma_e-\sum_e\sigma_e=0$.
+that vanishes as every count grows. In the mean-field equation $\dot x_e=x_e\sum_{v\in e}S_v(x)^{-1}-x_e$ (time
+$\log t$) they are exactly conserved:
+$\frac{d}{d\tau}\sum_e\sigma_e\log x_e=\sum_v S_v(x)^{-1}\sum_{e\ni v}\sigma_e-\sum_e\sigma_e=0$.
 
+\begin{lemma}\label{lem:growth}
+For an edge $e=(u,v)$ let $a_e(t)=\int_0^t\bigl(S_u(s)^{-1}+S_v(s)^{-1}\bigr)ds$ be its internal time. Then
+$D_e(t)=H(N_e(t)-1)-a_e(t)$ converges almost surely and in $L^2$. Almost surely
+$\liminf_{t\to\infty}S_v(t)/t\ge1$ for every $v$, and for every $\lambda<2/(d+1)$ and every edge $e$,
+$\liminf_{t\to\infty}N_e(t)/t^{\lambda}>0$; in particular every count tends to infinity.
+\end{lemma}
+\begin{proof}
+The count $N_e$ increases at rate $N_e(S_u^{-1}+S_v^{-1})\le2$, and each increase from $n$ to $n+1$ adds $1/n$ to
+$H(N_e-1)$, so $D_e$ is a martingale. Its quadratic variation is $H^{(2)}(N_e(t)-1)\le\zeta(2)$, so it is bounded in
+$L^2$ and converges almost surely and in $L^2$. Let $F_w(t)$ be the number of rings of $w$ by time $t$. Every ring of
+$v$ adds one to $S_v$, so $S_v\ge F_v$ and $\liminf S_v/t\ge1$. A ring of $w$ adds to $S_v$ only if $w=v$ or $w\sim v$,
+and then by one, so $S_v(t)\le d+\sum_{w\in\{v\}\cup N(v)}F_w(t)$. Since $F_w(t)/t\to1$ almost surely, for $\varepsilon>0$
+there is an almost surely finite $T$ with $S_w(t)\le(d+1)(1+\varepsilon)t$ for all $w$ and $t\ge T$. Then
+$a_e(t)\ge\lambda'\log t-C$ for $t\ge T$, with $\lambda'=2/((d+1)(1+\varepsilon))$ and $C$ finite. Since $D_e$
+converges, $H(N_e(t)-1)\ge\lambda'\log t-C'$, so $N_e\to\infty$ and, as $H(n-1)-\log n\to\gamma$,
+$\log N_e(t)\ge\lambda'\log t-C''$. Taking $\varepsilon$ small gives the claim.
+\end{proof}
+
+For $\sigma\in\ker B$ the internal times cancel,
+\[ \sum_e\sigma_ea_e(t)=\int_0^t\sum_v\frac{(B\sigma)_v}{S_v(s)}\,ds=0, \]
+so that $M_\sigma=\sum_e\sigma_eD_e$.
+
+\begin{theorem}\label{thm:law}
+Let $\sigma\in\ker B$. Then $M_\sigma(t)$ converges almost surely and in $L^2$ to a limit $M_{\sigma,\infty}$, and
+\[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_{e\in E}\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}. \]
+Equivalently, $M_{\sigma,\infty}$ has the law of $\sum_e\sigma_e\log W_e$, where the $W_e$ are independent standard
+exponential variables; since $M_\sigma$ is linear in $\sigma$, the vector $(M_{\sigma,\infty})_{\sigma\in\ker B}$ has the
+law of $(\sum_e\sigma_e\log W_e)_{\sigma\in\ker B}$. Moreover $\mathbb{E}M_{\sigma,\infty}^2=
+\mathbb{E}\langle M_\sigma\rangle_\infty=\zeta(2)\sum_e\sigma_e^2$ and
+$\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\zeta(4)\sum_e\sigma_e^4$.
+\end{theorem}
+\begin{proof}
+Convergence follows from Theorem~\ref{thm:mart}. For real $\theta$ and positive integers $n_e$ put
+\[ P_\theta(n)=\prod_e\frac{\Gamma(n_e+i\theta\sigma_e)}{\Gamma(n_e)\,\Gamma(1+i\theta\sigma_e)} . \]
+An increase of $n_e$ multiplies $P_\theta$ by $1+i\theta\sigma_e/n_e$, so the generator of the urn applied to $P_\theta$
+is $P_\theta(n)\sum_v S_v^{-1}\sum_{e\ni v}n_e\cdot i\theta\sigma_e/n_e=i\theta P_\theta(n)\sum_v(B\sigma)_v/S_v=0$. Since
+$|\Gamma(x+iy)|\le\Gamma(x)$ for $x>0$, $|P_\theta|\le\prod_e|\Gamma(1+i\theta\sigma_e)|^{-1}$. A bounded function with
+zero generator of a jump process whose total jump rate is $|V|$ is a martingale, so $\mathbb{E}P_\theta(N(t))=1$. As
+$n\to\infty$, $\Gamma(n+z)/(\Gamma(n)n^z)\to1$ for fixed complex $z$, and every count tends to infinity
+(Lemma~\ref{lem:growth}), so $P_\theta(N(t))\prod_e\Gamma(1+i\theta\sigma_e)-\exp(i\theta\sum_e\sigma_e\log N_e(t))\to0$.
+Since $\sum_e\sigma_e=0$, \eqref{eq:link} gives $\sum_e\sigma_e\log N_e(t)-M_\sigma(t)\to0$. By dominated convergence,
+$\mathbb{E}e^{i\theta M_{\sigma,\infty}}\prod_e\Gamma(1+i\theta\sigma_e)^{-1}=1$. For a standard exponential $W$,
+$\mathbb{E}W^{i\theta}=\Gamma(1+i\theta)$, which gives the second form, and the joint law follows by the Cram\'er--Wold
+device.
+
+Since every count tends to infinity, $[M_\sigma]_\infty=\zeta(2)\sum_e\sigma_e^2$, and
+$\mathbb{E}M_{\sigma,\infty}^2=\mathbb{E}[M_\sigma]_\infty=\mathbb{E}\langle M_\sigma\rangle_\infty$ by monotone
+convergence. The process $R=[M_\sigma]-\langle M_\sigma\rangle$ is a martingale whose jumps are the squared jumps of
+$M_\sigma$, and $\langle M_\sigma\rangle$ is continuous, so
+$[R]_t=\sum_e\sigma_e^4H^{(4)}(N_e(t)-1)\le\zeta(4)\sum_e\sigma_e^4$. Hence $R$ is bounded in $L^2$, and as
+$[M_\sigma]_\infty$ is deterministic,
+$\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]_\infty=\zeta(4)\sum_e\sigma_e^4$.
+\end{proof}
+
+The law in Theorem~\ref{thm:law} is the one obtained by letting each count grow as an independent Yule process run on
+its internal time $a_e$: such a process satisfies $\log N_e-a_e\to\log W_e$, and the internal times cancel in every
+charge.
+
+\begin{remark}\label{rem:fibre}
+Suppose that $X(t)$ converges to a point $x_\infty$ with positive coordinates and deterministic vertex sums
+$Bx_\infty=b$. By \eqref{eq:link}, $\sum_e\sigma_e\log x_{\infty,e}=M_{\sigma,\infty}$ for every $\sigma\in\ker B$. These
+values determine $x_\infty$: on $P=\{x\in(0,\infty)^E:Bx=b\}$, assumed nonempty, the map $x\mapsto\pi(\log x)$, with $\pi$
+the orthogonal projection onto $\ker B$, is a bijection onto $\ker B$. Indeed, for $m\in\ker B$ the strictly convex
+function $\sum_ex_e(\log x_e-1)-\langle m,x\rangle$ has a unique minimiser on the compact closure of $P$; it lies in $P$,
+because moving from a boundary point towards a point of $P$ decreases the function at infinite rate, and the first-order
+condition there is $\pi(\log x)=m$; injectivity follows from $\sum_e(x_e-y_e)(\log x_e-\log y_e)>0$ for distinct
+$x,y\in P$. Since $(\ker B)^\perp$ is the range of $B^{\top}$, Theorem~\ref{thm:law} then says that $x_\infty$ has the
+law of the unique point of $P$ of the form $x_e=W_e\,e^{y_u+y_v}$, $e=(u,v)$, with vertex potentials $y$: the scaling of
+independent exponential edge weights to the vertex sums $b$.
+\end{remark}
+
+\section{Convergence on the even cycle}
 On the even cycle $C_L$ (edges indexed mod $L$, vertex $v$ between edges $v-1$ and $v$) the kernel is spanned by
 $\sigma_e=(-1)^e$, and since $S_v=N_{v-1}+N_v$,
 \[ \frac{1}{S_v}\Bigl(\frac1{N_{v-1}}+\frac1{N_v}\Bigr)=\frac{1}{N_{v-1}N_v},\qquad
-   \langle M\rangle_t=\int_0^t\sum_{v}\frac{ds}{N_{v-1}(s)N_v(s)} .\]
-
-\section{Growth of every edge}
-\begin{lemma}\label{lem:growth}
-Let $d$ be the maximum degree and $\lambda<2/(d+1)$. Almost surely $\liminf_{t\to\infty}N_e(t)/t^{\lambda}>0$ for every
-edge $e$. In particular every count tends to infinity and $\langle M_\sigma\rangle_\infty<\infty$.
-\end{lemma}
-\begin{proof}
-Let $F_w(t)$ be the number of rings of $w$ by time $t$. A ring of $w$ adds to $S_v$ only if $w=v$ or $w\sim v$, and then
-by one, so $S_v(t)\le d+\sum_{w\in\{v\}\cup N(v)}F_w(t)$. Since $F_w(t)/t\to1$ a.s., for $\varepsilon>0$ there is an
-a.s. finite $T$ with $S_v(t)\le(d+1)(1+\varepsilon)t$ for all $v$ and $t\ge T$. For $e=(u,v)$ the jump rate of $N_e$ is
-$N_e(S_u^{-1}+S_v^{-1})\ge\lambda' N_e/t$ on $[T,\infty)$, with $\lambda'=2/((d+1)(1+\varepsilon))$. In the time
-$\tau=\log t$ this is a pure birth process with rate at least $\lambda'n$ at height $n$, so by thinning it dominates a
-Yule process of rate $\lambda'$ started at time $\log T$ from $N_e(T)\ge1$, and $e^{-\lambda'\tau}Y(\tau)$ has a positive
-a.s. limit. Taking $\varepsilon$ small gives the first claim. For the second, every ring of $v$ counts in $S_v$, so
-$S_v(t)\ge F_v(t)$, and the rate in Theorem~\ref{thm:mart} is at most
-$d\,\|\sigma\|_\infty^2/(F_v(t)\min_{e\ni v}N_e(t))=O(t^{-1-\lambda})$.
-\end{proof}
-
-\section{Convergence on the even cycle}
-Let $L\ge4$ be even. In the time $\tau=\log t$ the normalised counts follow, up to a martingale error of order
-$t^{-1/2}$, the field
+   \langle M\rangle_t=\int_0^t\sum_{v}\frac{ds}{N_{v-1}(s)N_v(s)} ,\]
+where $M=M_\sigma$. Let $L\ge4$ be even. With $K_e$ the compensated count of $e=(u,v)$, and since $S_w(N(t))=tS_w(X(t))$,
+\[ dX_e(t)=\frac{F_e(X(t))}{t}\,dt+\frac{dK_e(t)}{t},\qquad F_e(x)=x_e\,\partial_e\mathcal{L}(x), \]
+so in the time $\tau=\log t$ the normalised counts follow, up to the martingale term, the field
 \begin{equation}\label{eq:ode}
 \frac{dx_e}{d\tau}=x_e\,\partial_e\mathcal{L}(x),\qquad
 \mathcal{L}(x)=\sum_{v}\log S_v(x)-\sum_e x_e,
 \end{equation}
-where $\partial_e\mathcal{L}=S_u^{-1}+S_v^{-1}-1$ for $e=(u,v)$, and $\frac{d}{d\tau}\mathcal{L}=\sum_e x_e(\partial_e\mathcal{L})^2\ge0$ \cite{HHKR}. Also
-$\frac{d}{d\tau}\sum_e x_e=L-\sum_e x_e$.
+with $\partial_e\mathcal{L}=S_u^{-1}+S_v^{-1}-1$ for $e=(u,v)$. A direct computation \cite{HHKR} gives
+\[ \frac{d}{d\tau}\mathcal{L}=\sum_e x_e(\partial_e\mathcal{L})^2\ge0,\qquad \frac{d}{d\tau}\sum_e x_e=L-\sum_e x_e. \]
 
 \begin{lemma}\label{lem:eq}
-The equilibria of \eqref{eq:ode} in $\{\sum_e x_e=L,\ S_v>0\ \forall v\}$ are
+The equilibria of \eqref{eq:ode} in $\{x\in[0,\infty)^E:\sum_e x_e=L,\ S_v(x)>0\ \forall v\}$ are
 \begin{enumerate}
 \item the segment $\Sigma=\{x^{(u)}:u\in[-1,1]\}$, $x^{(u)}_e=1+(-1)^eu$, on which $S_v\equiv2$;
 \item finitely many points, each with an edge $e$ such that $x_e=0$ and $\partial_e\mathcal{L}(x)\ge 1/(2L)$.
@@ -126,129 +202,134 @@ On $C_L$, $L$ even, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ a
 \[ L\,\mathrm{artanh}(u_\infty)=M_\infty:=\lim_{t\to\infty}\sum_e(-1)^eH(N_e(t)-1). \]
 \end{theorem}
 \begin{proof}
-By Lemma~\ref{lem:growth}, $S_v(t)\ge F_v(t)$, so $X(t)$ eventually stays in the compact set
-$K=\{\sum x_e\le 2L,\ S_v\ge1/2\}$, on which \eqref{eq:ode} is smooth. The jumps of $X$ are of size $1/t$ and the
-martingale part has quadratic variation $O(1/t)$ per unit of $\log t$, so $X(e^\tau)$ is an asymptotic pseudotrajectory
-of \eqref{eq:ode} \cite{Ben99}, and its limit set is a connected, internally chain transitive set. Since $\mathcal{L}$
-is a strict Lyapunov function and by Lemma~\ref{lem:eq} takes finitely many values on the equilibria, the limit set lies
-in a connected set of equilibria, that is, either in $\Sigma$ or at one point of type (2).
+By Lemma~\ref{lem:growth} and since $\sum_eN_e(t)-L$ is a Poisson process of rate $L$, $X(t)$ eventually stays in the
+compact set $K=\{x\in[0,\infty)^E:\sum x_e\le 2L,\ S_v(x)\ge1/2\ \forall v\}$, which is forward invariant for
+\eqref{eq:ode} and on which the field is Lipschitz. The total jump rate is $L$, so by Doob's inequality the martingale
+term over a window satisfies
+$\mathbb{E}\sup_{h\le T}|\int_{e^\tau}^{e^{\tau+h}}t^{-1}dK_e(t)|^2\le4\int_{e^\tau}^{e^{\tau+T}}Lt^{-2}\,dt\le4Le^{-\tau}$,
+and the Borel--Cantelli lemma along integer $\tau$ shows that it tends to zero almost surely, uniformly over windows of
+length $T$. The jumps of $X$ are at most $1/t$. By Gronwall's lemma the linear interpolation of $\tau\mapsto X(e^\tau)$ is
+then a precompact asymptotic pseudotrajectory of the flow of \eqref{eq:ode} on $K$ in the sense of
+\cite[Section~3]{Ben99}, and its limit set is internally chain transitive \cite[Theorem~5.7]{Ben99}. The function
+$-\mathcal{L}$ is strictly decreasing along every nonstationary orbit, and by Lemma~\ref{lem:eq} it takes finitely many
+values on the equilibria ($\mathcal{L}\equiv L\log2-L$ on $\Sigma$). By \cite[Proposition~6.4]{Ben99} the limit set
+consists of equilibria, and being connected it lies in $\Sigma$ or is a single point of type (2).
 
-Type (2): suppose $X(t)\to x^*$ with $x^*_e=0$ and $\partial_e\mathcal{L}(x^*)\ge1/(2L)$. For $t\ge T$ the jump rate of
-$N_e$ is at least $(1+\delta)N_e/t$ with $\delta=1/(4L)$. The comparison of Lemma~\ref{lem:growth}, run from the
-stopping time at which $X$ leaves a small neighbourhood of $x^*$ after $T$, shows that on the event of never leaving,
-$N_e(t)\ge c\,t^{1+\delta/2}$, so $X_e\to\infty$, a contradiction. Hence this event has probability zero for each $T$
-and each neighbourhood, and $X$ does not converge to a type (2) point.
+Type (2): let $x^*$ be such a point, with $x^*_e=0$ and $\partial_e\mathcal{L}(x^*)\ge1/(2L)$, and choose a
+neighbourhood $U$ of $x^*$ in $K$ on which $x_e\le1$ and $\partial_e\mathcal{L}\ge1/(4L)$. On the event
+$A_m=\{X(t)\in U\text{ for all }t\ge m\}$, $m\in\mathbb{N}$, the internal time of $e$ satisfies
+$a_e(t)-a_e(m)=\int_m^t(1+\partial_e\mathcal{L}(X(s)))\,s^{-1}ds\ge(1+\delta)\log(t/m)$ with $\delta=1/(4L)$. By
+Lemma~\ref{lem:growth}, $\log N_e(t)-a_e(t)$ converges, so $X_e(t)\ge ct^{\delta}\to\infty$ on $A_m$, which contradicts
+$x_e\le1$ on $U$. Hence $\mathbb{P}(A_m)=0$ for every $m$, and $X$ does not converge to $x^*$. As there are finitely many
+such points, the limit set lies in $\Sigma$.
 
-So the limit set lies in $\Sigma$. By \eqref{eq:link} and Lemma~\ref{lem:growth},
-$\sum_e(-1)^e\log X_e(t)\to M_\infty$, finite a.s. At $x^{(u)}$ the left side equals
-$\tfrac L2\log\frac{1+u}{1-u}=L\,\mathrm{artanh}(u)$, which is strictly increasing in $u$ and infinite at $u=\pm1$.
-Every limit point therefore equals $x^{(u_\infty)}$ with $L\,\mathrm{artanh}(u_\infty)=M_\infty$.
+By \eqref{eq:link} and Theorem~\ref{thm:mart}, $\Phi(X(t)):=\sum_e(-1)^e\log X_e(t)\to M_\infty$, finite almost surely.
+Along a sequence of times with $X\to x^{(1)}$ every even coordinate tends to $2$ and every odd coordinate to $0$, so
+$\Phi\to+\infty$; similarly $\Phi\to-\infty$ near $x^{(-1)}$. So neither endpoint is a limit point, and the limit set is a
+compact subset of $\{x^{(u)}:|u|<1\}$, where $\Phi$ is continuous and
+$\Phi(x^{(u)})=\tfrac L2\log\frac{1+u}{1-u}=L\,\mathrm{artanh}(u)$ is strictly increasing in $u$. Every limit point
+$x^{(u)}$ therefore has $L\,\mathrm{artanh}(u)=M_\infty$, and the limit set is the single point $x^{(u_\infty)}$.
 \end{proof}
 
-\begin{remark}
-The same argument applies whenever the interior equilibria of a fibre $\{\sum_e\sigma_e\log x_e=m:\sigma\in\ker B\}$ are
-unique and boundary equilibria are transversally unstable. Uniqueness within a fibre is Birch's theorem for the
-transportation polytope $\{x>0: Bx=b\}$: the map $x\mapsto$ (projection of $\log x$ on $\ker B$) is a bijection from its
-interior onto $\ker B$.
-\end{remark}
-
-\section{The Gaussian limit on large even cycles}
-Write $Q_v=\int_0^\infty\frac{dt}{N_{v-1}(t)N_v(t)}$, so that $\langle M\rangle_\infty=\sum_vQ_v$ on $C_L$, and
-$Q_v^{\le T}$, $Q_v^{>T}$ for the integrals over $[0,T]$ and $(T,\infty)$.
-
-\begin{lemma}\label{lem:tail}
-There is $\varepsilon(T)\to0$ such that $\mathbb{E}\,Q_v^{>T}\le\varepsilon(T)$ for every even $L\ge6$ and every $v$.
-\end{lemma}
+\begin{corollary}\label{cor:cycle}
+On $C_L$, $L\ge4$ even, $u_\infty=\tanh(M_\infty/L)$, where $M_\infty$ has the law of $\Lambda_1+\dots+\Lambda_{L/2}$
+with independent standard logistic variables $\Lambda_j$ (density $e^{-s}/(1+e^{-s})^2$), that is,
+\[ \mathbb{E}\,e^{i\theta M_\infty}=\Bigl(\frac{\pi\theta}{\sinh\pi\theta}\Bigr)^{L/2}. \]
+In particular $\mathbb{E}M_\infty^2=L\pi^2/6$, $\mathbb{E}\bigl(\langle M\rangle_\infty/L-\pi^2/6\bigr)^2=\pi^4/(90L)$, and as
+$L\to\infty$ through even values, both $\sqrt L\,\mathrm{artanh}(u_\infty)$ and $\sqrt L\,u_\infty$ converge in law to
+$\mathcal N(0,\pi^2/6)$.
+\end{corollary}
 \begin{proof}
-Since $\max(N_{v-1},N_v)\ge S_v/2$ and $S_v\ge F_v\vee2$,
-$\frac{1}{N_{v-1}N_v}\le\frac{2}{F_v\vee1}\bigl(\frac1{N_{v-1}}+\frac1{N_v}\bigr)$. Build the process from rate-one
-Poisson clocks at the vertices and independent uniform marks $U$ attached to the rings; at a ring of $w$ the left edge
-$w-1$ is chosen when $U<N_{w-1}/S_w$ and the right edge $w$ when $U\ge1-N_w/S_w$. For the edge $e=v$ let
-$G_w(s)=2+F_{w-1}(s)+F_w(s)+F_{w+1}(s)\ge S_w(s)$ and let $\tilde N_e$ start at $1$ and increase at a ring of $v$ when
-$U\ge1-\tilde N_e/G_v(s)$, and at a ring of $v+1$ when $U<\tilde N_e/G_{v+1}(s)$. If $\tilde N_e\le N_e$ before a ring,
-every increase of $\tilde N_e$ is also an increase of $N_e$, so $N_e\ge\tilde N_e$ at all times.
-$\tilde N_e$ and $F_v$ are functions of the clocks of $v-1,\dots,v+2$ and the marks at $v,v+1$, so the law of
-$\int_T^\infty\frac{2}{F_v\vee1}(\tilde N_{v-1}^{-1}+\tilde N_v^{-1})\,dt$ does not depend on $L$, and it suffices to show
-its mean is finite. By Cauchy--Schwarz, $\mathbb{E}(F_v(t)\vee1)^{-2}\le Ct^{-2}$ and $\tilde N_e^{-2}\le\tilde N_e^{-1}$,
-it is enough that
-$\mathbb{E}[\tilde N_e(t)^{-1}]\le Ct^{-a}$ for some $a>0$.
-
-Let $s=\sqrt t$ and $\rho=\inf\{r\ge s:\max(G_v(r),G_{v+1}(r))>4r\}$, a stopping time for the clocks with
-$\mathbb{P}(\rho<\infty)\le Ce^{-c\sqrt t}$ by Poisson large deviations. Couple $\tilde N_e$ on $[s,\rho)$ with a pure birth
-process $\hat Y$, $\hat Y(s)=1$, increasing at a ring of $w$ at time $r$ with the same mark rule and probability
-$\min(1,\hat Y/(4r))$; then $\hat Y\le\tilde N_e$ on $[s,\rho)$. Until $\hat Y$ exceeds $4r$ it is, in the time $\log r$, a
-Yule process of rate $1/2$, and once it does, $\hat Y(t)\ge4s$. A Yule process of rate $1/2$ run for time
-$\tfrac12\log t$ from $1$ is geometric with parameter $p=t^{-1/4}$, with $\mathbb{E}[Y^{-1}]=p\log(1/p)/(1-p)$. Hence
-$\mathbb{E}[\tilde N_e(t)^{-1}]\le Ce^{-c\sqrt t}+Ct^{-1/4}\log t+(4\sqrt t)^{-1}$.
+By Theorem~\ref{thm:law} with $\sigma_e=(-1)^e$, $M_\infty$ has the law of $\sum_{j}(\log W_{2j}-\log W_{2j+1})$, and
+$\mathbb{E}e^{i\theta(\log W-\log W')}=\Gamma(1+i\theta)\Gamma(1-i\theta)=\pi\theta/\sinh(\pi\theta)$ for independent
+standard exponential $W,W'$, the characteristic function of the standard logistic law. Theorem~\ref{thm:conv} gives
+$u_\infty=\tanh(M_\infty/L)$, and Theorem~\ref{thm:law} gives the two moments. The logistic law has variance $\pi^2/3$,
+so the central limit theorem gives $M_\infty/\sqrt L\Rightarrow\mathcal N(0,\pi^2/6)$, and
+$\sqrt L\,u_\infty-M_\infty/\sqrt L\to0$ in probability since $\tanh(x)/x\to1$ as $x\to0$ and $M_\infty/L\to0$.
 \end{proof}
 
-\begin{lemma}\label{lem:local}
-For each $T$ there is $q(T)$ with $\frac1L\sum_vQ_v^{\le T}\to q(T)$ in $L^2$ as $L\to\infty$, and $q(T)\uparrow c<\infty$.
-\end{lemma}
+On $C_4$, with $p=(1+u_\infty)/2$, the density of $M_\infty$ is $f(s)=(s\coth(s/2)-2)/(4\sinh^2(s/2))$, the density of
+$p$ is $2f(2\log\frac{p}{1-p})/(p(1-p))$, which behaves like $4(1-p)\log\frac1{1-p}$ as $p\to1$, and
+$\mathrm{Var}\,p=\pi^2/32-1/4=0.05843\dots$. The limit law on $C_4$ is therefore not a beta law.
+
+\section{The infinite line}\label{sec:line}
+On $\mathbb{Z}$, with vertex $v$ between edges $v-1$ and $v$, the process is built from the same rate-one clocks and
+choices. A vertex $w$ that does not ring during $[0,T]$ separates the line on that interval: the edges to the left of $w$
+change only at rings to the left of $w$, which depend only on those edges, and similarly on the right. Each vertex is
+silent on $[0,T]$ with probability $e^{-T}$, independently, so almost surely the line splits into finite blocks, each of
+which evolves on $[0,T]$ as a finite urn. This defines the process for all times, and its law is invariant under
+translations.
+
+\begin{proposition}\label{prop:line}
+For the critical WARM on $\mathbb{Z}$ with unit initial counts every count tends to infinity almost surely, and
+\[ c:=\mathbb{E}\int_0^\infty\frac{dt}{N_{-1}(t)N_0(t)}=\zeta(2)=\frac{\pi^2}{6}. \]
+The same expectation, with $N_{v-1}N_v$ in place of $N_{-1}N_0$, equals $\pi^2/6$ for every vertex $v$ of every even cycle
+$C_L$, $L\ge4$.
+\end{proposition}
 \begin{proof}
-Use the same clocks and marks on $C_L$ and on $\mathbb{Z}$. The edge counts at $v$ up to time $T$ are determined by the
-rings and marks in the backward cluster of $(v,T)$: the set of vertices reachable by a chain of rings at strictly
-decreasing times, each at a neighbour of the previous one. The radius of this cluster exceeds $R$ only if a chain of
-$R$ rings with decreasing times occurs within $[0,T]$, which has probability at most $\delta_R=2(2T)^R/R!$. Let $q(T)$ be
-the mean of $Q_0^{\le T}$ for the process on $\mathbb{Z}$. Since $0\le Q_v^{\le T}\le T$, $|\mathbb{E}Q_v^{\le T}-q(T)|\le
-T\delta_R$, and $Q_v^{\le T},Q_w^{\le T}$ are independent up to probability $2\delta_R$ when $|v-w|>2R+2$. So
-$\mathrm{Var}(\frac1L\sum_vQ_v^{\le T})\le T^2((4R+5)/L+4\delta_R)$; let $L\to\infty$, then $R\to\infty$. Finally $q(T)$
-is increasing in $T$, and $q(T)\le1+\varepsilon(1)$, since $Q_0^{\le1}\le1$ and the proof of Lemma~\ref{lem:tail}
-applies verbatim on $\mathbb{Z}$.
+The proof of Lemma~\ref{lem:growth} uses only the clocks of finitely many vertices near the edge, so it applies on
+$\mathbb{Z}$ with $d=2$ and every count tends to infinity. The count $N_0$ increases at rate $N_0(S_0^{-1}+S_1^{-1})\le2$,
+and each increase from $n$ to $n+1$ adds $n^{-2}$ to $A(t)=H^{(2)}(N_0(t)-1)$, so
+$\mathbb{E}A(T)=\int_0^T\mathbb{E}\bigl[(N_0S_0)^{-1}+(N_0S_1)^{-1}\bigr]dt$. By translation invariance
+$\mathbb{E}[(N_0S_1)^{-1}]=\mathbb{E}[(N_{-1}S_0)^{-1}]$, and $(N_0^{-1}+N_{-1}^{-1})/S_0=1/(N_{-1}N_0)$, so
+$\mathbb{E}\int_0^T\frac{dt}{N_{-1}N_0}=\mathbb{E}H^{(2)}(N_0(T)-1)$, which increases to $\zeta(2)$ by bounded
+convergence. On $C_L$, $\mathbb{E}\langle M\rangle_\infty=L\zeta(2)$ by Theorem~\ref{thm:law}, and the $L$ vertex terms
+have the same expectation by rotation invariance.
 \end{proof}
 
-\begin{theorem}\label{thm:clt}
-Let $c=\mathbb{E}\int_0^\infty\frac{dt}{N_{-1}(t)N_0(t)}$ for the critical WARM on $\mathbb{Z}$ with unit initial counts.
-As $L\to\infty$ through even values, $\sqrt L\,\mathrm{artanh}(u_\infty)\Rightarrow\mathcal N(0,c)$. In particular
-$u_\infty\to0$ in probability at rate $L^{-1/2}$.
-\end{theorem}
-\begin{proof}
-By Lemmas~\ref{lem:tail} and~\ref{lem:local}, $\langle M\rangle_\infty/L\to c$ in $L^1$. The jumps of $M/\sqrt L$ are at
-most $L^{-1/2}$. The martingale central limit theorem for triangular arrays \cite{HH80} gives
-$M_\infty/\sqrt L\Rightarrow\mathcal N(0,c)$, and Theorem~\ref{thm:conv} gives $\sqrt L\,\mathrm{artanh}(u_\infty)=M_\infty/\sqrt L$.
-\end{proof}
-
-Theorem~\ref{thm:conv} also gives the exact finite-$L$ representation $u_\infty=\tanh(M_\infty/L)$ with
-$\mathbb{E}M_\infty=0$ and $\mathbb{E}M_\infty^2=\mathbb{E}\langle M\rangle_\infty$. Numerically $c\approx1.64$
-(Section~\ref{sec:num}).
-
-\section{Numerical checks and the infinite line}\label{sec:num}
-All simulations run the process exactly (rate-one vertex clocks, unit initial counts).
-
-\emph{Even cycles.} For $R$ independent runs to time $T$ we record $M(T)$, $\langle M\rangle_T$ and
-$\mathrm{artanh}(u)$, where $u$ is read from $\sum_e(-1)^e\log X_e(T)=L\,\mathrm{artanh}(u)$.
-\begin{center}
-\begin{tabular}{rrrrrrr}
-$L$ & $T$ & $R$ & mean $M$ (s.e.) & $\mathrm{Var}\,M$ & $\mathbb{E}\langle M\rangle_T$ & $\mathbb{E}\,\mathrm{artanh}(u)^2\cdot L$\\\hline
-100 & $10^3$ & 400 & $0.30$ $(0.64)$ & 161.6 & 164.3 & 1.61\\
-400 & $10^3$ & 200 & $-2.86$ $(1.76)$ & 620 & 657 & 1.56\\
-100 & $10^4$ & 200 & -- & 154.9 & 164.7 & --
-\end{tabular}
-\end{center}
-The quadratic variation per vertex is $1.64$ at both sizes, so $c\approx1.64$, and the difference
-$\sum_e(-1)^e\log X_e(T)-M(T)$ in \eqref{eq:link} has root mean square $0.007$ at $T=10^4$, $L=100$. At $T=10^3$ the
-counts on $C_{100}$ are not yet a pure alternation: the slow modes of \eqref{eq:ode} near wavenumber $\pi$ decay like
-$t^{-\pi^2/L^2}$.
-
-\emph{Small graphs.} On $K_4$, where $\dim\ker B=2$, the standard deviation of each $X_e$ over $2000$ runs stays near
-$0.35$ between $T=10^3$ and $T=10^5$, while $\max_v|S_v/t-2|$ falls from $0.25$ to $0.08$: the limit is a random point
-of a two-dimensional set of equilibria. On $C_4$ the limit is random on the segment $\Sigma$; the variance of
-$(X_0+X_2)/4$ is $0.0564$, which matches a $\mathrm{Beta}(b,b)$ law only for $b\approx1.72$, so the limit law is not of
-the P\'olya form. On the triangle ($\ker B=0$) the spread decreases, more slowly than $t^{-1/4}$, towards $(1,1,1)$.
-
-\emph{The line.} On $\mathbb{Z}$ the kernel is replaced by a local conservation law. With
-$Y_e=(-1)^eH(N_e-1)$ and $J_v=(-1)^v/S_v$, the computation in Theorem~\ref{thm:mart} gives
+On $\mathbb{Z}$ the kernel is replaced by a local conservation law. With $Y_e=(-1)^eH(N_e-1)$ and $J_v=(-1)^v/S_v$,
+the computation in Theorem~\ref{thm:mart} gives
 \[ dY_e=-(J_{e+1}-J_e)\,dt+dM_e , \]
 with $M_e$ a martingale. Linearising \eqref{eq:ode} at $x\equiv1$ gives the decay rate $(1+\cos k)/2$ for the mode
 $e^{ike}$, which vanishes at $k=\pi$. Writing $x_e=1+(-1)^eu(e)+w(e)$ with $u$ slowly varying, the field $w$ relaxes to
 $(u^2)''/8$ and, formally, $u$ obeys
 \[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau v=\tfrac14\,\partial_e^2\tanh v,\quad v=\mathrm{artanh}\,u, \]
 which conserves $\int v$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
-in $\tau=\log t$ predicts that the local alternating amplitude decays like $(\log t)^{-1/4}$. On a cycle of length $1001$
-run to $T=10^5$ the standard deviation of $X_e$ falls from $0.57$ at $t=12$ to $0.39$ at $t=8.8\times10^4$, and
-$(\log t)^{1/4}$ times it stays between $0.67$ and $0.72$, rising slowly (a fitted exponent of $-0.18$ in $\log t$
-over this range, which a shift of $\tau$ by about $3$ or the saturation of $\tanh$ would account for); the correlation of neighbouring edges tends to $-0.92$.
-These runs are consistent with Kleptsyn's conjecture, with convergence at the logarithmic rate the charges predict.
+in $\tau=\log t$ predicts that the local alternating amplitude decays like $(\log t)^{-1/4}$.
+
+\section{Numerical checks}\label{sec:num}
+All simulations run the process exactly (rate-one vertex clocks, unit initial counts).
+
+\emph{Terminal law on cycles.} The program \texttt{code/exact\_law\_check.py} runs independent copies of the jump chain
+of the urn on $C_L$ and compares the charge after $K$ rings with the law of Corollary~\ref{cor:cycle}. With $K=4000$ and
+$20000$ copies on $C_4$, the variance of the charge is $6.63$ (exact $2\pi^2/3=6.58$, standard error about $0.07$), its
+excess kurtosis $0.59$ (exact $12/(5L)=0.6$), the Kolmogorov--Smirnov distance to the exact law $0.005$ (the $5\%$ level
+is about $0.010$), and $\mathrm{Var}\,p=0.0587$ for $p=(1+\tanh(M/4))/2$ (exact $0.0584$). With $K=10^5$ and $4000$
+copies on $C_{50}$ the variance is $81.9$ (exact $82.2$, standard error $1.8$) and the Kolmogorov--Smirnov distance
+$0.008$ (the $5\%$ level is about $0.022$).
+
+\emph{Even cycles in continuous time.} The program \texttt{code/warm2.c} runs $R$ independent copies to time $T$ (each
+run stops at the first ring after $T$) and records $M(T)$, the ring-sampled bracket and $\mathrm{artanh}(u)$. The
+ring-sampled bracket is the sum over rings of $1/(N_{v-1}N_v)$ for the ringing vertex $v$ before the ring; its mean is
+$\mathbb{E}\langle M\rangle_T$. The value $u$ is read from $\sum_e(-1)^e\log X_e(T)=L\,\mathrm{artanh}(u)$.
+\begin{center}
+\begin{tabular}{rrrrrrr}
+\toprule
+$L$ & $T$ & $R$ & mean $M$ (s.e.) & $\mathrm{Var}\,M$ & mean bracket & $L\,\mathbb{E}\,\mathrm{artanh}(u)^2$\\
+\midrule
+100 & $10^3$ & 400 & $0.30$ $(0.64)$ & 161.6 & 164.3 & 1.61\\
+400 & $10^3$ & 200 & $-2.86$ $(1.76)$ & 620 & 657 & 1.56\\
+100 & $10^4$ & 200 & -- & 154.9 & 164.7 & --\\
+\bottomrule
+\end{tabular}
+\end{center}
+The terminal values are $\mathbb{E}M_\infty^2=\mathbb{E}\langle M\rangle_\infty=L\pi^2/6$, that is $164.5$ and $658.0$,
+and $L\,\mathbb{E}\,\mathrm{artanh}(u_\infty)^2=\pi^2/6=1.645$ for every $L$. The bracket per vertex, $1.64$ at both sizes,
+agrees with $\pi^2/6$; the sample variances have standard errors of about $10\%$ of their size at these $R$. The difference
+$\sum_e(-1)^e\log X_e(T)-M(T)$ in \eqref{eq:link} has root mean square $0.007$ at $T=10^4$, $L=100$. At $T=10^3$ the counts
+on $C_{100}$ are not yet a pure alternation, which lowers the last column: the slow modes of \eqref{eq:ode} near
+wavenumber $\pi$ decay like $t^{-\pi^2/L^2}$.
+
+\emph{Small graphs.} On $K_4$, where $\dim\ker B=2$, the standard deviation of each $X_e$ over $2000$ runs stays near
+$0.35$ between $T=10^3$ and $T=10^5$, while $\max_v|S_v/t-2|$ falls from $0.25$ to $0.08$: the limit is a random point
+of a two-dimensional set of equilibria, as Theorem~\ref{thm:law} and Remark~\ref{rem:fibre} describe. On the triangle
+($\ker B=0$) the spread decreases, more slowly than $t^{-1/4}$, towards $(1,1,1)$.
+
+\emph{The line.} On a cycle of length $1001$ run to $T=10^5$ the standard deviation of $X_e$ falls from $0.57$ at
+$t=12$ to $0.39$ at $t=8.8\times10^4$, and $(\log t)^{1/4}$ times it stays between $0.67$ and $0.72$, rising slowly (a
+fitted exponent of $-0.18$ in $\log t$ over this range, which a shift of $\tau$ by about $3$ or the saturation of
+$\tanh$ would account for); the correlation of neighbouring edges tends to $-0.92$. These runs are consistent with
+Kleptsyn's conjecture, with convergence at the logarithmic rate the charges predict.
 
 \section*{Acknowledgements and funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's
@@ -272,14 +353,54 @@ These entities are included in the funding declaration above.
 \section*{Declaration of generative AI and AI-assisted technologies}
 The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November
 2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the charge martingales of Theorem~\ref{thm:mart}, proved
-the results of Sections~3--5, wrote and ran the simulations of Section~\ref{sec:num}, and wrote the paper. The author
-directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+the convergence on the even cycle, wrote and ran the simulations of Section~\ref{sec:num}, and wrote the paper. A Codex
+agent (OpenAI), refereeing the paper, found the terminal law of Theorem~\ref{thm:law} and its proof, the identities for
+$[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the identification $c=\zeta(2)$ in
+Proposition~\ref{prop:line} and the convex proof in Remark~\ref{rem:fibre}. The author directed the work and is
+responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data availability}
 No data were used. The code is available at\\ \url{https://github.com/yspennstate/graph-urn-conserved-charges}.
 
 The paper is part of the Math Brain project, whose public repository is
 \url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
+
+\appendix
+\section{Notation}
+\begin{center}\footnotesize
+\begin{tabular}{l p{6.3cm} l}
+\toprule
+Symbol & Meaning & First defined\\
+\midrule
+$G=(V,E)$, $d$ & finite graph, its maximum degree & Section 2\\
+$N_e$, $X_e$ & count of edge $e$, normalised count $N_e(t)/t$ & Section 2\\
+$S_v$ & vertex sum of counts $\sum_{e\ni v}N_e$ & Section 2\\
+$B$ & unsigned vertex--edge incidence matrix & Section 2\\
+$H^{(p)}$, $H$ & $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, harmonic number $H=H^{(1)}$ & Section 2\\
+$\sigma\in\ker B$ & charge vector & Thm.~\ref{thm:mart}\\
+$M_\sigma$, $M_{\sigma,\infty}$ & charge martingale, its terminal value & Thms.~\ref{thm:mart}, \ref{thm:law}\\
+$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable and optional quadratic variation & Thm.~\ref{thm:mart}\\
+$\psi$, $\gamma$ & digamma function, Euler's constant & \eqref{eq:link}\\
+$F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lem.~\ref{lem:growth}\\
+$a_e(t)$ & internal time of edge $e$ & Lem.~\ref{lem:growth}\\
+$D_e$ & edge martingale $H(N_e-1)-a_e$ & Lem.~\ref{lem:growth}\\
+$W_e$ & independent standard exponential variables & Thm.~\ref{thm:law}\\
+$P_\theta(n)$ & Gamma-ratio martingale & Thm.~\ref{thm:law}\\
+$R$ & compensated quadratic variation $[M_\sigma]-\langle M_\sigma\rangle$ & Thm.~\ref{thm:law}\\
+$P$, $b$, $\pi$ & fibre $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Rem.~\ref{rem:fibre}\\
+$C_L$ & cycle with $L$ edges, $L$ even & Section 3\\
+$\tau$ & time $\log t$ of the mean-field equation & \eqref{eq:ode}\\
+$\mathcal{L}$ & Lyapunov function of \eqref{eq:ode} & \eqref{eq:ode}\\
+$K_e$ & compensated count of edge $e$ & Section 3\\
+$x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Lem.~\ref{lem:eq}\\
+$u_\infty$, $M_\infty$ & limit point on $\Sigma$, terminal charge on $C_L$ & Thm.~\ref{thm:conv}\\
+$\Phi$ & $\sum_e(-1)^e\log x_e$, the charge as a function of the normalised counts & Thm.~\ref{thm:conv}\\
+$\Lambda_j$ & independent standard logistic variables & Cor.~\ref{cor:cycle}\\
+$p$ & limit share $(1+u_\infty)/2$ on $C_4$ & Section 3\\
+$c$ & expected bracket per vertex on $\mathbb{Z}$ & Prop.~\ref{prop:line}\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \bibliographystyle{amsplain}
 \begin{thebibliography}{99}
@@ -290,10 +411,9 @@ reinforcement models, in 2023 MATRIX Annals, MATRIX Book Series, Springer, 2025,
 \bibitem{CL} J. Chen, C. Lucas, A generalized P\'olya's urn with graph based interactions: convergence at linearity, Electron. Commun. Probab. 19 (2014), 1--13, doi:10.1214/ECP.v19-3094.
 \bibitem{HHKR} R. van der Hofstad, M. Holmes, A. Kuznetsov, W. Ruszel, Strongly reinforced P\'olya urns with graph-based competition, Ann. Appl. Probab. 26 (2016), 2494--2539, doi:10.1214/16-AAP1153.
 \bibitem{Lima} Y. Lima, Graph-based P\'olya's urn: completion of the linear case, Stoch. Dyn. 16 (2016), no.~2, 1660007, doi:10.1142/S0219493716600078.
-\bibitem{HH80} P. Hall, C. C. Heyde, Martingale Limit Theory and Its Application, Academic Press (1980).
-\bibitem{Ben99} M. Bena\"im, Dynamics of stochastic approximation algorithms, S\'eminaire de Probabilit\'es XXXIII, Lecture Notes in Math. 1709, Springer (1999).
+\bibitem{Ben99} M. Bena\"im, Dynamics of stochastic approximation algorithms, S\'eminaire de Probabilit\'es XXXIII, Lecture Notes in Math. 1709, Springer (1999), 1--68.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
-\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
+\bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
 \bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
 \end{thebibliography}
 \end{document}

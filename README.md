@@ -10,7 +10,7 @@ Paper: [main.pdf](main.pdf) (source [main.tex](main.tex)).
 ## Summary
 
 Each vertex of a finite graph rings at rate one and reinforces one of its edges with probability proportional to
-the edge's count. The paper proves:
+the edge's count. The paper gives written proofs of the following statements. None of them is claimed as new:
 
 * for every sigma in the kernel of the unsigned vertex-edge incidence matrix, sum_e sigma_e H(N_e - 1) is an exact
   martingale (the charge), where H is the harmonic number and all counts start at 1; up to a vanishing error it equals sum_e sigma_e log(N_e / t), which
@@ -22,10 +22,17 @@ the edge's count. The paper proves:
   standard logistic variables; sqrt(L) artanh(u) converges in law to the normal law with variance pi^2/6;
 * on the integers the expectation of the integral over time of 1/(N_{-1} N_0) is pi^2/6.
 
-This gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn studied
-by Chen and Lucas (2014) and by Lima (2016, Question 1); no transfer to the synchronous urn is proved. The last
-section derives the local conservation law on the line, a formal envelope equation for the alternating mode, and
-the logarithmic decay rate it predicts for the critical urn on Z.
+Prior work. M. Holmes has informed the author that he and V. Kleptsyn have long known the limits on cycles, in
+particular the martingales and the form of the limit on even cycles, and have spoken about them at conferences;
+their work on the critical regime is cited as "Infinite WARM graphs II: critical regime" in Hirsch, Holmes and
+Kleptsyn (arXiv:2009.07682) and in Infinite WARM graphs III (Nonlinearity, 2023). They have also advertised the limit
+on Z_+ when the firing rate at 0 is 1/2. The exponential variables come from Rubin's construction, published by
+B. Davis (Probab. Theory Related Fields 84, 1990). The model is due to van der Hofstad, Holmes, Kuznetsov and Ruszel
+(2016); the urn and its convergence at linearity to Benaim, Benjamini, Chen and Lima (2015), Chen and Lucas (2014)
+and Lima (2016). The paper's AI declaration says which system wrote which part.
+
+The last section derives the local conservation law on the line, a formal envelope equation for the alternating
+mode, and the logarithmic decay rate it predicts for the critical urn on Z.
 
 ## Code
 

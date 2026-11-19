@@ -16,8 +16,9 @@ $M_\sigma=\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic number. On every f
 law of $\sum_e\sigma_e\log W_e$ with independent standard exponential variables $W_e$. On the even cycle $C_L$,
 $L\ge4$, the normalised counts converge to $(1+u,1-u,\dots)$, and $L\,\mathrm{artanh}(u)$ equals the terminal value
 of $M_\sigma$ for $\sigma_e=(-1)^e$. Hence $u=\tanh(M/L)$, where $M$ is a sum of $L/2$ independent standard logistic
-variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to the centred normal law with variance $\pi^2/6$. These results are due to Holmes and Kleptsyn. For
-even cycles they give the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn
+variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to the centred normal law with variance $\pi^2/6$. The martingales and the form of the limit on even cycles were known to M.~Holmes and V.~Kleptsyn, and the
+exponential variables come from Rubin's construction; no result here is claimed as new. For
+even cycles the results give the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn
 studied by Chen and Lucas and by Lima. On the integer line the expected integral of $1/(N_{-1}N_0)$ over time is
 $\pi^2/6$.
 \end{abstract}
@@ -69,19 +70,19 @@ $\int_0^\infty dt/(N_{-1}N_0)$ is $\pi^2/6$, the value it has at every vertex of
 (Proposition~\ref{prop:line}). Convergence on $K_4$, where $\dim\ker B=2$, and the rate of decay of the alternating
 amplitude on $\mathbb{Z}$ are open; Section~\ref{sec:num} gives simulations of both.
 
-\emph{What is known.} None of the results of this paper is new. M.~Holmes informed the author that the charge
-martingales $M_\sigma$, the form of the limit on even cycles, and the limit on $\mathbb{Z}_+$ when the firing rate at
-$0$ is $1/2$ have been known to him and V.~Kleptsyn for several years, and that they have presented them at
-conferences. They belong to the work of Holmes and Kleptsyn on the critical regime $\alpha=1$~\cite{HKcrit}, which is
-cited in~\cite{HHKtree} and~\cite{HHK3} and in the MSc thesis of D.~Chen~\cite{Chen}; a result on equilibria of
-the critical model on intervals, quoted from that work, is~\cite[Theorem~5]{HHK3}. The exponential variables in
+\emph{What is known.} M.~Holmes has informed the author that he and V.~Kleptsyn have known the limits on cycles
+for a long time and have spoken about them at conferences. In particular the martingales of Theorem~\ref{thm:mart}
+and the form of the limit on even cycles (Theorem~\ref{thm:conv} and Corollary~\ref{cor:cycle}) were known to them,
+and they have advertised the limit on $\mathbb{Z}_+$ when the firing rate at $0$ is $1/2$. In his view most of this
+paper is known. Their work on the critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree}
+and~\cite{HHK3}, and, according to Holmes, in the MSc thesis of D.~Chen~\cite{Chen}. The exponential variables in
 Theorem~\ref{thm:law} come from Rubin's construction, which embeds a reinforced urn in independent exponential
 processes; Rubin's observations were published by Davis~\cite{Davis}, see~\cite[Section~2.3]{Pemantle}. The model in
 discrete time is that of~\cite{HHKR}, and the Lyapunov function used in Section~\ref{sec:cycle}
 is~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On infinite graphs of bounded degree,
 such as $\mathbb{Z}$, the process is well defined~\cite[Section~1]{HHKtree}. The convergence argument on the cycle uses
-the theory of asymptotic pseudotrajectories of Bena\"im~\cite{Ben99}. This paper gives written proofs of these
-statements in one place.
+the theory of asymptotic pseudotrajectories of Bena\"im~\cite{Ben99}. No result of this paper is claimed as new; it
+gives written proofs in one place.
 
 \section{The charge martingales}\label{sec:mart}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
@@ -90,7 +91,7 @@ where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All counts start at $1
 random where stated, and may differ between proofs. Write $X_e(t)=N_e(t)/t$, let $B$ be
 the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$, and let $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, $H=H^{(1)}$.
 
-\begin{theorem}[Holmes and Kleptsyn~\cite{HKcrit}]\label{thm:mart}
+\begin{theorem}[known to Holmes and Kleptsyn]\label{thm:mart}
 Let all counts start at $1$, and let $\sigma\in\mathbb{R}^E$ satisfy $\sum_{e\ni v}\sigma_e=0$ for every $v$. Then
 \[ M_\sigma(t)=\sum_{e\in E}\sigma_e\,H(N_e(t)-1) \]
 is a martingale with $M_\sigma(0)=0$, jumps bounded by $\max_e|\sigma_e|$, predictable quadratic variation
@@ -230,7 +231,7 @@ $\partial_e\mathcal{L}\ge \frac{k+2}{2k+2}+\frac12-1=\frac{1}{2k+2}\ge\frac1{2L}
 the other end has $S=2$.
 \end{proof}
 
-\begin{theorem}[Holmes and Kleptsyn~\cite{HKcrit}]\label{thm:conv}
+\begin{theorem}[known to Holmes and Kleptsyn]\label{thm:conv}
 On $C_L$, $L\ge4$ even, with all counts starting at $1$, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ and
 \[ L\,\mathrm{artanh}(u_\infty)=M_\infty:=\lim_{t\to\infty}\sum_e(-1)^eH(N_e(t)-1). \]
 \end{theorem}
@@ -265,7 +266,7 @@ $\Phi(x^{(u)})=\tfrac L2\log\frac{1+u}{1-u}=L\,\mathrm{artanh}(u)$ is strictly i
 $x^{(u)}$ therefore has $L\,\mathrm{artanh}(u)=M_\infty$, and the limit set is the single point $x^{(u_\infty)}$.
 \end{proof}
 
-\begin{corollary}[Holmes and Kleptsyn~\cite{HKcrit}]\label{cor:cycle}
+\begin{corollary}[known to Holmes and Kleptsyn]\label{cor:cycle}
 On $C_L$, $L\ge4$ even, $u_\infty=\tanh(M_\infty/L)$, where $M_\infty$ has the law of $\Lambda_1+\dots+\Lambda_{L/2}$
 with independent standard logistic variables $\Lambda_j$ (density $e^{-s}/(1+e^{-s})^2$), that is,
 \[ \mathbb{E}\,e^{i\theta M_\infty}=\Bigl(\frac{\pi\theta}{\sinh\pi\theta}\Bigr)^{L/2}. \]
@@ -383,8 +384,8 @@ These entities are included in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 The paper comes out of Math Brain~\cite{MathBrainPaper,MathBrainRepo}, a project on the use of AI systems for research
-mathematics. The results are not new. The charge martingales, the law of the limit on even cycles and the limit on
-$\mathbb{Z}_+$ are due to M.~Holmes and V.~Kleptsyn~\cite{HKcrit}, who informed the author of this. The exponential
+mathematics. No result of the paper is claimed as new. The martingales and the form of the limit on even cycles
+were known to M.~Holmes and V.~Kleptsyn before this paper, as Holmes informed the author. The exponential
 variables come from Rubin's construction, published by Davis~\cite{Davis}. The model and its Lyapunov function are
 due to van der Hofstad, Holmes, Kuznetsov and Ruszel~\cite{HHKR}, the continuous-time form and the process on
 $\mathbb{Z}$ to Hirsch, Holmes and Kleptsyn~\cite{HHKtree}, the discrete-time urn to Bena\"im, Benjamini, Chen and

@@ -343,14 +343,19 @@ the Collaboration on the Mathematical and Scientific Foundations of Deep Learnin
 Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant
 4101/25).
 
+This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo}
+and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents
+record claims, proofs, failed attempts and methods, retrieve one another's results, coordinate who works on what, and
+audit each other's work. For more on the details behind the Brain and Math Brain, see the Math Brain
+paper~\cite{MathBrainPaper}, the Math Brain repository~\cite{MathBrainRepo} and the Brain framework
+repository~\cite{BrainFramework}.
+
 \section*{Declaration of competing interest}
 The author holds equity in Heights Labs and in Convex Nexus Capital and has a management role at Convex Nexus Capital.
 These entities are included in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-The work was done by AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainPaper},
-a shared, persistent memory in which the agents record claims, proofs, failed attempts and methods and audit each
-other's work, inside the Brain framework~\cite{BrainFramework}. The martingales of Theorem~\ref{thm:mart} and the form
+The martingales of Theorem~\ref{thm:mart} and the form
 of the limit on even cycles (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}) are due to M.~Holmes and
 V.~Kleptsyn~\cite{HKcrit}, who informed the author that they are not new. The model and its Lyapunov function are due
 to van der Hofstad, Holmes, Kuznetsov and Ruszel~\cite{HHKR}, the continuous-time form used here is that
@@ -366,6 +371,9 @@ the paper and for decisions concerning its dissemination.
 
 \section*{Data availability}
 No data were used. The code is available at\\ \url{https://github.com/yspennstate/graph-urn-conserved-charges}.
+
+The paper is part of the Math Brain project, whose public repository is
+\url{https://github.com/yspennstate/math-brain-public}~\cite{MathBrainRepo}.
 
 \appendix
 \section{Notation}
@@ -427,6 +435,7 @@ doi:10.1214/07-PS094, arXiv:math/0610076.
 (2023), doi:10.1088/1361-6544/acc9a0.
 \bibitem{HKcrit} M.~Holmes, V.~Kleptsyn, Infinite WARM graphs II: critical regime, in preparation (listed with the year 2016 in~\cite{HHKtree}).
 \bibitem{Ben99} M. Bena\"im, Dynamics of stochastic approximation algorithms, S\'eminaire de Probabilit\'es XXXIII, Lecture Notes in Math. 1709, Springer (1999), 1--68.
+\bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.
 \bibitem{BrainFramework} Y.~Shmalo, \emph{Brain Framework}, public software repository, 2026, \url{https://github.com/yspennstate/brain-framework-public}.
 \end{thebibliography}

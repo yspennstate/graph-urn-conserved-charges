@@ -30,8 +30,8 @@ Chen and Lima (2015), Chen and Lucas (2014) and Lima (2016). The paper's AI decl
 which part.
 
 Section 4 also gives the local conservation law on the line and a heuristic envelope equation for the alternating
-mode, which suggests a decay like (log t)^(-1/4) on Z. The simulations in Section 5 decay more slowly, like
-(log t)^(-0.17) over the range they cover; runs/ holds their outputs.
+mode, which suggests a decay like (log t)^(-1/4) on Z. The simulations in Section 5 are fitted better by
+(log t)^(-0.17) over the range they cover, without ruling out the exponent 1/4; runs/ holds their outputs.
 
 ## Code
 

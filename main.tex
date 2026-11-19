@@ -317,7 +317,7 @@ $(u^2)''/8$ and, formally, $u$ obeys
 \[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau v=\tfrac14\,\partial_e^2\tanh v,\quad v=\mathrm{artanh}\,u, \]
 which conserves $\int v$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
 in $\tau=\log t$ predicts that the local alternating amplitude decays like $(\log t)^{-1/4}$. The simulations in
-Section~\ref{sec:num} decay more slowly.
+Section~\ref{sec:num} are fitted better by a slower decay but do not rule this one out.
 
 \section{Simulations}\label{sec:num}
 All simulations run the process exactly (rate-one vertex clocks, unit initial counts); the programs are in the
@@ -335,9 +335,12 @@ $\ker B=\{0\}$ and no charge is conserved. On a cycle of length $10001$ run to $
 \texttt{runs/}), the standard deviation of $X_e$ falls from $0.44$--$0.45$ at $t=170$ to $0.37$--$0.38$ at
 $t=8.2\times10^5$, and the correlation of neighbouring edges reaches $-0.94$. Over this range $(\log t)^{1/4}$ times
 the standard deviation rises from $0.66$--$0.68$ to $0.71$--$0.73$. A least-squares fit of $c(\log t)^{-a}$ for $t\ge170$
-gives $a=0.17$, $0.17$ and $0.18$ for the three seeds, with the same value on $t\ge10^4$ alone. The decay is
-therefore slower than the $(\log t)^{-1/4}$ suggested by the heuristic at the end of Section~\ref{sec:line}; the
-runs cover too short a range of $\log t$ to say whether it is logarithmic at all.
+gives $a=0.17$, $0.17$ and $0.18$ for the three seeds, with the same value on $t\ge10^4$ alone. The heuristic at
+the end of Section~\ref{sec:line} fixes $\tau=\log t$ only up to a shift of origin, so its prediction is
+$(\log t+\tau_0)^{-1/4}$. Fitted with a free $\tau_0$ (between $3.7$ and $4.8$), this form leaves residuals two to
+three times larger than the free exponent: a root mean square of $0.25\%$ of the standard deviation against $0.1\%$.
+The runs favour a decay slower than the heuristic predicts, but they cover too short a range of $\log t$ to rule
+out the exponent $1/4$.
 
 \section*{Acknowledgements and funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's

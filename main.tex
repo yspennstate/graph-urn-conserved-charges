@@ -48,15 +48,14 @@ In WARM every edge belongs to the urns at both of its endpoints: the count of th
 $N_e(S_u^{-1}+S_v^{-1})$, where $S_v=\sum_{f\ni v}N_f$, and the factor $S_u^{-1}+S_v^{-1}$ is random and shared with
 the neighbouring edges, so the counts are not independent Yule processes in a common time.
 
-These factors cancel along
-the kernel of the unsigned incidence matrix $B$, $B_{ve}=1$ when $v\in e$. Let $H(n)=\sum_{k=1}^n1/k$. When $N_e$
+By an observation of M.~Holmes and V.~Kleptsyn (M.~Holmes, personal communication, 19 November 2026; their work on
+the critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}), these factors cancel
+along the kernel of the unsigned incidence matrix $B$, $B_{ve}=1$ when $v\in e$. Let $H(n)=\sum_{k=1}^n1/k$. When $N_e$
 passes from $n$ to $n+1$, $H(N_e-1)$ increases by $1/n$, and each endpoint $v$ of $e$ chooses $e$ at rate $N_e/S_v$.
 Hence, for every $\sigma\in\ker B$, that is, with $\sum_{e\ni v}\sigma_e=0$ at every vertex $v$, the \emph{charge}
 \[ M_\sigma(t)=\sum_e\sigma_e\,H\bigl(N_e(t)-1\bigr) \]
 has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quadratic variation at most
-$\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). These martingales, and the law of the limit on even cycles,
-are due to M.~Holmes and V.~Kleptsyn (M.~Holmes, personal communication, 19 November 2026), whose work on the
-critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}.
+$\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}).
 
 The same cancellation makes
 \[ P_\theta(N(t))=\prod_e\frac{\Gamma(N_e(t)+i\theta\sigma_e)}{\Gamma(N_e(t))\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
@@ -74,7 +73,8 @@ $N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots,1+u_\infty,1-
 $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
 \[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty},\qquad M_{\sigma,\infty}\ \text{has the law of}\
    \Lambda_1+\dots+\Lambda_{L/2}, \]
-with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). This
+with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv} and Corollary~\ref{cor:cycle},
+also due to Holmes and Kleptsyn). This
 is the counterpart for WARM of the law that~\cite{CL} and~\cite[Question~1]{Lima} ask for in the
 discrete-time urn, in which every pair is updated at each step; it does not give the law for the discrete-time urn.
 
@@ -211,6 +211,8 @@ so in the time $\tau=\log t$ the normalised counts follow, up to the martingale 
 \end{equation}
 with $\partial_e\mathcal{L}=S_u^{-1}+S_v^{-1}-1$ for $e=(u,v)$. A direct computation, as in~\cite[Lemma~A.3]{HHKR}, gives
 \[ \frac{d}{d\tau}\mathcal{L}=\sum_e x_e(\partial_e\mathcal{L})^2\ge0,\qquad \frac{d}{d\tau}\sum_e x_e=L-\sum_e x_e. \]
+An equilibrium of \eqref{eq:ode} with support $S\subseteq E$ is a point at which $\partial_e\mathcal{L}=0$ for every
+$e\in S$, as for the discrete-time urn in~\cite[Lemma~4.3]{BBCL}. On $C_L$ these points are as follows.
 
 \begin{lemma}\label{lem:eq}
 The equilibria of \eqref{eq:ode} in $\{x\in[0,\infty)^E:\sum_e x_e=L,\ S_v(x)>0\ \forall v\}$ are

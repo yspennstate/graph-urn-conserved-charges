@@ -54,7 +54,7 @@ has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quad
 $\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). These martingales, and the law of the limit on even cycles,
 are due to M.~Holmes and V.~Kleptsyn (personal communication, 2026), whose work on the critical regime $\alpha=1$ is
 cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}. The same cancellation makes
-\[ P_\theta(N)=\prod_e\frac{\Gamma(N_e+i\theta\sigma_e)}{\Gamma(N_e)\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
+\[ P_\theta(N(t))=\prod_e\frac{\Gamma(N_e(t)+i\theta\sigma_e)}{\Gamma(N_e(t))\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
 a bounded martingale on every finite graph. The charge converges because its quadratic variation is bounded, and
 since every count tends to infinity its limit satisfies
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
@@ -367,11 +367,11 @@ These entities are included in the funding declaration above.
 The martingales of Theorem~\ref{thm:mart} and the law
 of the limit on even cycles (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}) are due to M.~Holmes and
 V.~Kleptsyn (personal communication, 2026); the proofs printed here were written for this paper, as follows. The model and its Lyapunov function are due
-to van der Hofstad, Holmes, Kuznetsov and Ruszel~\cite{HHKR}, the continuous-time form used here is that
-of~\cite{HHKtree}, the discrete-time urn is due to Bena\"im, Benjamini, Chen and Lima~\cite{BBCL}, its convergence at
-linearity to Chen and Lucas~\cite{CL} and Lima~\cite{Lima}, the embedding of the classical urn in exponential
-processes to Rubin, published by Davis~\cite{Davis}, and the stochastic-approximation theory to
-Bena\"im~\cite{Ben99}. In November 2026 a Codex agent (OpenAI), refereeing the paper, wrote the proof of
+to van der Hofstad, Holmes, Kuznetsov and Ruszel~\cite{HHKR}, and the continuous-time form used here is that
+of Hirsch, Holmes and Kleptsyn~\cite{HHKtree}. The discrete-time urn is due to Bena\"im, Benjamini, Chen and
+Lima~\cite{BBCL}; Chen and Lucas~\cite{CL} and Lima~\cite{Lima} proved its convergence at linearity. The embedding of
+the classical urn in exponential processes is due to Rubin and was published by Davis~\cite{Davis}. The
+stochastic-approximation theory is that of Bena\"im~\cite{Ben99}. In November 2026 a Codex agent (OpenAI), refereeing the paper, wrote the proof of
 Theorem~\ref{thm:law}, the proofs of the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the
 computation of $c=\zeta(2)$ in Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}; Claude Opus~5.5
 (Anthropic), working in Claude Code, wrote the other proofs, the heuristic at the end of Section~\ref{sec:line}, the
@@ -402,10 +402,10 @@ $\sigma\in\ker B$ & vector with $\sum_{e\ni v}\sigma_e=0$ at every vertex & Sect
 $M_\sigma$, $M_{\sigma,\infty}$ & the charge, its limit & Section~\ref{sec:intro}\\
 $\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable quadratic variation, quadratic variation & Theorem~\ref{thm:mart}\\
 $\psi$, $\gamma$ & digamma function, Euler's constant & Section~\ref{sec:mart}\\
-$F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lem.~\ref{lem:growth}\\
-$\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lem.~\ref{lem:growth}\\
-$a_e(t)$ & internal time of edge $e$ & Lem.~\ref{lem:growth}\\
-$D_e$ & the martingale $H(N_e-1)-a_e$ & Lem.~\ref{lem:growth}\\
+$F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lemma~\ref{lem:growth}\\
+$\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lemma~\ref{lem:growth}\\
+$a_e(t)$ & internal time of edge $e$ & Lemma~\ref{lem:growth}\\
+$D_e$ & the martingale $H(N_e-1)-a_e$ & Lemma~\ref{lem:growth}\\
 $W_e$ & independent standard exponential variables & Section~\ref{sec:intro}\\
 $\Gamma$ & Euler's Gamma function & Section~\ref{sec:intro}\\
 $P_\theta(n)$ & product of Gamma ratios in the proof & Theorem~\ref{thm:law}\\

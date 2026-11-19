@@ -52,13 +52,12 @@ matches the kernel, and the slow decay of the alternating envelope on long cycle
 line.
 
 \emph{What is known and what is new.} The model is that of~\cite{HHKR}, and the Lyapunov function used in
-Section~3 is theirs~\cite[Lemma~A.3]{HHKR}. Convergence of the discrete-time urn at $\alpha=1$ is due to Bena\"im,
+Section~3 is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. Convergence of the discrete-time urn at $\alpha=1$ is due to Bena\"im,
 Benjamini, Chen and Lima, Chen and Lucas, and Lima~\cite{BBCL,CL,Lima}, and the question of the law of the limit is
 theirs~\cite{CL},~\cite[Question~1]{Lima}. The convergence argument on the cycle uses the theory of asymptotic
 pseudotrajectories of Bena\"im~\cite{Ben99}. Decoupling a linearly reinforced urn into independent exponential
-(Yule) processes goes back to Athreya and Karlin and to Rubin, see~\cite[Section~2.3]{Pemantle}; for the classical
-P\'olya urn it gives the beta law of the limit~\cite[Theorem~2.1]{Pemantle}. The Gamma-ratio martingale in the proof
-of Theorem~\ref{thm:law} and the representation of the logistic law as the law of $\log W-\log W'$ are classical.
+(Yule) processes goes back to Athreya and Karlin and to Rubin, see~\cite[Section~2.3]{Pemantle}. The limit of the
+classical P\'olya urn has a beta law~\cite[Theorem~2.1]{Pemantle}.
 We are not aware of earlier appearances of the charge martingales of Theorem~\ref{thm:mart}, of the terminal law of
 Theorem~\ref{thm:law} for WARM, of the identification of the limit on the even cycle in Theorem~\ref{thm:conv} and
 Corollary~\ref{cor:cycle}, or of Proposition~\ref{prop:line}.
@@ -237,7 +236,8 @@ Lemma~\ref{lem:growth}, $\log N_e(t)-a_e(t)$ converges, so $X_e(t)\ge ct^{\delta
 $x_e\le1$ on $U$. Hence $\mathbb{P}(A_m)=0$ for every $m$, and $X$ does not converge to $x^*$. As there are finitely many
 such points, the limit set lies in $\Sigma$.
 
-By \eqref{eq:link} and Theorem~\ref{thm:mart}, $\Phi(X(t)):=\sum_e(-1)^e\log X_e(t)\to M_\infty$, finite almost surely.
+Let $\Phi(x)=\sum_e(-1)^e\log x_e$ denote the charge written as a function of the normalised counts. By
+\eqref{eq:link} and Theorem~\ref{thm:mart}, $\Phi(X(t))\to M_\infty$, finite almost surely.
 Along a sequence of times with $X\to x^{(1)}$ every even coordinate tends to $2$ and every odd coordinate to $0$, so
 $\Phi\to+\infty$; similarly $\Phi\to-\infty$ near $x^{(-1)}$. So neither endpoint is a limit point, and the limit set is a
 compact subset of $\{x^{(u)}:|u|<1\}$, where $\Phi$ is continuous and
@@ -351,8 +351,7 @@ The research presented in this paper was supported by the European Research Coun
 Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of
 the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus
 Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant
-4101/25). Computational resources were provided in part by Google Cloud through its education credits programme (credit
-530550103).
+4101/25).
 
 This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo}
 and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents
@@ -372,10 +371,9 @@ wrote the convergence proof on the even cycle, wrote and ran the simulations of 
 paper. A Codex agent (OpenAI), refereeing the paper, supplied the terminal law of Theorem~\ref{thm:law} and its proof,
 the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the value $c=\zeta(2)$ in
 Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}. The mathematics these rest on is due to the
-authors cited: the model and its Lyapunov function~\cite{HHKR}, the discrete-time urn, its convergence at linearity
+authors cited: the model and its Lyapunov function~\cite{HHKR,BBCL}, the discrete-time urn, its convergence at linearity
 and the question of the law of its limit~\cite{BBCL,CL,Lima}, the stochastic-approximation theory~\cite{Ben99}, and
-the exponential embedding of reinforced urns~\cite[Section~2.3]{Pemantle}. Each citation was checked against the
-cited text. The author directed the work and is responsible for the content of the paper and for decisions concerning
+the exponential embedding of reinforced urns~\cite[Section~2.3]{Pemantle}. The author directed the work and is responsible for the content of the paper and for decisions concerning
 its dissemination.
 
 \section*{Data availability}
@@ -391,6 +389,8 @@ The paper is part of the Math Brain project, whose public repository is
 \toprule
 Symbol & Meaning & First defined\\
 \midrule
+$\alpha$ & reinforcement exponent; $\alpha=1$ throughout & Section 1\\
+$\mathcal{N}(0,s^2)$ & centred normal law with variance $s^2$ & Section 1\\
 $G=(V,E)$, $d$ & finite graph, its maximum degree & Section 2\\
 $N_e$, $X_e$ & count of edge $e$, normalised count $N_e(t)/t$ & Section 2\\
 $S_v$ & vertex sum of counts $\sum_{e\ni v}N_e$ & Section 2\\
@@ -401,9 +401,11 @@ $M_\sigma$, $M_{\sigma,\infty}$ & charge martingale, its terminal value & Thms.~
 $\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable and optional quadratic variation & Thm.~\ref{thm:mart}\\
 $\psi$, $\gamma$ & digamma function, Euler's constant & \eqref{eq:link}\\
 $F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lem.~\ref{lem:growth}\\
+$\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lem.~\ref{lem:growth}\\
 $a_e(t)$ & internal time of edge $e$ & Lem.~\ref{lem:growth}\\
 $D_e$ & edge martingale $H(N_e-1)-a_e$ & Lem.~\ref{lem:growth}\\
 $W_e$ & independent standard exponential variables & Thm.~\ref{thm:law}\\
+$\Gamma$ & Euler's Gamma function & Thm.~\ref{thm:law}\\
 $P_\theta(n)$ & Gamma-ratio martingale & Thm.~\ref{thm:law}\\
 $R$ & compensated quadratic variation $[M_\sigma]-\langle M_\sigma\rangle$ & Thm.~\ref{thm:law}\\
 $P$, $b$, $\pi$ & fibre $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Rem.~\ref{rem:fibre}\\
@@ -412,11 +414,16 @@ $\tau$ & time $\log t$ of the mean-field equation & \eqref{eq:ode}\\
 $\mathcal{L}$ & Lyapunov function of \eqref{eq:ode} & \eqref{eq:ode}\\
 $K_e$ & compensated count of edge $e$ & Section 3\\
 $x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Lem.~\ref{lem:eq}\\
+$U$, $A_m$ & neighbourhood of an equilibrium of type (2), event that $X(t)\in U$ for all $t\ge m$ & Thm.~\ref{thm:conv}\\
 $u_\infty$, $M_\infty$ & limit point on $\Sigma$, terminal charge on $C_L$ & Thm.~\ref{thm:conv}\\
 $\Phi$ & $\sum_e(-1)^e\log x_e$, the charge as a function of the normalised counts & Thm.~\ref{thm:conv}\\
 $\Lambda_j$ & independent standard logistic variables & Cor.~\ref{cor:cycle}\\
 $p$ & limit share $(1+u_\infty)/2$ on $C_4$ & Section 3\\
+$f$ & density of $M_\infty$ on $C_4$ & Section 3\\
+$Y_e$, $J_v$ & signed edge clock $(-1)^eH(N_e-1)$, vertex current $(-1)^v/S_v$ on $\mathbb{Z}$ & Section 4\\
 $c$ & expected bracket per vertex on $\mathbb{Z}$ & Prop.~\ref{prop:line}\\
+$\zeta$ & Riemann zeta function & Prop.~\ref{prop:line}\\
+$T$ & final time of a simulated run & Section 5\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -426,12 +433,12 @@ $c$ & expected bracket per vertex on $\mathbb{Z}$ & Prop.~\ref{prop:line}\\
 \bibitem{AletOP} G.~Aletti, A.~Collevecchio, I.~Crimaldi, M.~Deijfen, S.~Dereich, A.~Ghiglietti, R.~van der Hofstad,
 M.~Holmes, D.~Kious, V.~Kleptsyn, B.~Lodewijks, P.~M\"orters and B.~Schapira, Open problems in stochastic
 reinforcement models, in 2023 MATRIX Annals, MATRIX Book Series, Springer, 2025, 477--498.
-\bibitem{BBCL} M. Bena\"im, I. Benjamini, J. Chen, Y. Lima, A generalized P\'olya's urn with graph based interactions, Random Structures Algorithms 46 (2015), 614--634, doi:10.1002/rsa.20523.
-\bibitem{CL} J. Chen, C. Lucas, A generalized P\'olya's urn with graph based interactions: convergence at linearity, Electron. Commun. Probab. 19 (2014), 1--13, doi:10.1214/ECP.v19-3094.
-\bibitem{HHKR} R. van der Hofstad, M. Holmes, A. Kuznetsov, W. Ruszel, Strongly reinforced P\'olya urns with graph-based competition, Ann. Appl. Probab. 26 (2016), 2494--2539, doi:10.1214/16-AAP1153.
-\bibitem{Lima} Y. Lima, Graph-based P\'olya's urn: completion of the linear case, Stoch. Dyn. 16 (2016), no.~2, 1660007, doi:10.1142/S0219493716600078.
+\bibitem{BBCL} M. Bena\"im, I. Benjamini, J. Chen, Y. Lima, A generalized P\'olya's urn with graph based interactions, Random Structures Algorithms 46 (2015), 614--634, doi:10.1002/rsa.20523, arXiv:1211.1247.
+\bibitem{CL} J. Chen, C. Lucas, A generalized P\'olya's urn with graph based interactions: convergence at linearity, Electron. Commun. Probab. 19 (2014), 1--13, doi:10.1214/ECP.v19-3094, arXiv:1306.5465.
+\bibitem{HHKR} R. van der Hofstad, M. Holmes, A. Kuznetsov, W. Ruszel, Strongly reinforced P\'olya urns with graph-based competition, Ann. Appl. Probab. 26 (2016), 2494--2539, doi:10.1214/16-AAP1153, arXiv:1406.0449.
+\bibitem{Lima} Y. Lima, Graph-based P\'olya's urn: completion of the linear case, Stoch. Dyn. 16 (2016), no.~2, 1660007, doi:10.1142/S0219493716600078, arXiv:1409.7826.
 \bibitem{Pemantle} R.~Pemantle, A survey of random processes with reinforcement, Probab. Surv. 4 (2007), 1--79,
-doi:10.1214/07-PS094.
+doi:10.1214/07-PS094, arXiv:math/0610076.
 \bibitem{Ben99} M. Bena\"im, Dynamics of stochastic approximation algorithms, S\'eminaire de Probabilit\'es XXXIII, Lecture Notes in Math. 1709, Springer (1999), 1--68.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.

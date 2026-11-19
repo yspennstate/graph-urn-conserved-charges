@@ -26,8 +26,7 @@ The martingales and the law of the limit on even cycles are due to M. Holmes and
 critical regime is cited as "Infinite WARM graphs II: critical regime" in Hirsch, Holmes and Kleptsyn
 (arXiv:2009.07682) and in Infinite WARM graphs III (Nonlinearity, 2023). The model is due to van der Hofstad,
 Holmes, Kuznetsov and Ruszel (2016); the discrete-time urn and its convergence at linearity to Benaim, Benjamini,
-Chen and Lima (2015), Chen and Lucas (2014) and Lima (2016). The paper's AI declaration says which system wrote
-which part.
+Chen and Lima (2015), Chen and Lucas (2014) and Lima (2016).
 
 Section 4 also gives the local conservation law on the line and a heuristic envelope equation for the alternating
 mode, which suggests a decay like (log t)^(-1/4) on Z. The simulations in Section 5 do not separate this

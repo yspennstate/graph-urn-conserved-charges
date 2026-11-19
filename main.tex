@@ -13,7 +13,7 @@
 In the $(W,A)$-reinforcement model (WARM) with linear reinforcement, $\alpha=1$, in continuous time, started from unit counts, every vector $\sigma$ in the kernel of the unsigned vertex--edge incidence
 matrix yields a martingale $M_\sigma=\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic number. On every finite graph
 its limit has the law of $\sum_e\sigma_e\log W_e$ with independent standard exponential variables $W_e$. On the even
-cycle $C_L$, $L\ge4$, the normalised counts $N_e(t)/t$ converge to $(1+u,1-u,\dots)$, and $L\,\mathrm{artanh}(u)$ equals the
+cycle $C_L$, $L\ge4$, the normalised counts $N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots)$, and $L\,\mathrm{artanh}(u_\infty)$ equals the
 limit of $M_\sigma$ for $\sigma_e=(-1)^e$, which has the law of a sum of $L/2$ independent standard logistic
 variables. The martingales and the law of the limit on even cycles are due to M.~Holmes and V.~Kleptsyn
 (personal communication, 2026). On the integer line the expected integral of $1/(N_{-1}N_0)$ over time is $\pi^2/6$.
@@ -23,7 +23,7 @@ variables. The martingales and the law of the limit on even cycles are due to M.
 \section{Introduction}\label{sec:intro}
 In the $(W,A)$-reinforcement model (WARM) of~\cite{HHKR} each edge $e$ of a graph carries a count $N_e$, and a vertex, when chosen, reinforces one of its edges with
 probability proportional to $N_e^\alpha$. Van der Hofstad, Holmes, Kuznetsov and Ruszel introduced the model in discrete
-time for $\alpha>1$~\cite{HHKR}. We take $\alpha=1$ and the continuous-time form, with an independent rate-one Poisson
+time for $\alpha>1$~\cite{HHKR}. We take $\alpha=1$, which makes WARM a linearly reinforced graph urn, and the continuous-time form, with an independent rate-one Poisson
 clock at each vertex and all counts starting at $1$, as in~\cite[Section~1]{HHKtree}; on a finite graph its jump chain
 chooses a uniform vertex at each step.
 
@@ -46,7 +46,9 @@ processes~\cite{Davis},~\cite[Section~2.3]{Pemantle}.
 
 In WARM every edge belongs to the urns at both of its endpoints: the count of the edge $e=(u,v)$ grows at rate
 $N_e(S_u^{-1}+S_v^{-1})$, where $S_v=\sum_{f\ni v}N_f$, and the factor $S_u^{-1}+S_v^{-1}$ is random and shared with
-the neighbouring edges, so the counts are not independent Yule processes in a common time. These factors cancel along
+the neighbouring edges, so the counts are not independent Yule processes in a common time.
+
+These factors cancel along
 the kernel of the unsigned incidence matrix $B$, $B_{ve}=1$ when $v\in e$. Let $H(n)=\sum_{k=1}^n1/k$. When $N_e$
 passes from $n$ to $n+1$, $H(N_e-1)$ increases by $1/n$, and each endpoint $v$ of $e$ chooses $e$ at rate $N_e/S_v$.
 Hence, for every $\sigma\in\ker B$, that is, with $\sum_{e\ni v}\sigma_e=0$ at every vertex $v$, the \emph{charge}
@@ -54,14 +56,19 @@ Hence, for every $\sigma\in\ker B$, that is, with $\sum_{e\ni v}\sigma_e=0$ at e
 has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quadratic variation at most
 $\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). These martingales, and the law of the limit on even cycles,
 are due to M.~Holmes and V.~Kleptsyn (M.~Holmes, personal communication, 19 November 2026), whose work on the
-critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}; the proofs in
-Sections~\ref{sec:mart} and~\ref{sec:cycle} contain complete proofs. The same cancellation makes
+critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}.
+
+The same cancellation makes
 \[ P_\theta(N(t))=\prod_e\frac{\Gamma(N_e(t)+i\theta\sigma_e)}{\Gamma(N_e(t))\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
-a bounded martingale on every finite graph. The charge converges because its quadratic variation is bounded, and
+a bounded martingale on every finite graph, where $N(t)=(N_e(t))_{e}$ is the vector of counts. The charge converges because its quadratic variation is bounded, and
 since every count tends to infinity its limit satisfies
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
 which is the law of $\sum_e\sigma_e\log W_e$ for independent standard exponential variables $W_e$
-(Theorem~\ref{thm:law}).On the even cycle $C_L$, $L\ge4$, with the edges numbered in order around the cycle, the kernel is spanned
+(Theorem~\ref{thm:law}). In simulations on the complete graph $K_4$, where $\dim\ker B=2$, the standard
+deviation of each normalised count over runs stays between $0.36$ and $0.39$ from $t=10^3$ to $t=10^5$
+(Section~\ref{sec:num}).
+
+On the even cycle $C_L$, $L\ge4$, with the edges numbered in order around the cycle, the kernel is spanned
 by $\sigma_e=(-1)^e$, the normalised counts
 $N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots,1+u_\infty,1-u_\infty)$, and
 $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
@@ -69,10 +76,13 @@ $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
    \Lambda_1+\dots+\Lambda_{L/2}, \]
 with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). This
 is the counterpart for WARM of the law that~\cite{CL} and~\cite[Question~1]{Lima} ask for in the
-discrete-time urn, in which every pair is updated at each step. On $\mathbb{Z}$
+discrete-time urn, in which every pair is updated at each step; it does not give the law for the discrete-time urn.
+
+On $\mathbb{Z}$
 the expectation of $\int_0^\infty dt/(N_{-1}N_0)$ is $\pi^2/6$, the value it has at every vertex of every even cycle
-(Proposition~\ref{prop:line}). Section~\ref{sec:num} reports simulations of the complete graph $K_4$, where
-$\dim\ker B=2$, and of the rate at which the alternating part of the normalised counts decays on $\mathbb{Z}$.
+(Proposition~\ref{prop:line}). On a long odd cycle, used in place of $\mathbb{Z}$, the simulated decay of the standard deviation of the normalised
+counts does not separate the rate $(\log t)^{-1/4}$ given by a heuristic in
+Section~\ref{sec:line} from a smaller exponent.
 
 The Lyapunov function used in Section~\ref{sec:cycle}
 is~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}, and the step showing that the normalised
@@ -85,7 +95,7 @@ well defined, as recalled in~\cite[Section~1]{HHKtree}; Section~\ref{sec:line} g
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
 independent rate-one Poisson clock; when the clock of $v$ rings, one edge $e\ni v$ is chosen with probability $N_e/S_v$,
 where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All counts start at $1$. Constants $C,C',C'',c$ are finite,
-random where stated, and may differ between proofs. Write $X_e(t)=N_e(t)/t$, let $B$ be
+random where stated, and may differ between proofs. Write $N(t)=(N_e(t))_{e\in E}$ and $X_e(t)=N_e(t)/t$, let $B$ be
 the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$, and let $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, $H=H^{(1)}$.
 
 \begin{theorem}[Holmes and Kleptsyn]\label{thm:mart}
@@ -115,7 +125,7 @@ for $\sigma\in\ker B$, and $H(n-1)=\psi(n)+\gamma$, where $\psi$ is the digamma 
 \end{equation}
 with $\log n-\psi(n)=\tfrac1{2n}+O(n^{-2})$. The sums $\sum_e\sigma_e\log X_e$ are therefore martingales up to a term
 that vanishes as every count grows. In the mean-field equation $\dot x_e=x_e\sum_{v\in e}S_v(x)^{-1}-x_e$ (time
-$\tau=\log t$) they are exactly conserved:
+$\tau=\log t$), where $S_v(x)=\sum_{f\ni v}x_f$, they are exactly conserved:
 $\frac{d}{d\tau}\sum_e\sigma_e\log x_e=\sum_v S_v(x)^{-1}\sum_{e\ni v}\sigma_e-\sum_e\sigma_e=0$.
 
 \begin{lemma}\label{lem:growth}
@@ -128,8 +138,8 @@ $\liminf_{t\to\infty}N_e(t)/t^{\lambda}>0$; in particular every count tends to i
 The count $N_e$ increases at rate $N_e(S_u^{-1}+S_v^{-1})\le2$, and each increase from $n$ to $n+1$ adds $1/n$ to
 $H(N_e-1)$, so $D_e$ is a martingale. Its quadratic variation is $H^{(2)}(N_e(t)-1)\le\zeta(2)$, so it is bounded in
 $L^2$ and converges almost surely and in $L^2$. Let $F_w(t)$ be the number of rings of $w$ by time $t$. Every ring of
-$v$ adds one to $S_v$, so $S_v\ge F_v$ and $\liminf S_v/t\ge1$. A ring of $w$ adds to $S_v$ only if $w=v$ or $w\sim v$,
-and then by at most one, so $S_v(t)\le d+\sum_{w\in\{v\}\cup N(v)}F_w(t)$. Since $F_w(t)/t\to1$ almost surely, for $\varepsilon>0$
+$v$ adds one to $S_v$, so $S_v\ge F_v$ and $\liminf S_v/t\ge1$. A ring of $w$ adds to $S_v$ only if $w=v$ or $w$ lies in the set $N(v)$ of
+neighbours of $v$, and then by at most one, so $S_v(t)\le d+\sum_{w\in\{v\}\cup N(v)}F_w(t)$. Since $F_w(t)/t\to1$ almost surely, for $\varepsilon>0$
 there is an almost surely finite $T$ with $S_w(t)\le(d+1)(1+\varepsilon)t$ for all $w$ and $t\ge T$. Then
 $a_e(t)\ge\lambda'\log t-C$ for $t\ge T$, with $\lambda'=2/((d+1)(1+\varepsilon))$ and $C$ finite. Since $D_e$
 converges, $H(N_e(t)-1)\ge\lambda'\log t-C'$, so $N_e\to\infty$ and, as $H(n-1)-\log n\to\gamma$,
@@ -311,17 +321,15 @@ On $\mathbb{Z}$ the kernel is replaced by a local conservation law. With $Y_e=(-
 the computation in Theorem~\ref{thm:mart} gives
 \[ dY_e=-(J_{e+1}-J_e)\,dt+dM_e , \]
 with $M_e$ a martingale. Linearising \eqref{eq:ode} at $x\equiv1$ gives the decay rate $(1+\cos k)/2$ for the mode
-$e^{ike}$, which vanishes at $k=\pi$. The rest of this section is a heuristic: it assumes that the alternating part of
-the normalised counts varies slowly along the line and neglects the martingale terms. Writing $x_e=1+(-1)^eu(e)+w(e)$ with $u$ slowly varying, the field $w$ relaxes to
+$e^{ike}$, which vanishes at $k=\pi$. Suppose that the alternating part of
+the normalised counts varies slowly along the line, and neglect the martingale terms. Writing $x_e=1+(-1)^eu(e)+w(e)$ with $u$ slowly varying, the field $w$ relaxes to
 $(u^2)''/8$ and, formally, $u$ obeys
 \[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau v=\tfrac14\,\partial_e^2\tanh v,\quad v=\mathrm{artanh}\,u, \]
 which conserves $\int v$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
-in $\tau=\log t$ predicts that the amplitude of the alternating part decays like $(\log t)^{-1/4}$. The simulations in
-Section~\ref{sec:num} neither confirm nor rule out this rate.
+in $\tau=\log t$ predicts that the amplitude of the alternating part decays like $(\log t)^{-1/4}$.
 
 \section{Simulations}\label{sec:num}
-All simulations run WARM exactly (rate-one vertex clocks, unit initial counts); the programs and their outputs are
-in the repository named under Data availability.
+All simulations run WARM exactly (rate-one vertex clocks, unit initial counts).
 
 \emph{Small graphs.} On $K_4$, where $\dim\ker B=2$, the standard deviation of each $X_e$ over $2000$ runs
 stays between $0.36$ and $0.39$ from $T=10^3$ to $T=10^5$, while the mean over the runs of
@@ -330,7 +338,7 @@ equilibria, which Remark~\ref{rem:fibre} describes when the limit exists. On the
 standard deviation of each $X_e$ falls from $0.27$--$0.28$ to $0.16$ over the same times, towards the point $(1,1,1)$.
 
 \emph{The line.} The line is approximated by a cycle of odd length, so that
-$\ker B=\{0\}$ and no charge is conserved. On a cycle of length $10001$ run to $T=10^6$ with three seeds,
+$\ker B=\{0\}$ and there is no charge martingale. On a cycle of length $10001$ run to $T=10^6$ with three seeds,
 the standard deviation of $X_e$ falls from $0.44$--$0.45$ at $t=169$ to $0.37$--$0.38$ at
 $t=8.2\times10^5$, and the correlation of neighbouring edges reaches $-0.94$. Within the heuristic of
 Section~\ref{sec:line}, where $X_e=1+(-1)^eu(e)+w(e)$ and $w$ relaxes to $(u^2)''/8$, the variance of $X_e$ over the

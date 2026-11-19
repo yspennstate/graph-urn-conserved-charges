@@ -329,12 +329,14 @@ to $0.08$: this is consistent with a random limit in a two-dimensional set of eq
 Remark~\ref{rem:fibre} describes when the limit exists. On the triangle, where $\ker B=\{0\}$, the spread decreases
 towards $(1,1,1)$.
 
-\emph{The line.} The program \texttt{code/warm.c} approximates the line by a cycle of length $1001$. The length is
-odd, so that $\ker B=\{0\}$ and no charge is conserved. Run to $T=10^5$,
-the standard deviation of $X_e$ falls from $0.57$ at $t=12$ to $0.39$ at $t=8.8\times10^4$, and $(\log t)^{1/4}$
-times it equals $0.716$ at both times and stays between $0.67$ and $0.72$ in between; the correlation of neighbouring
-edges tends to $-0.92$. These runs are consistent with the decay like $(\log t)^{-1/4}$ suggested by the heuristic at
-the end of Section~\ref{sec:line}.
+\emph{The line.} The program \texttt{code/warm.c} approximates the line by a cycle of odd length, so that
+$\ker B=\{0\}$ and no charge is conserved. On a cycle of length $10001$ run to $T=10^6$ with three seeds (outputs in
+\texttt{runs/}), the standard deviation of $X_e$ falls from $0.45$ at $t=170$ to $0.37$--$0.38$ at
+$t=8.2\times10^5$, and the correlation of neighbouring edges reaches $-0.94$. Over this range $(\log t)^{1/4}$ times
+the standard deviation rises from $0.67$ to $0.71$--$0.73$. A least-squares fit of $c(\log t)^{-a}$ for $t\ge170$
+gives $a=0.17$, $0.17$ and $0.18$ for the three seeds, with the same value on $t\ge10^4$ alone. The decay is
+therefore slower than the $(\log t)^{-1/4}$ suggested by the heuristic at the end of Section~\ref{sec:line}; the
+runs cover too short a range of $\log t$ to say whether it is logarithmic at all.
 
 \section*{Acknowledgements and funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's

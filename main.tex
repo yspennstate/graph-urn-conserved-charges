@@ -62,7 +62,7 @@ $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
 \[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty},\qquad
    u_\infty=\tanh\Bigl(\frac{\Lambda_1+\dots+\Lambda_{L/2}}{L}\Bigr), \]
 with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). For WARM
-on even cycles this answers the question of~\cite{CL} and~\cite[Question~1]{Lima}. For the discrete-time urn, in which
+on even cycles this answers the analogue of the question of~\cite{CL} and~\cite[Question~1]{Lima}. For the discrete-time urn, in which
 every pair is updated at each step, the law of the limit remains open. On $\mathbb{Z}$ the expectation of
 $\int_0^\infty dt/(N_{-1}N_0)$ is $\pi^2/6$, the value it has at every vertex of every even cycle
 (Proposition~\ref{prop:line}). Convergence on $K_4$, where $\dim\ker B=2$, and the rate of decay of the alternating
@@ -72,8 +72,9 @@ amplitude on $\mathbb{Z}$ are open; Section~\ref{sec:num} gives simulations of b
 in Section~\ref{sec:cycle} is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On
 infinite graphs of bounded degree, such as $\mathbb{Z}$, the process is well defined~\cite[Section~1]{HHKtree}. The
 convergence argument on the cycle uses the theory of asymptotic pseudotrajectories of Bena\"im~\cite{Ben99}. The
-results of the paper are Theorems~\ref{thm:mart}, \ref{thm:law} and~\ref{thm:conv}, Corollary~\ref{cor:cycle} and
-Proposition~\ref{prop:line}.
+results of the paper are Theorems~\ref{thm:mart} and~\ref{thm:conv}, Corollary~\ref{cor:cycle} and
+Proposition~\ref{prop:line}. The law in Theorem~\ref{thm:law} has the form that the Yule embedding gives for a single
+urn~\cite[Section~2.3]{Pemantle}.
 
 \section{The charge martingales}\label{sec:mart}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
@@ -345,8 +346,8 @@ agrees with $\pi^2/6$; the sample variances have standard errors of about $10\%$
 $\sum_e(-1)^e\log X_e(T)-M(T)$ in \eqref{eq:link} has root mean square $0.007$ at $T=10^4$, $L=100$.
 
 \emph{Small graphs.} On $K_4$, where $\dim\ker B=2$, the standard deviation of each $X_e$ over $2000$ runs stays near
-$0.35$ between $T=10^3$ and $T=10^5$, while $\max_v|S_v/t-2|$ falls from $0.25$ to $0.08$: the limit is a random point
-of a two-dimensional set of equilibria, as Theorem~\ref{thm:law} and Remark~\ref{rem:fibre} describe. On the triangle
+$0.35$ between $T=10^3$ and $T=10^5$, while $\max_v|S_v/t-2|$ falls from $0.25$ to $0.08$: this is consistent with a random
+limit in a two-dimensional set of equilibria, which Remark~\ref{rem:fibre} describes when the limit exists. On the triangle
 ($\ker B=0$) the spread decreases, more slowly than $t^{-1/4}$, towards $(1,1,1)$.
 
 \emph{The line.} On a cycle of length $1001$ run to $T=10^5$ the standard deviation of $X_e$ falls from $0.57$ at

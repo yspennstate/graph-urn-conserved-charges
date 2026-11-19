@@ -13,14 +13,14 @@ Each vertex of a finite graph rings at rate one and reinforces one of its edges 
 the edge's count. The paper proves:
 
 * for every sigma in the kernel of the unsigned vertex-edge incidence matrix, sum_e sigma_e H(N_e - 1) is an exact
-  martingale, where H is the harmonic number; up to a vanishing error it equals sum_e sigma_e log(N_e / t), which
+  martingale (the charge), where H is the harmonic number and all counts start at 1; up to a vanishing error it equals sum_e sigma_e log(N_e / t), which
   the mean-field flow conserves;
 * on every finite graph the terminal value of the charge has the law of sum_e sigma_e log W_e, with W_e
   independent standard exponential variables;
-* on the even cycle C_L the normalised counts converge almost surely to (1 + u, 1 - u, ...), and
+* on the even cycle C_L, L >= 4, the normalised counts converge almost surely to (1 + u, 1 - u, ...), and
   L artanh(u) equals the terminal value of the charge, so u = tanh(M / L) with M a sum of L/2 independent
   standard logistic variables; sqrt(L) artanh(u) converges in law to the normal law with variance pi^2/6;
-* on the integers the expected quadratic variation of the charge per vertex is pi^2/6.
+* on the integers the expectation of the integral over time of 1/(N_{-1} N_0) is pi^2/6.
 
 This gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn studied
 by Chen and Lucas (2014) and by Lima (2016, Question 1); no transfer to the synchronous urn is proved. The last

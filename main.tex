@@ -53,7 +53,7 @@ Hence, for every $\sigma\in\mathbb{R}^E$ with $\sum_{e\ni v}\sigma_e=0$ at every
 \[ M_\sigma(t)=\sum_e\sigma_e\,H\bigl(N_e(t)-1\bigr) \]
 has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quadratic variation at most
 $\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). These martingales, and the form of the limit on even cycles that
-follows from them, are due to Holmes and Kleptsyn~\cite{HKcrit} (M.~Holmes, personal communication, November 2026),
+follows from them, are due to Holmes and Kleptsyn (M.~Holmes, personal communication, November 2026),
 who informed the author that they are not new. The charge converges, and its limit satisfies
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
 which is the law of $\sum_e\sigma_e\log W_e$ for independent standard exponential variables $W_e$
@@ -63,8 +63,9 @@ $N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots,1+u_\infty,1-
 $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
 \[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty},\qquad M_{\sigma,\infty}\ \text{has the law of}\
    \Lambda_1+\dots+\Lambda_{L/2}, \]
-with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). For WARM
-on even cycles this is the law that~\cite{CL} and~\cite[Question~1]{Lima} ask for in the discrete-time urn; the law of
+with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). This
+is the counterpart for WARM of the law that~\cite{CL} and~\cite[Question~1]{Lima} ask for in the
+discrete-time urn; the law of
 the limit of the discrete-time urn, in which every pair is updated at each step, is not obtained here. On $\mathbb{Z}$
 the expectation of $\int_0^\infty dt/(N_{-1}N_0)$ is $\pi^2/6$, the value it has at every vertex of every even cycle
 (Proposition~\ref{prop:line}). Convergence on the complete graph $K_4$, where $\dim\ker B=2$, and the rate at which the
@@ -89,7 +90,7 @@ where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All counts start at $1
 random where stated, and may differ between proofs. Write $X_e(t)=N_e(t)/t$, let $B$ be
 the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$, and let $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, $H=H^{(1)}$.
 
-\begin{theorem}[Holmes and Kleptsyn~\cite{HKcrit}]\label{thm:mart}
+\begin{theorem}[Holmes and Kleptsyn]\label{thm:mart}
 Let all counts start at $1$, and let $\sigma\in\mathbb{R}^E$ satisfy $\sum_{e\ni v}\sigma_e=0$ for every $v$. Then
 \[ M_\sigma(t)=\sum_{e\in E}\sigma_e\,H(N_e(t)-1) \]
 is a martingale with $M_\sigma(0)=0$, jumps bounded by $\max_e|\sigma_e|$, predictable quadratic variation
@@ -224,7 +225,7 @@ $\partial_e\mathcal{L}\ge \frac{k+2}{2k+2}+\frac12-1=\frac{1}{2k+2}\ge\frac1{2L}
 the other end has $S=2$.
 \end{proof}
 
-\begin{theorem}[Holmes and Kleptsyn~\cite{HKcrit}]\label{thm:conv}
+\begin{theorem}[Holmes and Kleptsyn]\label{thm:conv}
 On $C_L$, $L\ge4$ even, with all counts starting at $1$, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ and
 \[ L\,\mathrm{artanh}(u_\infty)=M_\infty:=\lim_{t\to\infty}\sum_e(-1)^eH(N_e(t)-1). \]
 \end{theorem}
@@ -259,9 +260,9 @@ $\Phi(x^{(u)})=\tfrac L2\log\frac{1+u}{1-u}=L\,\mathrm{artanh}(u)$ is strictly i
 $x^{(u)}$ therefore has $L\,\mathrm{artanh}(u)=M_\infty$, and the limit set is the single point $x^{(u_\infty)}$.
 \end{proof}
 
-\begin{corollary}[Holmes and Kleptsyn~\cite{HKcrit}]\label{cor:cycle}
-On $C_L$, $L\ge4$ even, $u_\infty=\tanh(M_\infty/L)$, where $M_\infty$ has the law of $\Lambda_1+\dots+\Lambda_{L/2}$
-with independent standard logistic variables $\Lambda_j$ (density $e^{-s}/(1+e^{-s})^2$), that is,
+\begin{corollary}[Holmes and Kleptsyn]\label{cor:cycle}
+On $C_L$ with $L\ge4$ even, the limit satisfies $u_\infty=\tanh(M_\infty/L)$, where $M_\infty$ has the law of
+$\Lambda_1+\dots+\Lambda_{L/2}$ with independent standard logistic variables $\Lambda_j$ (density $e^{-s}/(1+e^{-s})^2$), that is,
 \[ \mathbb{E}\,e^{i\theta M_\infty}=\Bigl(\frac{\pi\theta}{\sinh\pi\theta}\Bigr)^{L/2}. \]
 In particular $\mathbb{E}M_\infty^2=L\pi^2/6$, $\mathbb{E}\bigl(\langle M\rangle_\infty/L-\pi^2/6\bigr)^2=\pi^4/(90L)$, and as
 $L\to\infty$ through even values, both $\sqrt L\,\mathrm{artanh}(u_\infty)$ and $\sqrt L\,u_\infty$ converge in law to
@@ -329,8 +330,7 @@ Remark~\ref{rem:fibre} describes when the limit exists. On the triangle, where $
 towards $(1,1,1)$.
 
 \emph{The line.} The program \texttt{code/warm.c} approximates the line by a cycle of length $1001$. The length is
-odd, so that, as on $\mathbb{Z}$, no nonzero vector satisfies the vertex constraints and no charge is exactly
-conserved. Run to $T=10^5$,
+odd, so that $\ker B=\{0\}$ and no charge is conserved. Run to $T=10^5$,
 the standard deviation of $X_e$ falls from $0.57$ at $t=12$ to $0.39$ at $t=8.8\times10^4$, and $(\log t)^{1/4}$
 times it equals $0.716$ at both times and stays between $0.67$ and $0.72$ in between; the correlation of neighbouring
 edges tends to $-0.92$. These runs are consistent with the decay like $(\log t)^{-1/4}$ suggested by the heuristic at
@@ -357,7 +357,7 @@ These entities are included in the funding declaration above.
 \section*{Declaration of generative AI and AI-assisted technologies}
 The martingales of Theorem~\ref{thm:mart} and the form
 of the limit on even cycles (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}) are due to M.~Holmes and
-V.~Kleptsyn~\cite{HKcrit}, who informed the author that they are not new. The model and its Lyapunov function are due
+V.~Kleptsyn (personal communication), who informed the author that they are not new. The model and its Lyapunov function are due
 to van der Hofstad, Holmes, Kuznetsov and Ruszel~\cite{HHKR}, the continuous-time form used here is that
 of~\cite{HHKtree}, the discrete-time urn is due to Bena\"im, Benjamini, Chen and Lima~\cite{BBCL}, its convergence at
 linearity to Chen and Lucas~\cite{CL} and Lima~\cite{Lima}, the embedding of the classical urn in exponential
@@ -383,7 +383,7 @@ The paper is part of the Math Brain project, whose public repository is
 Symbol & Meaning & First defined\\
 \midrule
 $\alpha$ & reinforcement exponent; $\alpha=1$ throughout & Section~\ref{sec:intro}\\
-$\mathcal{N}(0,s^2)$ & centred normal law with variance $s^2$ & Cor.~\ref{cor:cycle}\\
+$\mathcal{N}(0,s^2)$ & centred normal law with variance $s^2$ & Corollary~\ref{cor:cycle}\\
 $G=(V,E)$, $d$ & finite graph, its maximum degree & Section~\ref{sec:mart}\\
 $N_e$, $X_e$ & count of edge $e$, normalised count $N_e(t)/t$ & Section~\ref{sec:intro}, Section~\ref{sec:mart}\\
 $S_v$ & vertex sum of counts $\sum_{e\ni v}N_e$ & Section~\ref{sec:intro}\\
@@ -391,7 +391,7 @@ $B$ & unsigned vertex--edge incidence matrix & Section~\ref{sec:intro}\\
 $H^{(p)}$, $H$ & $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, harmonic number $H=H^{(1)}$ & Section~\ref{sec:mart} ($H$: Section~\ref{sec:intro})\\
 $\sigma\in\ker B$ & vector with $\sum_{e\ni v}\sigma_e=0$ at every vertex & Section~\ref{sec:intro}\\
 $M_\sigma$, $M_{\sigma,\infty}$ & the charge, its limit & Section~\ref{sec:intro}\\
-$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable quadratic variation, quadratic variation & Thm.~\ref{thm:mart}\\
+$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable quadratic variation, quadratic variation & Theorem~\ref{thm:mart}\\
 $\psi$, $\gamma$ & digamma function, Euler's constant & Section~\ref{sec:mart}\\
 $F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lem.~\ref{lem:growth}\\
 $\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lem.~\ref{lem:growth}\\
@@ -399,17 +399,17 @@ $a_e(t)$ & internal time of edge $e$ & Lem.~\ref{lem:growth}\\
 $D_e$ & the martingale $H(N_e-1)-a_e$ & Lem.~\ref{lem:growth}\\
 $W_e$ & independent standard exponential variables & Section~\ref{sec:intro}\\
 $\Gamma$ & Euler's Gamma function & Section~\ref{sec:intro}\\
-$P_\theta(n)$ & product of Gamma ratios in the proof & Thm.~\ref{thm:law}\\
-$R$ & the martingale $[M_\sigma]-\langle M_\sigma\rangle$ & Thm.~\ref{thm:law}\\
+$P_\theta(n)$ & product of Gamma ratios in the proof & Theorem~\ref{thm:law}\\
+$R$ & the martingale $[M_\sigma]-\langle M_\sigma\rangle$ & Theorem~\ref{thm:law}\\
 $P$, $b$, $\pi$ & the set $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Section~\ref{sec:mart}\\
 $C_L$ & cycle with $L$ edges & Section~\ref{sec:intro}\\
 $\tau$ & time $\log t$ of the mean-field equation & Section~\ref{sec:mart}\\
 $\mathcal{L}$ & Lyapunov function of the mean-field equation & Section~\ref{sec:cycle}\\
 $K_e$ & compensated count of edge $e$ & Section~\ref{sec:cycle}\\
 $x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Section~\ref{sec:cycle}\\
-$U$, $A_m$ & neighbourhood of an equilibrium of type (2), event that $X(t)\in U$ for all $t\ge m$ & Thm.~\ref{thm:conv}\\
-$u_\infty$, $M_\infty$ & limit point on $\Sigma$, limit of the charge on $C_L$ & Section~\ref{sec:intro}, Thm.~\ref{thm:conv}\\
-$\Phi$ & $\sum_e(-1)^e\log x_e$, the charge as a function of the normalised counts & Thm.~\ref{thm:conv}\\
+$U$, $A_m$ & neighbourhood of an equilibrium of type (2), event that $X(t)\in U$ for all $t\ge m$ & Theorem~\ref{thm:conv}\\
+$u_\infty$, $M_\infty$ & limit point on $\Sigma$, limit of the charge on $C_L$ & Section~\ref{sec:intro}, Theorem~\ref{thm:conv}\\
+$\Phi$ & $\sum_e(-1)^e\log x_e$, the charge as a function of the normalised counts & Theorem~\ref{thm:conv}\\
 $\Lambda_j$ & independent standard logistic variables & Section~\ref{sec:intro}\\
 $p$ & $(1+u_\infty)/2$ on $C_4$ & Section~\ref{sec:cycle}\\
 $f$ & density of $M_\infty$ on $C_4$ & Section~\ref{sec:cycle}\\

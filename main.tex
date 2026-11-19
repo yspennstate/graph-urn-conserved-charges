@@ -29,7 +29,7 @@ with probability proportional to $N_e^\alpha$. The discrete-time urn, in which e
 endpoints at each step, was introduced by Bena\"im, Benjamini, Chen and Lima \cite{BBCL}. At $\alpha=1$ it was studied
 by Chen and Lucas \cite{CL}, who proved convergence on regular bipartite graphs to a random point of a segment of
 equilibria and left the law of that point open, and by Lima \cite{Lima}, who completed the convergence proof for
-balanced bipartite graphs and asked for the distribution of the limit (his Question~1). On a cycle the two models are
+balanced bipartite graphs and asked for the distribution of the limit~\cite[Question~1]{Lima}. On a cycle the two models are
 related by exchanging vertices and edges: the bins of the discrete-time urn on $C_L$ correspond to the edges of WARM on
 $C_L$, and its competing pairs to the vertices of WARM. The discrete-time urn updates every pair at each step, whereas
 WARM updates one vertex at a time at Poisson times. The results below concern WARM; no transfer of the limit law to the
@@ -50,6 +50,18 @@ of the charge per vertex, on every even cycle and on $\mathbb{Z}$ (Proposition~\
 Section~\ref{sec:num} reports simulations: the terminal law on cycles, random limits on $C_4$ and $K_4$ whose dimension
 matches the kernel, and the slow decay of the alternating envelope on long cycles that the charges predict for the
 line.
+
+\emph{What is known and what is new.} The model is that of~\cite{HHKR}, and the Lyapunov function used in
+Section~3 is theirs~\cite[Lemma~A.3]{HHKR}. Convergence of the discrete-time urn at $\alpha=1$ is due to Bena\"im,
+Benjamini, Chen and Lima, Chen and Lucas, and Lima~\cite{BBCL,CL,Lima}, and the question of the law of the limit is
+theirs~\cite{CL},~\cite[Question~1]{Lima}. The convergence argument on the cycle uses the theory of asymptotic
+pseudotrajectories of Bena\"im~\cite{Ben99}. Decoupling a linearly reinforced urn into independent exponential
+(Yule) processes goes back to Athreya and Karlin and to Rubin, see~\cite[Section~2.3]{Pemantle}; for the classical
+P\'olya urn it gives the beta law of the limit~\cite[Theorem~2.1]{Pemantle}. The Gamma-ratio martingale in the proof
+of Theorem~\ref{thm:law} and the representation of the logistic law as the law of $\log W-\log W'$ are classical.
+We are not aware of earlier appearances of the charge martingales of Theorem~\ref{thm:mart}, of the terminal law of
+Theorem~\ref{thm:law} for WARM, of the identification of the limit on the even cycle in Theorem~\ref{thm:conv} and
+Corollary~\ref{cor:cycle}, or of Proposition~\ref{prop:line}.
 
 \section{The charge martingales}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
@@ -144,7 +156,9 @@ $\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]
 
 The law in Theorem~\ref{thm:law} is the one obtained by letting each count grow as an independent Yule process run on
 its internal time $a_e$: such a process satisfies $\log N_e-a_e\to\log W_e$, and the internal times cancel in every
-charge.
+charge. This is the exponential embedding of linearly reinforced urns~\cite[Section~2.3]{Pemantle}. In WARM the
+internal times of different edges are coupled through the vertex sums, so the embedding does not apply directly; the
+cancellation of the internal times in every charge is what makes the terminal law the same.
 
 \begin{remark}\label{rem:fibre}
 Suppose that $X(t)$ converges to a point $x_\infty$ with positive coordinates and deterministic vertex sums
@@ -171,7 +185,7 @@ so in the time $\tau=\log t$ the normalised counts follow, up to the martingale 
 \frac{dx_e}{d\tau}=x_e\,\partial_e\mathcal{L}(x),\qquad
 \mathcal{L}(x)=\sum_{v}\log S_v(x)-\sum_e x_e,
 \end{equation}
-with $\partial_e\mathcal{L}=S_u^{-1}+S_v^{-1}-1$ for $e=(u,v)$. A direct computation \cite{HHKR} gives
+with $\partial_e\mathcal{L}=S_u^{-1}+S_v^{-1}-1$ for $e=(u,v)$. A direct computation~\cite[Lemma~A.3]{HHKR} gives
 \[ \frac{d}{d\tau}\mathcal{L}=\sum_e x_e(\partial_e\mathcal{L})^2\ge0,\qquad \frac{d}{d\tau}\sum_e x_e=L-\sum_e x_e. \]
 
 \begin{lemma}\label{lem:eq}
@@ -250,7 +264,8 @@ $\sqrt L\,u_\infty-M_\infty/\sqrt L\to0$ in probability since $\tanh(x)/x\to1$ a
 
 On $C_4$, with $p=(1+u_\infty)/2$, the density of $M_\infty$ is $f(s)=(s\coth(s/2)-2)/(4\sinh^2(s/2))$, the density of
 $p$ is $2f(2\log\frac{p}{1-p})/(p(1-p))$, which behaves like $4(1-p)\log\frac1{1-p}$ as $p\to1$, and
-$\mathrm{Var}\,p=\pi^2/32-1/4=0.05843\dots$. The limit law on $C_4$ is therefore not a beta law.
+$\mathrm{Var}\,p=\pi^2/32-1/4=0.05843\dots$. The limit law on $C_4$ is therefore not a beta law, in contrast with
+the classical P\'olya urn~\cite[Theorem~2.1]{Pemantle}.
 
 \section{The infinite line}\label{sec:line}
 On $\mathbb{Z}$, with vertex $v$ between edges $v-1$ and $v$, the process is built from the same rate-one clocks and
@@ -352,12 +367,16 @@ These entities are included in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November
-2026 Claude Opus~5.5 (Anthropic), working in Claude Code, found the charge martingales of Theorem~\ref{thm:mart}, proved
-the convergence on the even cycle, wrote and ran the simulations of Section~\ref{sec:num}, and wrote the paper. A Codex
-agent (OpenAI), refereeing the paper, found the terminal law of Theorem~\ref{thm:law} and its proof, the identities for
-$[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the identification $c=\zeta(2)$ in
-Proposition~\ref{prop:line} and the convex proof in Remark~\ref{rem:fibre}. The author directed the work and is
-responsible for the content of the paper and for decisions concerning its dissemination.
+2026 Claude Opus~5.5 (Anthropic), working in Claude Code, proposed the charge martingales of Theorem~\ref{thm:mart},
+wrote the convergence proof on the even cycle, wrote and ran the simulations of Section~\ref{sec:num}, and wrote the
+paper. A Codex agent (OpenAI), refereeing the paper, supplied the terminal law of Theorem~\ref{thm:law} and its proof,
+the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the value $c=\zeta(2)$ in
+Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}. The mathematics these rest on is due to the
+authors cited: the model and its Lyapunov function~\cite{HHKR}, the discrete-time urn, its convergence at linearity
+and the question of the law of its limit~\cite{BBCL,CL,Lima}, the stochastic-approximation theory~\cite{Ben99}, and
+the exponential embedding of reinforced urns~\cite[Section~2.3]{Pemantle}. Each citation was checked against the
+cited text. The author directed the work and is responsible for the content of the paper and for decisions concerning
+its dissemination.
 
 \section*{Data availability}
 No data were used. The code is available at\\ \url{https://github.com/yspennstate/graph-urn-conserved-charges}.
@@ -411,6 +430,8 @@ reinforcement models, in 2023 MATRIX Annals, MATRIX Book Series, Springer, 2025,
 \bibitem{CL} J. Chen, C. Lucas, A generalized P\'olya's urn with graph based interactions: convergence at linearity, Electron. Commun. Probab. 19 (2014), 1--13, doi:10.1214/ECP.v19-3094.
 \bibitem{HHKR} R. van der Hofstad, M. Holmes, A. Kuznetsov, W. Ruszel, Strongly reinforced P\'olya urns with graph-based competition, Ann. Appl. Probab. 26 (2016), 2494--2539, doi:10.1214/16-AAP1153.
 \bibitem{Lima} Y. Lima, Graph-based P\'olya's urn: completion of the linear case, Stoch. Dyn. 16 (2016), no.~2, 1660007, doi:10.1142/S0219493716600078.
+\bibitem{Pemantle} R.~Pemantle, A survey of random processes with reinforcement, Probab. Surv. 4 (2007), 1--79,
+doi:10.1214/07-PS094.
 \bibitem{Ben99} M. Bena\"im, Dynamics of stochastic approximation algorithms, S\'eminaire de Probabilit\'es XXXIII, Lecture Notes in Math. 1709, Springer (1999), 1--68.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.

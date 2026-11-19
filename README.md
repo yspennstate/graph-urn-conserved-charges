@@ -10,7 +10,7 @@ Paper: [main.pdf](main.pdf) (source [main.tex](main.tex)).
 ## Summary
 
 Each vertex of a finite graph rings at rate one and reinforces one of its edges with probability proportional to
-the edge's count (the (W,A)-reinforcement model, WARM, with alpha = 1). The paper gives written proofs of the
+the edge's count (the (W,A)-reinforcement model, WARM, with alpha = 1). The paper proves the
 following statements:
 
 * for every sigma in the kernel of the unsigned vertex-edge incidence matrix, sum_e sigma_e H(N_e - 1) is a

@@ -53,7 +53,10 @@ Hence, for every $\sigma\in\mathbb{R}^E$ with $\sum_{e\ni v}\sigma_e=0$ at every
 has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quadratic variation at most
 $\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). These martingales, and the law of the limit on even cycles,
 are due to M.~Holmes and V.~Kleptsyn (personal communication, 2026), whose work on the critical regime $\alpha=1$ is
-cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}. The charge converges, and its limit satisfies
+cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}. The same cancellation makes
+\[ P_\theta(N)=\prod_e\frac{\Gamma(N_e+i\theta\sigma_e)}{\Gamma(N_e)\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
+a bounded martingale on every finite graph, and since every count tends to infinity the charge converges and its limit
+satisfies
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
 which is the law of $\sum_e\sigma_e\log W_e$ for independent standard exponential variables $W_e$
 (Theorem~\ref{thm:law}). On the even cycle $C_L$, $L\ge4$, with the edges numbered in order around the cycle, the kernel is spanned
@@ -75,8 +78,6 @@ counts approach the segment of equilibria follows the argument for the discrete-
 graphs~\cite[Theorem~1.1(b)]{BBCL}, with one vertex updated at a time; it uses the theory of asymptotic
 pseudotrajectories of Bena\"im~\cite{Ben99}. On infinite graphs of bounded degree, such as $\mathbb{Z}$, the process is
 well defined, as recalled in~\cite[Section~1]{HHKtree}; Section~\ref{sec:line} gives the construction on $\mathbb{Z}$.
-The proofs in this paper, including those of the statements due to Holmes and Kleptsyn, were written by AI agents
-under the direction of the author; the declaration at the end says which agent wrote which proof.
 
 \section{The charge martingales}\label{sec:mart}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
@@ -247,7 +248,7 @@ Lemma~\ref{lem:growth}, $\log N_e(t)-a_e(t)$ converges, so $X_e(t)\ge ct^{\delta
 $x_e\le1$ on $U$. Hence $\mathbb{P}(A_m)=0$ for every $m$, and $X$ does not converge to $x^*$. As there are finitely many
 such points, the limit set lies in $\Sigma$.
 
-Let $\Phi(x)=\sum_e(-1)^e\log x_e$ denote the charge written as a function of the normalised counts. By
+Let $\Phi(x)=\sum_e(-1)^e\log x_e$ denote the sum $\sum_e\sigma_e\log X_e$ of Section~\ref{sec:mart}, for $\sigma_e=(-1)^e$, written as a function of the normalised counts. By
 \eqref{eq:link} and Theorem~\ref{thm:mart}, $\Phi(X(t))\to M_\infty$, finite almost surely.
 Along a sequence of times with $X\to x^{(1)}$ every even coordinate tends to $2$ and every odd coordinate to $0$, so
 $\Phi\to+\infty$; similarly $\Phi\to-\infty$ near $x^{(-1)}$. So neither endpoint is a limit point, and the limit set is a
@@ -417,7 +418,7 @@ $K_e$ & compensated count of edge $e$ & Section~\ref{sec:cycle}\\
 $x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Section~\ref{sec:cycle}\\
 $U$, $A_m$ & neighbourhood of an equilibrium of type (2), event that $X(t)\in U$ for all $t\ge m$ & Theorem~\ref{thm:conv}\\
 $u_\infty$, $M_\infty$ & limit point on $\Sigma$, limit of the charge on $C_L$ & Section~\ref{sec:intro}, Theorem~\ref{thm:conv}\\
-$\Phi$ & $\sum_e(-1)^e\log x_e$, the charge as a function of the normalised counts & Theorem~\ref{thm:conv}\\
+$\Phi$ & $\sum_e(-1)^e\log x_e$, $\sum_e(-1)^e\log X_e$ as a function of the normalised counts & Theorem~\ref{thm:conv}\\
 $\Lambda_j$ & independent standard logistic variables & Section~\ref{sec:intro}\\
 $p$ & $(1+u_\infty)/2$ on $C_4$ & Section~\ref{sec:cycle}\\
 $f$ & density of $M_\infty$ on $C_4$ & Section~\ref{sec:cycle}\\

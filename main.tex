@@ -16,8 +16,8 @@ $M_\sigma=\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic number. On every f
 law of $\sum_e\sigma_e\log W_e$ with independent standard exponential variables $W_e$. On the even cycle $C_L$,
 $L\ge4$, the normalised counts converge to $(1+u,1-u,\dots)$, and $L\,\mathrm{artanh}(u)$ equals the terminal value
 of $M_\sigma$ for $\sigma_e=(-1)^e$. Hence $u=\tanh(M/L)$, where $M$ is a sum of $L/2$ independent standard logistic
-variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to the centred normal law with variance $\pi^2/6$. For
-even cycles this gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn
+variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to the centred normal law with variance $\pi^2/6$. These results are due to Holmes and Kleptsyn. For
+even cycles they give the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn
 studied by Chen and Lucas and by Lima. On the integer line the expected integral of $1/(N_{-1}N_0)$ over time is
 $\pi^2/6$.
 \end{abstract}
@@ -43,7 +43,8 @@ direction, equal to $1$ on one side of the bipartition and $-1$ on the other, al
 field of Chen and Lucas has a zero eigenvalue at every point of the segment~\cite[Section~4]{CL}. Chen and Lucas also
 use a weighted logarithm $\sum_iw_i\log v_i$, with positive weights, as a Lyapunov function when the limit is
 deterministic~\cite[(3.2)]{CL}. For a single P\'olya urn the limit has a beta law~\cite[Theorem~2.1]{Pemantle}, which
-can be found by embedding the urn in independent Yule processes~\cite[Section~2.3]{Pemantle}.
+can be found from Rubin's construction, the embedding of the urn in independent exponential
+processes~\cite{Davis},~\cite[Section~2.3]{Pemantle}.
 
 In WARM every edge belongs to the urns at both of its endpoints: the count of the edge $e=(u,v)$ grows at rate
 $N_e(S_u^{-1}+S_v^{-1})$, where $S_v=\sum_{f\ni v}N_f$, and the factor $S_u^{-1}+S_v^{-1}$ is random and shared with
@@ -62,19 +63,25 @@ $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
 \[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty},\qquad
    u_\infty=\tanh\Bigl(\frac{\Lambda_1+\dots+\Lambda_{L/2}}{L}\Bigr), \]
 with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). For WARM
-on even cycles this answers the analogue of the question of~\cite{CL} and~\cite[Question~1]{Lima}. For the discrete-time urn, in which
+on even cycles this is the analogue of the question of~\cite{CL} and~\cite[Question~1]{Lima}. For the discrete-time urn, in which
 every pair is updated at each step, the law of the limit remains open. On $\mathbb{Z}$ the expectation of
 $\int_0^\infty dt/(N_{-1}N_0)$ is $\pi^2/6$, the value it has at every vertex of every even cycle
 (Proposition~\ref{prop:line}). Convergence on $K_4$, where $\dim\ker B=2$, and the rate of decay of the alternating
 amplitude on $\mathbb{Z}$ are open; Section~\ref{sec:num} gives simulations of both.
 
-\emph{What is known and what is new.} The model in discrete time is that of~\cite{HHKR}, and the Lyapunov function used
-in Section~\ref{sec:cycle} is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On
-infinite graphs of bounded degree, such as $\mathbb{Z}$, the process is well defined~\cite[Section~1]{HHKtree}. The
-convergence argument on the cycle uses the theory of asymptotic pseudotrajectories of Bena\"im~\cite{Ben99}. The
-results of the paper are Theorems~\ref{thm:mart} and~\ref{thm:conv}, Corollary~\ref{cor:cycle} and
-Proposition~\ref{prop:line}. The law in Theorem~\ref{thm:law} has the form that the Yule embedding gives for a single
-urn~\cite[Section~2.3]{Pemantle}.
+\emph{What is known.} None of the results of this paper is new. M.~Holmes informed the author that the charge
+martingales $M_\sigma$, the form of the limit on even cycles, and the limit on $\mathbb{Z}_+$ when the firing rate at
+$0$ is $1/2$ have been known to him and V.~Kleptsyn for several years, and that they have presented them at
+conferences. They belong to the work of Holmes and Kleptsyn on the critical regime $\alpha=1$~\cite{HKcrit}, which is
+cited in~\cite{HHKtree} and~\cite{HHK3} and in the MSc thesis of D.~Chen~\cite{Chen}; a result on equilibria of
+the critical model on intervals, quoted from that work, is~\cite[Theorem~5]{HHK3}. The exponential variables in
+Theorem~\ref{thm:law} come from Rubin's construction, which embeds a reinforced urn in independent exponential
+processes; Rubin's observations were published by Davis~\cite{Davis}, see~\cite[Section~2.3]{Pemantle}. The model in
+discrete time is that of~\cite{HHKR}, and the Lyapunov function used in Section~\ref{sec:cycle}
+is~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On infinite graphs of bounded degree,
+such as $\mathbb{Z}$, the process is well defined~\cite[Section~1]{HHKtree}. The convergence argument on the cycle uses
+the theory of asymptotic pseudotrajectories of Bena\"im~\cite{Ben99}. This paper gives written proofs of these
+statements in one place.
 
 \section{The charge martingales}\label{sec:mart}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
@@ -83,7 +90,7 @@ where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All counts start at $1
 random where stated, and may differ between proofs. Write $X_e(t)=N_e(t)/t$, let $B$ be
 the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$, and let $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, $H=H^{(1)}$.
 
-\begin{theorem}\label{thm:mart}
+\begin{theorem}[Holmes and Kleptsyn~\cite{HKcrit}]\label{thm:mart}
 Let all counts start at $1$, and let $\sigma\in\mathbb{R}^E$ satisfy $\sum_{e\ni v}\sigma_e=0$ for every $v$. Then
 \[ M_\sigma(t)=\sum_{e\in E}\sigma_e\,H(N_e(t)-1) \]
 is a martingale with $M_\sigma(0)=0$, jumps bounded by $\max_e|\sigma_e|$, predictable quadratic variation
@@ -169,7 +176,7 @@ $\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]
 
 The law in Theorem~\ref{thm:law} has a simple description. If each count grew as an independent Yule process run on
 its own internal time $a_e$, then $\log N_e-a_e\to\log W_e$, and the internal times would cancel in every charge. For a
-single urn this decoupling into independent exponential processes is the classical embedding~\cite[Section~2.3]{Pemantle}.
+single urn this decoupling into independent exponential processes is Rubin's construction~\cite{Davis},~\cite[Section~2.3]{Pemantle}.
 In WARM each edge belongs to the urns at both its endpoints.
 
 \begin{remark}\label{rem:fibre}
@@ -223,7 +230,7 @@ $\partial_e\mathcal{L}\ge \frac{k+2}{2k+2}+\frac12-1=\frac{1}{2k+2}\ge\frac1{2L}
 the other end has $S=2$.
 \end{proof}
 
-\begin{theorem}\label{thm:conv}
+\begin{theorem}[Holmes and Kleptsyn~\cite{HKcrit}]\label{thm:conv}
 On $C_L$, $L\ge4$ even, with all counts starting at $1$, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ and
 \[ L\,\mathrm{artanh}(u_\infty)=M_\infty:=\lim_{t\to\infty}\sum_e(-1)^eH(N_e(t)-1). \]
 \end{theorem}
@@ -258,7 +265,7 @@ $\Phi(x^{(u)})=\tfrac L2\log\frac{1+u}{1-u}=L\,\mathrm{artanh}(u)$ is strictly i
 $x^{(u)}$ therefore has $L\,\mathrm{artanh}(u)=M_\infty$, and the limit set is the single point $x^{(u_\infty)}$.
 \end{proof}
 
-\begin{corollary}\label{cor:cycle}
+\begin{corollary}[Holmes and Kleptsyn~\cite{HKcrit}]\label{cor:cycle}
 On $C_L$, $L\ge4$ even, $u_\infty=\tanh(M_\infty/L)$, where $M_\infty$ has the law of $\Lambda_1+\dots+\Lambda_{L/2}$
 with independent standard logistic variables $\Lambda_j$ (density $e^{-s}/(1+e^{-s})^2$), that is,
 \[ \mathbb{E}\,e^{i\theta M_\infty}=\Bigl(\frac{\pi\theta}{\sinh\pi\theta}\Bigr)^{L/2}. \]
@@ -375,18 +382,21 @@ The author holds equity in Heights Labs and in Convex Nexus Capital and has a ma
 These entities are included in the funding declaration above.
 
 \section*{Declaration of generative AI and AI-assisted technologies}
-The paper comes out of Math Brain, an ongoing project on the use of AI systems for research mathematics. In November
-2026 Claude Opus~5.5 (Anthropic), working in Claude Code, proposed the charge martingales of Theorem~\ref{thm:mart},
-wrote the convergence proof on the even cycle, wrote and ran the simulations of Section~\ref{sec:num}, and wrote the
-paper. A Codex agent (OpenAI), refereeing the paper, supplied the terminal law of Theorem~\ref{thm:law} and its proof,
-the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the value $c=\zeta(2)$ in
-Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}. The mathematics these rest on is due to the
-authors cited: the model~\cite{HHKR} and its Lyapunov function~\cite[Lemma~A.3]{HHKR}, the analogue
-of~\cite[Lemma~4.1]{BBCL}, the continuous-time form and the existence of the process on $\mathbb{Z}$~\cite{HHKtree},
-the discrete-time urn, its convergence at linearity
-and the question of the law of its limit~\cite{BBCL,CL,Lima}, the stochastic-approximation theory~\cite{Ben99}, and
-the exponential embedding of a single reinforced urn~\cite[Section~2.3]{Pemantle}. The author directed the work and is responsible for the content of the paper and for decisions concerning
-its dissemination.
+The paper comes out of Math Brain~\cite{MathBrainPaper,MathBrainRepo}, a project on the use of AI systems for research
+mathematics. The results are not new. The charge martingales, the law of the limit on even cycles and the limit on
+$\mathbb{Z}_+$ are due to M.~Holmes and V.~Kleptsyn~\cite{HKcrit}, who informed the author of this. The exponential
+variables come from Rubin's construction, published by Davis~\cite{Davis}. The model and its Lyapunov function are
+due to van der Hofstad, Holmes, Kuznetsov and Ruszel~\cite{HHKR}, the continuous-time form and the process on
+$\mathbb{Z}$ to Hirsch, Holmes and Kleptsyn~\cite{HHKtree}, the discrete-time urn to Bena\"im, Benjamini, Chen and
+Lima~\cite{BBCL}, its convergence at linearity to Chen and Lucas~\cite{CL} and Lima~\cite{Lima}, and the
+stochastic-approximation theory to Bena\"im~\cite{Ben99}. In November 2026 Claude Opus~5.5 (Anthropic), working in
+Claude Code, wrote the proofs of Theorems~\ref{thm:mart} and~\ref{thm:conv}, wrote and ran the simulations of
+Section~\ref{sec:num}, and wrote the text. A Codex agent (OpenAI), refereeing the paper, wrote the proof of
+Theorem~\ref{thm:law}, the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the
+computation of $c=\zeta(2)$ in Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}. The AI systems did
+not identify the prior work of Holmes and Kleptsyn.
+The author directed the work and is responsible for the content of the paper and for decisions concerning its
+dissemination.
 
 \section*{Data availability}
 No data were used. The code is available at\\ \url{https://github.com/yspennstate/graph-urn-conserved-charges}.
@@ -449,6 +459,12 @@ $T$ & a fixed time; in Section~\ref{sec:num}, the final time of a run & Section~
 \bibitem{Lima} Y. Lima, Graph-based P\'olya's urn: completion of the linear case, Stoch. Dyn. 16 (2016), no.~2, 1660007, doi:10.1142/S0219493716600078, arXiv:1409.7826.
 \bibitem{Pemantle} R.~Pemantle, A survey of random processes with reinforcement, Probab. Surv. 4 (2007), 1--79,
 doi:10.1214/07-PS094, arXiv:math/0610076.
+\bibitem{Davis} B.~Davis, Reinforced random walk, Probab. Theory Related Fields 84 (1990), 203--229.
+\bibitem{HHK3} C.~Hirsch, M.~Holmes, V.~Kleptsyn, Infinite WARM graphs III: strong reinforcement regime, Nonlinearity
+(2023), doi:10.1088/1361-6544/acc9a0.
+\bibitem{HKcrit} M.~Holmes, V.~Kleptsyn, Infinite WARM graphs II: critical regime, in preparation; cited
+in~\cite{HHKtree} and~\cite{HHK3}.
+\bibitem{Chen} D.~Chen, Critical WA-reinforcement models, MSc thesis, University of Melbourne.
 \bibitem{Ben99} M. Bena\"im, Dynamics of stochastic approximation algorithms, S\'eminaire de Probabilit\'es XXXIII, Lecture Notes in Math. 1709, Springer (1999), 1--68.
 \bibitem{MathBrainRepo} Y.~Shmalo, \emph{Math Brain: public snapshot, code and tests}, 2026, \url{https://github.com/yspennstate/math-brain-public}.
 \bibitem{MathBrainPaper} Y.~Shmalo, \emph{Math Brain: shared, auditable memory for multi-agent mathematical research}, October 2026, doi:10.5281/zenodo.24150837, \url{https://github.com/yspennstate/math-brain-public/tree/main/papers/math-brain-2026-10-24}.

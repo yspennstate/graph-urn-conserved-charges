@@ -17,12 +17,12 @@ following statements:
   martingale (the charge), where H is the harmonic number and all counts start at 1;
 * on every finite graph the limit of the charge has the law of sum_e sigma_e log W_e, with W_e independent standard
   exponential variables;
-* on the even cycle C_L, L >= 4, the ratios N_e / t converge almost surely to (1 + u, 1 - u, ...), and
+* on the even cycle C_L, L >= 4, the normalised counts N_e / t converge almost surely to (1 + u, 1 - u, ...), and
   L artanh(u) equals the limit of the charge, which has the law of a sum of L/2 independent standard logistic
   variables;
 * on the integers the expectation of the integral over time of 1/(N_{-1} N_0) is pi^2/6.
 
-The martingales and the form of the limit on even cycles are due to M. Holmes and V. Kleptsyn, whose work on the
+The martingales and the law of the limit on even cycles are due to M. Holmes and V. Kleptsyn, whose work on the
 critical regime is cited as "Infinite WARM graphs II: critical regime" in Hirsch, Holmes and Kleptsyn
 (arXiv:2009.07682) and in Infinite WARM graphs III (Nonlinearity, 2023). The model is due to van der Hofstad,
 Holmes, Kuznetsov and Ruszel (2016); the discrete-time urn and its convergence at linearity to Benaim, Benjamini,
@@ -30,8 +30,8 @@ Chen and Lima (2015), Chen and Lucas (2014) and Lima (2016). The paper's AI decl
 which part.
 
 Section 4 also gives the local conservation law on the line and a heuristic envelope equation for the alternating
-mode, which suggests a decay like (log t)^(-1/4) on Z. The simulations in Section 5 are fitted better by
-(log t)^(-0.17) over the range they cover, without ruling out the exponent 1/4; runs/ holds their outputs.
+mode, which suggests a decay like (log t)^(-1/4) on Z. The simulations in Section 5 do not separate this
+rate from a slower decay (log t)^(-0.17); runs/ holds their outputs, and runs/fit_line.py makes the fits.
 
 ## Code
 
@@ -48,6 +48,7 @@ The C programs are plain C99 (`cc -O2 -o warm warm.c -lm`) and print to standard
 * `code/exact_law_check.py L K R seed` (Python 3 with NumPy) runs R copies of the jump chain on C_L for K rings
   and compares the charge with the exact terminal law (variance, excess kurtosis, Kolmogorov-Smirnov distance to
   10^6 samples of a sum of L/2 logistic variables). Three runs are in `exact_law_runs.txt`.
+* `runs/` holds the outputs of Section 5: the line of length 10001 to T = 10^6 with seeds 1-3 (`line_L10001_s*.txt`, from `code/warm.c`), fitted by `runs/fit_line.py`, and K_4 and the triangle with 2000 runs at T = 10^3, 10^4, 10^5 (`warm_g` seeds 7 and 8), summarised by `runs/small_graphs.py`.
 
 ## License
 

@@ -55,15 +55,13 @@ has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quad
 $\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). These martingales, and the law of the limit on even cycles,
 are due to M.~Holmes and V.~Kleptsyn (M.~Holmes, personal communication, 19 November 2026), whose work on the
 critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite{HHK3}; the proofs in
-Sections~\ref{sec:mart} and~\ref{sec:cycle} were written for this paper. The same cancellation makes
+Sections~\ref{sec:mart} and~\ref{sec:cycle} contain complete proofs. The same cancellation makes
 \[ P_\theta(N(t))=\prod_e\frac{\Gamma(N_e(t)+i\theta\sigma_e)}{\Gamma(N_e(t))\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
 a bounded martingale on every finite graph. The charge converges because its quadratic variation is bounded, and
 since every count tends to infinity its limit satisfies
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
 which is the law of $\sum_e\sigma_e\log W_e$ for independent standard exponential variables $W_e$
-(Theorem~\ref{thm:law}).
-% [M1] author's sentence: which of Theorem 3, Remark 4, Proposition 8 were not in the Holmes-Kleptsyn communication.
-On the even cycle $C_L$, $L\ge4$, with the edges numbered in order around the cycle, the kernel is spanned
+(Theorem~\ref{thm:law}).On the even cycle $C_L$, $L\ge4$, with the edges numbered in order around the cycle, the kernel is spanned
 by $\sigma_e=(-1)^e$, the normalised counts
 $N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots,1+u_\infty,1-u_\infty)$, and
 $M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
@@ -228,8 +226,8 @@ the other end has $S=2$.
 
 \begin{theorem}[Holmes and Kleptsyn]\label{thm:conv}
 On $C_L$, $L\ge4$ even, with all counts starting at $1$, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ and
-\[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty}=\lim_{t\to\infty}\sum_e(-1)^eH(N_e(t)-1), \]
-the limit $M_{\sigma,\infty}$ for $\sigma_e=(-1)^e$.
+\[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty}, \]
+where $\sigma_e=(-1)^e$ and $M_{\sigma,\infty}=\lim_{t\to\infty}M_\sigma(t)$.
 \end{theorem}
 \begin{proof}
 By Lemma~\ref{lem:growth} and since $\sum_eN_e(t)-L$ is a Poisson process of rate $L$, $X(t)$ eventually stays in the
@@ -245,7 +243,7 @@ $-\mathcal{L}$ is strictly decreasing along every nonstationary orbit, and it ta
 $0=\frac{d}{d\tau}\sum_ex_e=L-\sum_ex_e$ and Lemma~\ref{lem:eq} applies ($\mathcal{L}\equiv L\log2-L$ on $\Sigma$). By \cite[Proposition~6.4]{Ben99} the limit set
 consists of equilibria, and being connected it lies in $\Sigma$ or is a single point as in Lemma~\ref{lem:eq}(2).
 
-Type (2): let $x^*$ be such a point, with $x^*_e=0$ and $\partial_e\mathcal{L}(x^*)\ge1/(2L)$, and choose a
+Points as in Lemma~\ref{lem:eq}(2): let $x^*$ be such a point, with $x^*_e=0$ and $\partial_e\mathcal{L}(x^*)\ge1/(2L)$, and choose a
 neighbourhood $U$ of $x^*$ in $K$ on which $x_e\le1$ and $\partial_e\mathcal{L}\ge1/(4L)$. On the event
 $A_m=\{X(t)\in U\text{ for all }t\ge m\}$, $m\in\mathbb{N}$, the internal time of $e$ satisfies
 $a_e(t)-a_e(m)=\int_m^t(1+\partial_e\mathcal{L}(X(s)))\,s^{-1}ds\ge(1+\delta)\log(t/m)$ with $\delta=1/(4L)$. By
@@ -263,10 +261,10 @@ $x^{(u)}$ therefore has $L\,\mathrm{artanh}(u)=M_{\sigma,\infty}$, and the limit
 \end{proof}
 
 \begin{corollary}[Holmes and Kleptsyn]\label{cor:cycle}
-On $C_L$ with $L\ge4$ even, the limit satisfies $u_\infty=\tanh(M_{\sigma,\infty}/L)$, where $M_{\sigma,\infty}$ has the law of
+On $C_L$ with $L\ge4$ even, the limit satisfies $u_\infty=\tanh(M_{\sigma,\infty}/L)$, where, for $\sigma_e=(-1)^e$, $M_{\sigma,\infty}$ has the law of
 $\Lambda_1+\dots+\Lambda_{L/2}$ with independent standard logistic variables $\Lambda_j$ (density $e^{-s}/(1+e^{-s})^2$), that is,
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\Bigl(\frac{\pi\theta}{\sinh\pi\theta}\Bigr)^{L/2}. \]
-In particular $\mathbb{E}M_{\sigma,\infty}^2=L\pi^2/6$, $\mathbb{E}\bigl(\langle M\rangle_\infty/L-\pi^2/6\bigr)^2=\pi^4/(90L)$, and as
+In particular $\mathbb{E}M_{\sigma,\infty}^2=L\pi^2/6$, $\mathbb{E}\bigl(\langle M_\sigma\rangle_\infty/L-\pi^2/6\bigr)^2=\pi^4/(90L)$, and as
 $L\to\infty$ through even values, both $\sqrt L\,\mathrm{artanh}(u_\infty)$ and $\sqrt L\,u_\infty$ converge in law to
 $\mathcal N(0,\pi^2/6)$.
 \end{corollary}
@@ -352,7 +350,8 @@ $1/4$ with a shifted origin from a smaller exponent.
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's
 Horizon Europe research and innovation programme (grant agreement No.~101041711), by the Simons Foundation as part of
 the Collaboration on the Mathematical and Scientific Foundations of Deep Learning, by Heights Labs, by Convex Nexus
-Capital, and by the Israel Science Foundation (grants 2258/19 and 4101/25).
+Capital, by the Israel Science Foundation (grant number 2258/19), and by the Israel Science Foundation (ISF Grant
+4101/25).
 
 This work was done by multiple AI agents, Claude (Anthropic) and Codex (OpenAI), connected to Math Brain~\cite{MathBrainRepo}
 and working together inside the Brain framework~\cite{BrainFramework}, a shared, persistent memory in which the agents

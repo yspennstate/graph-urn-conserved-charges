@@ -15,7 +15,7 @@ following statements:
 
 * for every sigma in the kernel of the unsigned vertex-edge incidence matrix, sum_e sigma_e H(N_e - 1) is a
   martingale (the charge), where H is the harmonic number and all counts start at 1;
-* on every finite graph the limit of the charge has the law of sum_e sigma_e log W_e, with W_e independent standard
+* on every finite graph without loops or isolated vertices the limit of the charge has the law of sum_e sigma_e log W_e, with W_e independent standard
   exponential variables;
 * on the even cycle C_L, L >= 4, the normalised counts N_e / t converge almost surely to (1 + u, 1 - u, ...), and
   L artanh(u) equals the limit of the charge, which has the law of a sum of L/2 independent standard logistic

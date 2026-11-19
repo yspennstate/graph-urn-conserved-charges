@@ -11,7 +11,7 @@
 \begin{document}
 \begin{abstract}
 In the $(W,A)$-reinforcement model (WARM) with linear reinforcement, $\alpha=1$, in continuous time, started from unit counts, every vector $\sigma$ in the kernel of the unsigned vertex--edge incidence
-matrix yields a martingale $M_\sigma=\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic number. On every finite graph
+matrix yields a martingale $M_\sigma=\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic number. On every finite graph without loops or isolated vertices
 its limit has the law of $\sum_e\sigma_e\log W_e$ with independent standard exponential variables $W_e$. On the even
 cycle $C_L$, $L\ge4$, the normalised counts $N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots)$, and $L\,\mathrm{artanh}(u_\infty)$ equals the
 limit of $M_\sigma$ for $\sigma_e=(-1)^e$, which has the law of a sum of $L/2$ independent standard logistic
@@ -60,7 +60,7 @@ critical regime $\alpha=1$ is cited as~\cite{HKcrit} in~\cite{HHKtree} and~\cite
 
 The same cancellation makes
 \[ P_\theta(N(t))=\prod_e\frac{\Gamma(N_e(t)+i\theta\sigma_e)}{\Gamma(N_e(t))\,\Gamma(1+i\theta\sigma_e)},\qquad\theta\in\mathbb{R}, \]
-a bounded martingale on every finite graph, where $N(t)=(N_e(t))_{e}$ is the vector of counts. The charge converges because its quadratic variation is bounded, and
+a bounded martingale on every finite graph without loops or isolated vertices, where $N(t)=(N_e(t))_{e}$ is the vector of counts. The charge converges because its quadratic variation is bounded, and
 since every count tends to infinity its limit satisfies
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
 which is the law of $\sum_e\sigma_e\log W_e$ for independent standard exponential variables $W_e$

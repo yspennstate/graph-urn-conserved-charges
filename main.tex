@@ -22,7 +22,7 @@ vertex is $\pi^2/6$.
 \end{abstract}
 \maketitle
 
-\section{The model and the result}
+\section{The model and the result}\label{sec:intro}
 In the urn with graph-based competition of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{HHKR} (WARM), each edge
 of a graph carries a count, each vertex carries a Poisson clock, and when a vertex rings it reinforces one of its edges
 with probability proportional to $N_e^\alpha$. The discrete-time urn, in which every edge adds a ball to one of its two
@@ -33,8 +33,7 @@ balanced bipartite graphs and asked for the distribution of the limit~\cite[Ques
 related by exchanging vertices and edges: the bins of the discrete-time urn on $C_L$ correspond to the edges of WARM on
 $C_L$, and its competing pairs to the vertices of WARM. The discrete-time urn updates every pair at each step, whereas
 WARM updates one vertex at a time at Poisson times. The results below concern WARM; no transfer of the limit law to the
-synchronous urn is proved. On the infinite line, Kleptsyn conjectures that the normalised counts of the critical process
-converge to $1$ \cite[Section~5]{AletOP}.
+synchronous urn is proved.
 
 The random limit is fixed by conserved charges. For every $\sigma$ in the kernel of the unsigned incidence matrix,
 $M_\sigma=\sum_e\sigma_eH(N_e-1)$ is an exact martingale whose quadratic variation never exceeds
@@ -58,11 +57,12 @@ theirs~\cite{CL},~\cite[Question~1]{Lima}. The convergence argument on the cycle
 pseudotrajectories of Bena\"im~\cite{Ben99}. Decoupling a linearly reinforced urn into independent exponential
 (Yule) processes goes back to Athreya and Karlin and to Rubin, see~\cite[Section~2.3]{Pemantle}. The limit of the
 classical P\'olya urn has a beta law~\cite[Theorem~2.1]{Pemantle}.
-We are not aware of earlier appearances of the charge martingales of Theorem~\ref{thm:mart}, of the terminal law of
-Theorem~\ref{thm:law} for WARM, of the identification of the limit on the even cycle in Theorem~\ref{thm:conv} and
-Corollary~\ref{cor:cycle}, or of Proposition~\ref{prop:line}.
+We are not aware of earlier appearances of the charge martingales of Theorem~\ref{thm:mart}, of the identification
+of the limit on the even cycle in Theorem~\ref{thm:conv} and Corollary~\ref{cor:cycle}, or of
+Proposition~\ref{prop:line}. The terminal law of Theorem~\ref{thm:law} is the one given by the exponential embedding
+(see the remark after it).
 
-\section{The charge martingales}
+\section{The charge martingales}\label{sec:mart}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
 independent rate-one Poisson clock; when the clock of $v$ rings, one edge $e\ni v$ is chosen with probability $N_e/S_v$,
 where $S_v=\sum_{f\ni v}N_f$, and $N_e$ increases by one. All counts start at $1$. Constants $C,C',C'',c$ are finite,
@@ -155,9 +155,7 @@ $\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]
 
 The law in Theorem~\ref{thm:law} is the one obtained by letting each count grow as an independent Yule process run on
 its internal time $a_e$: such a process satisfies $\log N_e-a_e\to\log W_e$, and the internal times cancel in every
-charge. This is the exponential embedding of linearly reinforced urns~\cite[Section~2.3]{Pemantle}. In WARM the
-internal times of different edges are coupled through the vertex sums, so the embedding does not apply directly; the
-cancellation of the internal times in every charge is what makes the terminal law the same.
+charge. This is the exponential embedding of linearly reinforced urns~\cite[Section~2.3]{Pemantle}.
 
 \begin{remark}\label{rem:fibre}
 Suppose that $X(t)$ converges to a point $x_\infty$ with positive coordinates and deterministic vertex sums
@@ -172,7 +170,7 @@ law of the unique point of $P$ of the form $x_e=W_e\,e^{y_u+y_v}$, $e=(u,v)$, wi
 independent exponential edge weights to the vertex sums $b$.
 \end{remark}
 
-\section{Convergence on the even cycle}
+\section{Convergence on the even cycle}\label{sec:cycle}
 On the even cycle $C_L$ (edges indexed mod $L$, vertex $v$ between edges $v-1$ and $v$) the kernel is spanned by
 $\sigma_e=(-1)^e$, and since $S_v=N_{v-1}+N_v$,
 \[ \frac{1}{S_v}\Bigl(\frac1{N_{v-1}}+\frac1{N_v}\Bigr)=\frac{1}{N_{v-1}N_v},\qquad
@@ -344,7 +342,7 @@ of a two-dimensional set of equilibria, as Theorem~\ref{thm:law} and Remark~\ref
 $t=12$ to $0.39$ at $t=8.8\times10^4$, and $(\log t)^{1/4}$ times it stays between $0.67$ and $0.72$, rising slowly (a
 fitted exponent of $-0.18$ in $\log t$ over this range, which a shift of $\tau$ by about $3$ or the saturation of
 $\tanh$ would account for); the correlation of neighbouring edges tends to $-0.92$. These runs are consistent with
-Kleptsyn's conjecture, with convergence at the logarithmic rate the charges predict.
+convergence of the normalised counts to $1$ at the logarithmic rate the charges predict.
 
 \section*{Acknowledgements and funding}
 The research presented in this paper was supported by the European Research Council (ERC) under the European Union's
@@ -389,50 +387,47 @@ The paper is part of the Math Brain project, whose public repository is
 \toprule
 Symbol & Meaning & First defined\\
 \midrule
-$\alpha$ & reinforcement exponent; $\alpha=1$ throughout & Section 1\\
-$\mathcal{N}(0,s^2)$ & centred normal law with variance $s^2$ & Section 1\\
-$G=(V,E)$, $d$ & finite graph, its maximum degree & Section 2\\
-$N_e$, $X_e$ & count of edge $e$, normalised count $N_e(t)/t$ & Section 2\\
-$S_v$ & vertex sum of counts $\sum_{e\ni v}N_e$ & Section 2\\
-$B$ & unsigned vertex--edge incidence matrix & Section 2\\
-$H^{(p)}$, $H$ & $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, harmonic number $H=H^{(1)}$ & Section 2\\
-$\sigma\in\ker B$ & charge vector & Thm.~\ref{thm:mart}\\
-$M_\sigma$, $M_{\sigma,\infty}$ & charge martingale, its terminal value & Thms.~\ref{thm:mart}, \ref{thm:law}\\
-$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable and optional quadratic variation & Thm.~\ref{thm:mart}\\
-$\psi$, $\gamma$ & digamma function, Euler's constant & \eqref{eq:link}\\
+$\alpha$ & reinforcement exponent; $\alpha=1$ throughout & Section~\ref{sec:intro}\\
+$\mathcal{N}(0,s^2)$ & centred normal law with variance $s^2$ & Section~\ref{sec:intro}\\
+$G=(V,E)$, $d$ & finite graph, its maximum degree & Section~\ref{sec:mart}\\
+$N_e$, $X_e$ & count of edge $e$, normalised count $N_e(t)/t$ & Section~\ref{sec:intro}\\
+$S_v$ & vertex sum of counts $\sum_{e\ni v}N_e$ & Section~\ref{sec:mart}\\
+$B$ & unsigned vertex--edge incidence matrix & Section~\ref{sec:mart}\\
+$H^{(p)}$, $H$ & $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, harmonic number $H=H^{(1)}$ & Section~\ref{sec:intro}\\
+$\sigma\in\ker B$ & charge vector & Section~\ref{sec:intro}\\
+$M_\sigma$, $M_{\sigma,\infty}$ & charge martingale, its terminal value & Section~\ref{sec:intro}\\
+$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable and optional quadratic variation & Section~\ref{sec:intro}\\
+$\psi$, $\gamma$ & digamma function, Euler's constant & Section~\ref{sec:mart}\\
 $F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lem.~\ref{lem:growth}\\
 $\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lem.~\ref{lem:growth}\\
 $a_e(t)$ & internal time of edge $e$ & Lem.~\ref{lem:growth}\\
 $D_e$ & edge martingale $H(N_e-1)-a_e$ & Lem.~\ref{lem:growth}\\
-$W_e$ & independent standard exponential variables & Thm.~\ref{thm:law}\\
-$\Gamma$ & Euler's Gamma function & Thm.~\ref{thm:law}\\
+$W_e$ & independent standard exponential variables & Section~\ref{sec:intro}\\
+$\Gamma$ & Euler's Gamma function & Section~\ref{sec:intro}\\
 $P_\theta(n)$ & Gamma-ratio martingale & Thm.~\ref{thm:law}\\
 $R$ & compensated quadratic variation $[M_\sigma]-\langle M_\sigma\rangle$ & Thm.~\ref{thm:law}\\
-$P$, $b$, $\pi$ & fibre $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Rem.~\ref{rem:fibre}\\
-$C_L$ & cycle with $L$ edges, $L$ even & Section 3\\
-$\tau$ & time $\log t$ of the mean-field equation & \eqref{eq:ode}\\
-$\mathcal{L}$ & Lyapunov function of \eqref{eq:ode} & \eqref{eq:ode}\\
-$K_e$ & compensated count of edge $e$ & Section 3\\
-$x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Lem.~\ref{lem:eq}\\
+$P$, $b$, $\pi$ & fibre $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Section~\ref{sec:mart}\\
+$C_L$ & cycle with $L$ edges, $L$ even & Section~\ref{sec:intro}\\
+$\tau$ & time $\log t$ of the mean-field equation & Section~\ref{sec:mart}\\
+$\mathcal{L}$ & Lyapunov function of the mean-field equation & Section~\ref{sec:cycle}\\
+$K_e$ & compensated count of edge $e$ & Section~\ref{sec:intro}\\
+$x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Section~\ref{sec:mart}\\
 $U$, $A_m$ & neighbourhood of an equilibrium of type (2), event that $X(t)\in U$ for all $t\ge m$ & Thm.~\ref{thm:conv}\\
-$u_\infty$, $M_\infty$ & limit point on $\Sigma$, terminal charge on $C_L$ & Thm.~\ref{thm:conv}\\
+$u_\infty$, $M_\infty$ & limit point on $\Sigma$, terminal charge on $C_L$ & Section~\ref{sec:intro}\\
 $\Phi$ & $\sum_e(-1)^e\log x_e$, the charge as a function of the normalised counts & Thm.~\ref{thm:conv}\\
 $\Lambda_j$ & independent standard logistic variables & Cor.~\ref{cor:cycle}\\
-$p$ & limit share $(1+u_\infty)/2$ on $C_4$ & Section 3\\
-$f$ & density of $M_\infty$ on $C_4$ & Section 3\\
-$Y_e$, $J_v$ & signed edge clock $(-1)^eH(N_e-1)$, vertex current $(-1)^v/S_v$ on $\mathbb{Z}$ & Section 4\\
-$c$ & expected bracket per vertex on $\mathbb{Z}$ & Prop.~\ref{prop:line}\\
-$\zeta$ & Riemann zeta function & Prop.~\ref{prop:line}\\
-$T$ & final time of a simulated run & Section 5\\
+$p$ & limit share $(1+u_\infty)/2$ on $C_4$ & Section~\ref{sec:mart}\\
+$f$ & density of $M_\infty$ on $C_4$ & Section~\ref{sec:mart}\\
+$Y_e$, $J_v$ & signed edge clock $(-1)^eH(N_e-1)$, vertex current $(-1)^v/S_v$ on $\mathbb{Z}$ & Section~\ref{sec:line}\\
+$c$ & expected bracket per vertex on $\mathbb{Z}$ & Section~\ref{sec:mart}\\
+$\zeta$ & Riemann zeta function & Section~\ref{sec:intro}\\
+$T$ & final time of a simulated run & Section~\ref{sec:mart}\\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \bibliographystyle{amsplain}
 \begin{thebibliography}{99}
-\bibitem{AletOP} G.~Aletti, A.~Collevecchio, I.~Crimaldi, M.~Deijfen, S.~Dereich, A.~Ghiglietti, R.~van der Hofstad,
-M.~Holmes, D.~Kious, V.~Kleptsyn, B.~Lodewijks, P.~M\"orters and B.~Schapira, Open problems in stochastic
-reinforcement models, in 2023 MATRIX Annals, MATRIX Book Series, Springer, 2025, 477--498.
 \bibitem{BBCL} M. Bena\"im, I. Benjamini, J. Chen, Y. Lima, A generalized P\'olya's urn with graph based interactions, Random Structures Algorithms 46 (2015), 614--634, doi:10.1002/rsa.20523, arXiv:1211.1247.
 \bibitem{CL} J. Chen, C. Lucas, A generalized P\'olya's urn with graph based interactions: convergence at linearity, Electron. Commun. Probab. 19 (2014), 1--13, doi:10.1214/ECP.v19-3094, arXiv:1306.5465.
 \bibitem{HHKR} R. van der Hofstad, M. Holmes, A. Kuznetsov, W. Ruszel, Strongly reinforced P\'olya urns with graph-based competition, Ann. Appl. Probab. 26 (2016), 2494--2539, doi:10.1214/16-AAP1153, arXiv:1406.0449.

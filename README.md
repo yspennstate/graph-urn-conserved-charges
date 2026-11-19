@@ -25,7 +25,7 @@ the edge's count. The paper proves:
 This gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn studied
 by Chen and Lucas (2014) and by Lima (2016, Question 1); no transfer to the synchronous urn is proved. The last
 section derives the local conservation law on the line, a formal envelope equation for the alternating mode, and
-the logarithmic decay rate it predicts for Kleptsyn's conjecture on the critical urn on Z.
+the logarithmic decay rate it predicts for the critical urn on Z.
 
 ## Code
 

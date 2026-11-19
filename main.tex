@@ -10,59 +10,70 @@
 \keywords{P\'olya urn, reinforcement, graph-based competition, martingale, stochastic approximation}
 \begin{document}
 \begin{abstract}
-In the graph-based P\'olya urn with linear reinforcement (WARM with $\alpha=1$) in continuous time, every vector $\sigma$
-in the kernel of the unsigned vertex--edge incidence matrix yields an exact martingale $M_\sigma=\sum_e\sigma_e H(N_e-1)$,
-where $H$ is the harmonic number. On every finite graph its terminal value has the law of $\sum_e\sigma_e\log W_e$ with
-independent standard exponential variables $W_e$. On the even cycle $C_L$ the normalised counts converge to
-$(1+u,1-u,\dots)$ with $L\,\mathrm{artanh}(u)$ equal to the terminal value of the charge, so that $u=\tanh(M/L)$ where $M$
-is a sum of $L/2$ independent standard logistic variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to
-the centred normal law with variance $\pi^2/6$. This gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of
-the urn studied by Chen and Lucas and by Lima. On the integer line the expected quadratic variation of the charge per
-vertex is $\pi^2/6$.
+In the graph-based P\'olya urn with linear reinforcement (WARM with $\alpha=1$) in continuous time, started from unit
+counts, every vector $\sigma$ in the kernel of the unsigned vertex--edge incidence matrix yields an exact martingale
+$M_\sigma=\sum_e\sigma_e H(N_e-1)$, where $H$ is the harmonic number. On every finite graph its terminal value has the
+law of $\sum_e\sigma_e\log W_e$ with independent standard exponential variables $W_e$. On the even cycle $C_L$,
+$L\ge4$, the normalised counts converge to $(1+u,1-u,\dots)$, and $L\,\mathrm{artanh}(u)$ equals the terminal value
+of $M_\sigma$ for $\sigma_e=(-1)^e$. Hence $u=\tanh(M/L)$, where $M$ is a sum of $L/2$ independent standard logistic
+variables, and $\sqrt{L}\,\mathrm{artanh}(u)$ converges in law to the centred normal law with variance $\pi^2/6$. For
+even cycles this gives the law of the random limit for the continuous-time, one-vertex-at-a-time analogue of the urn
+studied by Chen and Lucas and by Lima. On the integer line the expected integral of $1/(N_{-1}N_0)$ over time is
+$\pi^2/6$.
 \end{abstract}
 \maketitle
 
 \section{The model and the result}\label{sec:intro}
-In the urn with graph-based competition of van der Hofstad, Holmes, Kuznetsov and Ruszel \cite{HHKR} (WARM), each edge
-of a graph carries a count, each vertex carries a Poisson clock, and when a vertex rings it reinforces one of its edges
-with probability proportional to $N_e^\alpha$. The discrete-time urn, in which every edge adds a ball to one of its two
-endpoints at each step, was introduced by Bena\"im, Benjamini, Chen and Lima \cite{BBCL}. At $\alpha=1$ it was studied
-by Chen and Lucas \cite{CL}, who proved convergence on regular bipartite graphs to a random point of a segment of
-equilibria and left the law of that point open, and by Lima \cite{Lima}, who completed the convergence proof for
-balanced bipartite graphs and asked for the distribution of the limit~\cite[Question~1]{Lima}. On a cycle the two models are
+In WARM each edge $e$ of a graph carries a count $N_e$, and a vertex, when chosen, reinforces one of its edges with
+probability proportional to $N_e^\alpha$. Van der Hofstad, Holmes, Kuznetsov and Ruszel introduced the model in discrete
+time for $\alpha>1$~\cite{HHKR}. We take $\alpha=1$ and the continuous-time form, with an independent rate-one Poisson
+clock at each vertex and all counts starting at $1$, as in~\cite[Section~1]{HHKtree}; on a finite graph its jump chain
+chooses a uniform vertex at each step.
+
+The discrete-time urn, in which every edge adds a ball to one of its two endpoints at each step, was introduced by
+Bena\"im, Benjamini, Chen and Lima. At $\alpha=1$ they proved that the proportions converge almost surely when the
+graph is not balanced bipartite~\cite[Corollary~1.3]{BBCL}, and to the uniform point when it is regular and not
+bipartite~\cite[Theorem~1.1]{BBCL}. Chen and Lucas showed that for graphs that are not balanced bipartite the limit is a
+deterministic point, and that on regular bipartite graphs the proportions converge to a random point of a segment of
+equilibria~\cite{CL}. Lima proved almost sure convergence for every balanced bipartite graph~\cite{Lima}. The law of
+the limit was left open by Chen and Lucas~\cite{CL} and by Lima~\cite[Question~1]{Lima}. On a cycle the two models are
 related by exchanging vertices and edges: the bins of the discrete-time urn on $C_L$ correspond to the edges of WARM on
-$C_L$, and its competing pairs to the vertices of WARM. The discrete-time urn updates every pair at each step, whereas
-WARM updates one vertex at a time at Poisson times. The results below concern WARM; no transfer of the limit law to the
-synchronous urn is proved.
+$C_L$, and its competing pairs to the vertices of WARM. Under this exchange the vector $\sigma_e=(-1)^e$ is the
+direction, equal to $1$ on one side of the bipartition and $-1$ on the other, along which the Jacobian of the vector
+field of Chen and Lucas has a zero eigenvalue at every point of the segment~\cite[Section~4]{CL}. Chen and Lucas also
+use a weighted logarithm $\sum_iw_i\log v_i$, with positive weights, as a Lyapunov function when the limit is
+deterministic~\cite[(3.2)]{CL}. For a single P\'olya urn the limit has a beta law~\cite[Theorem~2.1]{Pemantle}, which
+can be found by embedding the urn in independent Yule processes~\cite[Section~2.3]{Pemantle}.
 
-The random limit is fixed by conserved charges. For every $\sigma$ in the kernel of the unsigned incidence matrix,
-$M_\sigma=\sum_e\sigma_eH(N_e-1)$ is an exact martingale whose quadratic variation never exceeds
-$\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}); up to a vanishing error it equals $\sum_e\sigma_e\log(N_e/t)$, which
-is conserved by the mean-field flow. Its terminal value has an explicit law on every finite graph:
-$\mathbb{E}e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e)$, so that the charges jointly have the law of
-$(\sum_e\sigma_e\log W_e)_\sigma$ with independent standard exponential $W_e$ (Theorem~\ref{thm:law}). On the even cycle
-$C_L$ the kernel is one-dimensional, the normalised counts converge to $(1+u_\infty,1-u_\infty,\dots)$ with
-$L\,\mathrm{artanh}(u_\infty)=M_\infty$ (Theorem~\ref{thm:conv}), and therefore $u_\infty=\tanh(M_\infty/L)$ with
-$M_\infty$ a sum of $L/2$ independent standard logistic variables (Corollary~\ref{cor:cycle}). In particular
-$\sqrt L\,\mathrm{artanh}(u_\infty)\Rightarrow\mathcal N(0,\pi^2/6)$, and $\pi^2/6$ is the expected quadratic variation
-of the charge per vertex, on every even cycle and on $\mathbb{Z}$ (Proposition~\ref{prop:line}).
-Section~\ref{sec:num} reports simulations: the terminal law on cycles, random limits on $C_4$ and $K_4$ whose dimension
-matches the kernel, and the slow decay of the alternating envelope on long cycles that the charges predict for the
-line.
+In WARM every edge belongs to the urns at both of its endpoints: the count of the edge $e=(u,v)$ grows at rate
+$N_e(S_u^{-1}+S_v^{-1})$, where $S_v=\sum_{f\ni v}N_f$, and the factor $S_u^{-1}+S_v^{-1}$ is random and shared with
+the neighbouring edges, so the counts are not independent Yule processes in a common time. These factors cancel along
+the kernel of the unsigned incidence matrix $B$, $B_{ve}=1$ when $v\in e$. Let $H(n)=\sum_{k=1}^n1/k$. When $N_e$
+passes from $n$ to $n+1$, $H(N_e-1)$ increases by $1/n$, and each endpoint $v$ of $e$ chooses $e$ at rate $N_e/S_v$.
+Hence, for every $\sigma\in\mathbb{R}^E$ with $\sum_{e\ni v}\sigma_e=0$ at every vertex $v$, the \emph{charge}
+\[ M_\sigma(t)=\sum_e\sigma_e\,H\bigl(N_e(t)-1\bigr) \]
+has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. It is a martingale, with quadratic variation at most
+$\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}). It converges, and its limit satisfies
+\[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_e\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}, \]
+which is the law of $\sum_e\sigma_e\log W_e$ for independent standard exponential variables $W_e$
+(Theorem~\ref{thm:law}). On the even cycle $C_L$, $L\ge4$, the kernel is spanned by $\sigma_e=(-1)^e$, the ratios
+$N_e(t)/t$ converge almost surely to $(1+u_\infty,1-u_\infty,\dots,1+u_\infty,1-u_\infty)$, and
+$M_\sigma(t)-\sum_e\sigma_e\log(N_e(t)/t)\to0$. Therefore
+\[ L\,\mathrm{artanh}(u_\infty)=M_{\sigma,\infty},\qquad
+   u_\infty=\tanh\Bigl(\frac{\Lambda_1+\dots+\Lambda_{L/2}}{L}\Bigr), \]
+with independent standard logistic variables $\Lambda_j$ (Theorem~\ref{thm:conv}, Corollary~\ref{cor:cycle}). For WARM
+on even cycles this answers the question of~\cite{CL} and~\cite[Question~1]{Lima}. For the discrete-time urn, in which
+every pair is updated at each step, the law of the limit remains open. On $\mathbb{Z}$ the expectation of
+$\int_0^\infty dt/(N_{-1}N_0)$ is $\pi^2/6$, the value it has at every vertex of every even cycle
+(Proposition~\ref{prop:line}). Convergence on $K_4$, where $\dim\ker B=2$, and the rate of decay of the alternating
+amplitude on $\mathbb{Z}$ are open; Section~\ref{sec:num} gives simulations of both.
 
-\emph{What is known and what is new.} The model is that of~\cite{HHKR}, and the Lyapunov function used in
-Section~3 is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On infinite graphs of
-bounded degree, such as $\mathbb{Z}$, the process is well defined, as Hirsch, Holmes and Kleptsyn
-note~\cite[Section~1]{HHKtree}. Convergence of the discrete-time urn at $\alpha=1$ is due to Bena\"im,
-Benjamini, Chen and Lima, Chen and Lucas, and Lima~\cite{BBCL,CL,Lima}, and the question of the law of the limit is
-theirs~\cite{CL},~\cite[Question~1]{Lima}. The convergence argument on the cycle uses the theory of asymptotic
-pseudotrajectories of Bena\"im~\cite{Ben99}. Decoupling a linearly reinforced urn into independent exponential
-(Yule) processes goes back to Athreya and Karlin and to Rubin, see~\cite[Section~2.3]{Pemantle}. The limit of the
-classical P\'olya urn has a beta law~\cite[Theorem~2.1]{Pemantle}.
-We are not aware of earlier appearances of the charge martingales of Theorem~\ref{thm:mart}, of the identification
-of the limit on the even cycle in Theorem~\ref{thm:conv} and Corollary~\ref{cor:cycle}, or of
-Proposition~\ref{prop:line}. The terminal law of Theorem~\ref{thm:law} has the form the exponential embedding gives
-for a single urn (see the remark after it).
+\emph{What is known and what is new.} The model in discrete time is that of~\cite{HHKR}, and the Lyapunov function used
+in Section~\ref{sec:cycle} is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On
+infinite graphs of bounded degree, such as $\mathbb{Z}$, the process is well defined~\cite[Section~1]{HHKtree}. The
+convergence argument on the cycle uses the theory of asymptotic pseudotrajectories of Bena\"im~\cite{Ben99}. The
+results of the paper are Theorems~\ref{thm:mart}, \ref{thm:law} and~\ref{thm:conv}, Corollary~\ref{cor:cycle} and
+Proposition~\ref{prop:line}.
 
 \section{The charge martingales}\label{sec:mart}
 Let $G=(V,E)$ be a finite graph without loops or isolated vertices, with maximum degree $d$. Each vertex carries an
@@ -72,7 +83,7 @@ random where stated, and may differ between proofs. Write $X_e(t)=N_e(t)/t$, let
 the unsigned incidence matrix, $B_{ve}=1$ when $v\in e$, and let $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, $H=H^{(1)}$.
 
 \begin{theorem}\label{thm:mart}
-Let $\sigma\in\mathbb{R}^E$ satisfy $\sum_{e\ni v}\sigma_e=0$ for every $v$. Then
+Let all counts start at $1$, and let $\sigma\in\mathbb{R}^E$ satisfy $\sum_{e\ni v}\sigma_e=0$ for every $v$. Then
 \[ M_\sigma(t)=\sum_{e\in E}\sigma_e\,H(N_e(t)-1) \]
 is a martingale with $M_\sigma(0)=0$, jumps bounded by $\max_e|\sigma_e|$, predictable quadratic variation
 \[ \langle M_\sigma\rangle_t=\int_0^t\sum_{v\in V}\frac{1}{S_v(s)}\sum_{e\ni v}\frac{\sigma_e^2}{N_e(s)}\,ds , \]
@@ -124,7 +135,7 @@ For $\sigma\in\ker B$ the internal times cancel,
 so that $M_\sigma=\sum_e\sigma_eD_e$.
 
 \begin{theorem}\label{thm:law}
-Let $\sigma\in\ker B$. Then $M_\sigma(t)$ converges almost surely and in $L^2$ to a limit $M_{\sigma,\infty}$, and
+Let all counts start at $1$, and let $\sigma\in\ker B$. Then $M_\sigma(t)$ converges almost surely and in $L^2$ to a limit $M_{\sigma,\infty}$, and
 \[ \mathbb{E}\,e^{i\theta M_{\sigma,\infty}}=\prod_{e\in E}\Gamma(1+i\theta\sigma_e),\qquad\theta\in\mathbb{R}. \]
 Equivalently, $M_{\sigma,\infty}$ has the law of $\sum_e\sigma_e\log W_e$, where the $W_e$ are independent standard
 exponential variables; since $M_\sigma$ is linear in $\sigma$, the vector $(M_{\sigma,\infty})_{\sigma\in\ker B}$ has the
@@ -157,9 +168,8 @@ $\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]
 
 The law in Theorem~\ref{thm:law} has a simple description. If each count grew as an independent Yule process run on
 its own internal time $a_e$, then $\log N_e-a_e\to\log W_e$, and the internal times would cancel in every charge. For a
-single urn this decoupling into independent exponential processes is the embedding that goes back to Athreya and Karlin
-and to Rubin~\cite[Section~2.3]{Pemantle}. In WARM each edge belongs to the urns at both its endpoints, and the theorem is proved
-above from the charge martingales rather than from an embedding.
+single urn this decoupling into independent exponential processes is the classical embedding~\cite[Section~2.3]{Pemantle}.
+In WARM each edge belongs to the urns at both its endpoints.
 
 \begin{remark}\label{rem:fibre}
 Suppose that $X(t)$ converges to a point $x_\infty$ with positive coordinates and deterministic vertex sums
@@ -213,7 +223,7 @@ the other end has $S=2$.
 \end{proof}
 
 \begin{theorem}\label{thm:conv}
-On $C_L$, $L$ even, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ and
+On $C_L$, $L\ge4$ even, with all counts starting at $1$, almost surely $X(t)\to x^{(u_\infty)}$ with $|u_\infty|<1$ and
 \[ L\,\mathrm{artanh}(u_\infty)=M_\infty:=\lim_{t\to\infty}\sum_e(-1)^eH(N_e(t)-1). \]
 \end{theorem}
 \begin{proof}
@@ -274,18 +284,17 @@ On $\mathbb{Z}$, with vertex $v$ between edges $v-1$ and $v$, the process is bui
 choices. A vertex $w$ that does not ring during $[0,T]$ separates the line on that interval: the edges to the left of $w$
 change only at rings to the left of $w$, which depend only on those edges, and similarly on the right. Each vertex is
 silent on $[0,T]$ with probability $e^{-T}$, independently, so almost surely the line splits into finite blocks, each of
-which evolves on $[0,T]$ as a finite urn. This defines the process for all times, and its law is invariant under
-translations.
+which evolves on $[0,T]$ as a finite urn. This defines the process for all times, and, since it starts from unit counts and is built from
+independent clocks, its law is invariant under translations.
 
 \begin{proposition}\label{prop:line}
-For the critical WARM on $\mathbb{Z}$ with unit initial counts every count tends to infinity almost surely, and
+For WARM with $\alpha=1$ on $\mathbb{Z}$ with unit initial counts every count tends to infinity almost surely, and
 \[ c:=\mathbb{E}\int_0^\infty\frac{dt}{N_{-1}(t)N_0(t)}=\zeta(2)=\frac{\pi^2}{6}. \]
 The same expectation, with $N_{v-1}N_v$ in place of $N_{-1}N_0$, equals $\pi^2/6$ for every vertex $v$ of every even cycle
 $C_L$, $L\ge4$.
 \end{proposition}
 \begin{proof}
-The process on $\mathbb{Z}$ is well defined~\cite[Section~1]{HHKtree} and is invariant under translations, since
-it is built from independent clocks. The proof of Lemma~\ref{lem:growth} uses only the clocks of finitely many
+The proof of Lemma~\ref{lem:growth} uses only the clocks of finitely many
 vertices near the edge, so it applies on $\mathbb{Z}$ with $d=2$ and every count tends to infinity. The count $N_0$ increases at rate $N_0(S_0^{-1}+S_1^{-1})\le2$,
 and each increase from $n$ to $n+1$ adds $n^{-2}$ to $A(t)=H^{(2)}(N_0(t)-1)$, so
 $\mathbb{E}A(T)=\int_0^T\mathbb{E}\bigl[(N_0S_0)^{-1}+(N_0S_1)^{-1}\bigr]dt$. By translation invariance
@@ -305,7 +314,7 @@ $(u^2)''/8$ and, formally, $u$ obeys
 which conserves $\int v$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
 in $\tau=\log t$ predicts that the local alternating amplitude decays like $(\log t)^{-1/4}$.
 
-\section{Numerical checks}\label{sec:num}
+\section{Simulations}\label{sec:num}
 All simulations run the process exactly (rate-one vertex clocks, unit initial counts).
 
 \emph{Terminal law on cycles.} The program \texttt{code/exact\_law\_check.py} runs independent copies of the jump chain
@@ -317,26 +326,23 @@ copies on $C_{50}$ the variance is $81.9$ (exact $82.2$, standard error $1.8$) a
 $0.008$ (the $5\%$ level is about $0.022$).
 
 \emph{Even cycles in continuous time.} The program \texttt{code/warm2.c} runs $R$ independent copies to time $T$ (each
-run stops at the first ring after $T$) and records $M(T)$, the ring-sampled bracket and $\mathrm{artanh}(u)$. The
+run stops at the first ring after $T$) and records $M(T)$ and the ring-sampled bracket. The
 ring-sampled bracket is the sum over rings of $1/(N_{v-1}N_v)$ for the ringing vertex $v$ before the ring; its mean is
-$\mathbb{E}\langle M\rangle_T$. The value $u$ is read from $\sum_e(-1)^e\log X_e(T)=L\,\mathrm{artanh}(u)$.
+$\mathbb{E}\langle M\rangle_T$.
 \begin{center}
-\begin{tabular}{rrrrrrr}
+\begin{tabular}{rrrrrr}
 \toprule
-$L$ & $T$ & $R$ & mean $M$ (s.e.) & $\mathrm{Var}\,M$ & mean bracket & $L\,\mathbb{E}\,\mathrm{artanh}(u)^2$\\
+$L$ & $T$ & $R$ & mean $M$ (s.e.) & $\mathrm{Var}\,M$ & mean bracket\\
 \midrule
-100 & $10^3$ & 400 & $0.30$ $(0.64)$ & 161.6 & 164.3 & 1.61\\
-400 & $10^3$ & 200 & $-2.86$ $(1.76)$ & 620 & 657 & 1.56\\
-100 & $10^4$ & 200 & -- & 154.9 & 164.7 & --\\
+100 & $10^3$ & 400 & $0.30$ $(0.64)$ & 161.6 & 164.3\\
+400 & $10^3$ & 200 & $-2.86$ $(1.76)$ & 620 & 657\\
+100 & $10^4$ & 200 & -- & 154.9 & 164.7\\
 \bottomrule
 \end{tabular}
 \end{center}
-The terminal values are $\mathbb{E}M_\infty^2=\mathbb{E}\langle M\rangle_\infty=L\pi^2/6$, that is $164.5$ and $658.0$,
-and $L\,\mathbb{E}\,\mathrm{artanh}(u_\infty)^2=\pi^2/6=1.645$ for every $L$. The bracket per vertex, $1.64$ at both sizes,
+The terminal values are $\mathbb{E}M_\infty^2=\mathbb{E}\langle M\rangle_\infty=L\pi^2/6$, that is $164.5$ and $658.0$. The bracket per vertex, $1.64$ at both sizes,
 agrees with $\pi^2/6$; the sample variances have standard errors of about $10\%$ of their size at these $R$. The difference
-$\sum_e(-1)^e\log X_e(T)-M(T)$ in \eqref{eq:link} has root mean square $0.007$ at $T=10^4$, $L=100$. At $T=10^3$ the counts
-on $C_{100}$ are not yet a pure alternation, which lowers the last column: the slow modes of \eqref{eq:ode} near
-wavenumber $\pi$ decay like $t^{-\pi^2/L^2}$.
+$\sum_e(-1)^e\log X_e(T)-M(T)$ in \eqref{eq:link} has root mean square $0.007$ at $T=10^4$, $L=100$.
 
 \emph{Small graphs.} On $K_4$, where $\dim\ker B=2$, the standard deviation of each $X_e$ over $2000$ runs stays near
 $0.35$ between $T=10^3$ and $T=10^5$, while $\max_v|S_v/t-2|$ falls from $0.25$ to $0.08$: the limit is a random point
@@ -374,8 +380,10 @@ wrote the convergence proof on the even cycle, wrote and ran the simulations of 
 paper. A Codex agent (OpenAI), refereeing the paper, supplied the terminal law of Theorem~\ref{thm:law} and its proof,
 the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the value $c=\zeta(2)$ in
 Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}. The mathematics these rest on is due to the
-authors cited: the model and its Lyapunov function~\cite{HHKR,BBCL}, the discrete-time urn, its convergence at linearity
-and the question of the law of its limit~\cite{BBCL,CL,Lima}, the existence of the process on $\mathbb{Z}$~\cite{HHKtree}, the stochastic-approximation theory~\cite{Ben99}, and
+authors cited: the model~\cite{HHKR} and its Lyapunov function~\cite[Lemma~A.3]{HHKR}, the analogue
+of~\cite[Lemma~4.1]{BBCL}, the continuous-time form and the existence of the process on $\mathbb{Z}$~\cite{HHKtree},
+the discrete-time urn, its convergence at linearity
+and the question of the law of its limit~\cite{BBCL,CL,Lima}, the stochastic-approximation theory~\cite{Ben99}, and
 the exponential embedding of a single reinforced urn~\cite[Section~2.3]{Pemantle}. The author directed the work and is responsible for the content of the paper and for decisions concerning
 its dissemination.
 

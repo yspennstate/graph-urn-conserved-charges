@@ -51,7 +51,9 @@ matches the kernel, and the slow decay of the alternating envelope on long cycle
 line.
 
 \emph{What is known and what is new.} The model is that of~\cite{HHKR}, and the Lyapunov function used in
-Section~3 is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. Convergence of the discrete-time urn at $\alpha=1$ is due to Bena\"im,
+Section~3 is theirs~\cite[Lemma~A.3]{HHKR}, the analogue for WARM of~\cite[Lemma~4.1]{BBCL}. On infinite graphs of
+bounded degree, such as $\mathbb{Z}$, the process is well defined, as Hirsch, Holmes and Kleptsyn
+note~\cite[Section~1]{HHKtree}. Convergence of the discrete-time urn at $\alpha=1$ is due to Bena\"im,
 Benjamini, Chen and Lima, Chen and Lucas, and Lima~\cite{BBCL,CL,Lima}, and the question of the law of the limit is
 theirs~\cite{CL},~\cite[Question~1]{Lima}. The convergence argument on the cycle uses the theory of asymptotic
 pseudotrajectories of Bena\"im~\cite{Ben99}. Decoupling a linearly reinforced urn into independent exponential
@@ -156,8 +158,8 @@ $\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]
 The law in Theorem~\ref{thm:law} has a simple description. If each count grew as an independent Yule process run on
 its own internal time $a_e$, then $\log N_e-a_e\to\log W_e$, and the internal times would cancel in every charge. For a
 single urn this decoupling into independent exponential processes is the embedding that goes back to Athreya and Karlin
-and to Rubin~\cite[Section~2.3]{Pemantle}. In WARM several urns share each edge, and the theorem is proved above from the
-charge martingales rather than from an embedding.
+and to Rubin~\cite[Section~2.3]{Pemantle}. In WARM each edge belongs to the urns at both its endpoints, and the theorem is proved
+above from the charge martingales rather than from an embedding.
 
 \begin{remark}\label{rem:fibre}
 Suppose that $X(t)$ converges to a point $x_\infty$ with positive coordinates and deterministic vertex sums
@@ -282,8 +284,9 @@ The same expectation, with $N_{v-1}N_v$ in place of $N_{-1}N_0$, equals $\pi^2/6
 $C_L$, $L\ge4$.
 \end{proposition}
 \begin{proof}
-The proof of Lemma~\ref{lem:growth} uses only the clocks of finitely many vertices near the edge, so it applies on
-$\mathbb{Z}$ with $d=2$ and every count tends to infinity. The count $N_0$ increases at rate $N_0(S_0^{-1}+S_1^{-1})\le2$,
+The process on $\mathbb{Z}$ is well defined~\cite[Section~1]{HHKtree} and is invariant under translations, since
+it is built from independent clocks. The proof of Lemma~\ref{lem:growth} uses only the clocks of finitely many
+vertices near the edge, so it applies on $\mathbb{Z}$ with $d=2$ and every count tends to infinity. The count $N_0$ increases at rate $N_0(S_0^{-1}+S_1^{-1})\le2$,
 and each increase from $n$ to $n+1$ adds $n^{-2}$ to $A(t)=H^{(2)}(N_0(t)-1)$, so
 $\mathbb{E}A(T)=\int_0^T\mathbb{E}\bigl[(N_0S_0)^{-1}+(N_0S_1)^{-1}\bigr]dt$. By translation invariance
 $\mathbb{E}[(N_0S_1)^{-1}]=\mathbb{E}[(N_{-1}S_0)^{-1}]$, and $(N_0^{-1}+N_{-1}^{-1})/S_0=1/(N_{-1}N_0)$, so
@@ -372,7 +375,7 @@ paper. A Codex agent (OpenAI), refereeing the paper, supplied the terminal law o
 the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the value $c=\zeta(2)$ in
 Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}. The mathematics these rest on is due to the
 authors cited: the model and its Lyapunov function~\cite{HHKR,BBCL}, the discrete-time urn, its convergence at linearity
-and the question of the law of its limit~\cite{BBCL,CL,Lima}, the stochastic-approximation theory~\cite{Ben99}, and
+and the question of the law of its limit~\cite{BBCL,CL,Lima}, the existence of the process on $\mathbb{Z}$~\cite{HHKtree}, the stochastic-approximation theory~\cite{Ben99}, and
 the exponential embedding of a single reinforced urn~\cite[Section~2.3]{Pemantle}. The author directed the work and is responsible for the content of the paper and for decisions concerning
 its dissemination.
 
@@ -398,7 +401,7 @@ $B$ & unsigned vertex--edge incidence matrix & Section~\ref{sec:mart}\\
 $H^{(p)}$, $H$ & $H^{(p)}(n)=\sum_{k=1}^nk^{-p}$, harmonic number $H=H^{(1)}$ & Section~\ref{sec:intro}\\
 $\sigma\in\ker B$ & charge vector & Section~\ref{sec:intro}\\
 $M_\sigma$, $M_{\sigma,\infty}$ & charge martingale, its terminal value & Section~\ref{sec:intro}\\
-$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable and optional quadratic variation & Section~\ref{sec:intro}\\
+$\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable and optional quadratic variation & Thm.~\ref{thm:mart}\\
 $\psi$, $\gamma$ & digamma function, Euler's constant & Section~\ref{sec:mart}\\
 $F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lem.~\ref{lem:growth}\\
 $\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lem.~\ref{lem:growth}\\
@@ -433,6 +436,7 @@ $T$ & a fixed time; in Section~\ref{sec:num}, the final time of a run & Section~
 \bibitem{BBCL} M. Bena\"im, I. Benjamini, J. Chen, Y. Lima, A generalized P\'olya's urn with graph based interactions, Random Structures Algorithms 46 (2015), 614--634, doi:10.1002/rsa.20523, arXiv:1211.1247.
 \bibitem{CL} J. Chen, C. Lucas, A generalized P\'olya's urn with graph based interactions: convergence at linearity, Electron. Commun. Probab. 19 (2014), 1--13, doi:10.1214/ECP.v19-3094, arXiv:1306.5465.
 \bibitem{HHKR} R. van der Hofstad, M. Holmes, A. Kuznetsov, W. Ruszel, Strongly reinforced P\'olya urns with graph-based competition, Ann. Appl. Probab. 26 (2016), 2494--2539, doi:10.1214/16-AAP1153, arXiv:1406.0449.
+\bibitem{HHKtree} C. Hirsch, M. Holmes, V. Kleptsyn, WARM percolation on a regular tree in the strong reinforcement regime, preprint (2020), arXiv:2009.07682.
 \bibitem{Lima} Y. Lima, Graph-based P\'olya's urn: completion of the linear case, Stoch. Dyn. 16 (2016), no.~2, 1660007, doi:10.1142/S0219493716600078, arXiv:1409.7826.
 \bibitem{Pemantle} R.~Pemantle, A survey of random processes with reinforcement, Probab. Surv. 4 (2007), 1--79,
 doi:10.1214/07-PS094, arXiv:math/0610076.

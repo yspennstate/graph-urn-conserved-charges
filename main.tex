@@ -54,8 +54,8 @@ along the kernel of the unsigned incidence matrix $B$, $B_{ve}=1$ when $v\in e$.
 passes from $n$ to $n+1$, $H(N_e-1)$ increases by $1/n$, and each endpoint $v$ of $e$ chooses $e$ at rate $N_e/S_v$.
 Hence, for every $\sigma\in\ker B$, that is, with $\sum_{e\ni v}\sigma_e=0$ at every vertex $v$, the \emph{charge}
 \[ M_\sigma(t)=\sum_e\sigma_e\,H\bigl(N_e(t)-1\bigr) \]
-has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. Along the mean-field flow the corresponding quantity
-$\sum_e\sigma_e\log x_e$ is exactly conserved (Section~\ref{sec:mart}); for the urn the charge is a martingale, with quadratic variation at most
+has drift $\sum_vS_v^{-1}\sum_{e\ni v}\sigma_e=0$. In the mean-field equation of Section~\ref{sec:mart}, which the normalised
+counts follow up to a martingale term, the corresponding quantity $\sum_e\sigma_e\log x_e$ is exactly conserved; for the urn the charge is a martingale, with quadratic variation at most
 $\zeta(2)\sum_e\sigma_e^2$ (Theorem~\ref{thm:mart}).
 
 The same cancellation makes
@@ -188,11 +188,11 @@ $\mathrm{Var}\,\langle M_\sigma\rangle_\infty=\mathbb{E}R_\infty^2=\mathbb{E}[R]
 Suppose that $X(t)$ converges to a point $x_\infty$ with positive coordinates and deterministic vertex sums
 $Bx_\infty=b$. By \eqref{eq:link}, $\sum_e\sigma_e\log x_{\infty,e}=M_{\sigma,\infty}$ for every $\sigma\in\ker B$. These
 values determine $x_\infty$: on $P=\{x\in(0,\infty)^E:Bx=b\}$, assumed nonempty, the map $x\mapsto\pi(\log x)$, with $\pi$
-the orthogonal projection onto $\ker B$, is a bijection onto $\ker B$. Indeed, for $m\in\ker B$ the strictly convex
-function $\sum_ex_e(\log x_e-1)-\langle m,x\rangle$ has a unique minimiser on the compact closure of $P$; it lies in $P$,
+the orthogonal projection onto $\ker B$, is a bijection onto $\ker B$. Indeed, for $\mu\in\ker B$ the strictly convex
+function $\sum_ex_e(\log x_e-1)-\langle \mu,x\rangle$ has a unique minimiser on the compact closure of $P$; it lies in $P$,
 because moving from a boundary point towards a point of $P$ decreases the function at infinite rate, and the first-order
-condition there is $\pi(\log x)=m$; injectivity follows from $\sum_e(x_e-y_e)(\log x_e-\log y_e)>0$ for distinct
-$x,y\in P$. Since $(\ker B)^\perp$ is the range of $B^{\top}$, Theorem~\ref{thm:law} then says that $x_\infty$ has the
+condition there is $\pi(\log x)=\mu$; injectivity follows from $\sum_e(x_e-x'_e)(\log x_e-\log x'_e)>0$ for distinct
+$x,x'\in P$. Since $(\ker B)^\perp$ is the range of $B^{\top}$, Theorem~\ref{thm:law} then says that $x_\infty$ has the
 law of the unique point of $P$ of the form $x_e=W_e\exp(y_v+y_{v'})$, $e=(v,v')$, with vertex potentials $y$: the scaling of
 independent exponential edge weights to the vertex sums $b$.
 \end{remark}
@@ -232,8 +232,8 @@ $1/S_v+1/S_{v'}=1$ along every edge of the cycle, so $S$ takes two values $s,s'$
 $\sum_v S_v=2\sum_e x_e=2L$ gives $s+s'=4$, hence $s=s'=2$ and $x\in\Sigma$. Otherwise the positive edges form paths
 $w_0w_1\cdots w_k$ separated by single zero edges, and along such a path $S(w_i)$ alternates between $s$ and
 $s'=s/(s-1)$. Since the edges outside the path at $w_0$ and $w_k$ are zero, $x_1=S(w_0)=s$, and solving along the path
-gives $x_{2i}=ih$, $x_{2i+1}=s-ih$ with $h=s'-s$. If $k$ is odd the end condition $x_k=S(w_k)=s'$ forces $h=0$, hence
-$k=1$ and $x_1=2$. If $k$ is even it forces $h=2s/k$, and $1/s+1/s'=1$ gives $s=(2k+2)/(k+2)$; all $x_j$ are then
+gives $x_{2i}=i\Delta$, $x_{2i+1}=s-i\Delta$ with $\Delta=s'-s$. If $k$ is odd the end condition $x_k=S(w_k)=s'$ forces $\Delta=0$, hence
+$k=1$ and $x_1=2$. If $k$ is even it forces $\Delta=2s/k$, and $1/s+1/s'=1$ gives $s=(2k+2)/(k+2)$; all $x_j$ are then
 positive. So every such path is either a single edge of weight $2$ with $S=2$ at both ends, or a path of even length $k$
 with $S=(2k+2)/(k+2)$ at both ends, and the configuration is determined by the path lengths. If all paths have length
 one, $x$ alternates $2,0$ and lies in $\Sigma$ ($u=\pm1$). Otherwise some path of even length $k\le L-1$ meets a zero edge
@@ -329,15 +329,15 @@ convergence. On $C_L$, $\mathbb{E}\langle M\rangle_\infty=L\zeta(2)$ by Theorem~
 have the same expectation by rotation invariance.
 \end{proof}
 
-On $\mathbb{Z}$ the kernel is replaced by a local conservation law. With $Y_e=(-1)^eH(N_e-1)$ and $J_v=(-1)^v/S_v$,
+On $\mathbb{Z}$ the role of the kernel is taken by a local balance between neighbouring edges. With $Y_e=(-1)^eH(N_e-1)$ and $J_v=(-1)^v/S_v$,
 the computation in Theorem~\ref{thm:mart} gives
 \[ dY_e=-(J_{e+1}-J_e)\,dt+dM_e , \]
 with $M_e$ a martingale. Linearising \eqref{eq:ode} at $x\equiv1$ gives the decay rate $(1+\cos k)/2$ for the mode
 $\exp(ike)$, which vanishes at $k=\pi$. Suppose that the alternating part of
 the normalised counts varies slowly along the line, and neglect the martingale terms. Writing $x_e=1+(-1)^eu(e)+w(e)$ with $u$ slowly varying, the field $w$ relaxes to
 $(u^2)''/8$ and, formally, $u$ obeys
-\[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau z=\tfrac14\,\partial_e^2\tanh z,\quad z=\mathrm{artanh}\,u, \]
-which conserves $\int z$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
+\[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau \xi=\tfrac14\,\partial_e^2\tanh \xi,\quad \xi=\mathrm{artanh}\,u, \]
+which conserves $\int \xi$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
 in $\tau=\log t$ predicts that the amplitude of the alternating part decays like $(\log t)^{-1/4}$.
 
 \section{Simulations}\label{sec:num}
@@ -438,7 +438,7 @@ $\tau$ & time $\log t$ of the mean-field equation & Section~\ref{sec:mart}\\
 $\mathcal{L}$ & Lyapunov function of the mean-field equation & Section~\ref{sec:cycle}\\
 $K_e$ & compensated count of edge $e$ & Section~\ref{sec:cycle}\\
 $S_v(x)$, $F_e(x)$ & $\sum_{e\ni v}x_e$ at a point $x$; the field $x_e\,\partial_e\mathcal{L}(x)$ & Section~\ref{sec:mart}, Section~\ref{sec:cycle}\\
-$s$, $s'$, $h$ & the two values of $S$ along a path, $h=s'-s$ & Lemma~\ref{lem:eq}\\
+$s$, $s'$, $\Delta$ & the two values of $S$ along a path, $\Delta=s'-s$ & Lemma~\ref{lem:eq}\\
 $\mathcal{K}$ & compact forward-invariant set of the mean-field flow & Theorem~\ref{thm:conv}\\
 $\delta$ & $1/(4L)$ & Theorem~\ref{thm:conv}\\
 $x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Section~\ref{sec:cycle}\\
@@ -457,7 +457,7 @@ $p$ & $(1+u_\infty)/2$ on $C_4$ & Section~\ref{sec:cycle}\\
 $f$ & density of $M_{\sigma,\infty}$ on $C_4$ & Section~\ref{sec:cycle}\\
 $Y_e$, $J_v$, $A(t)$ & $(-1)^eH(N_e-1)$, $(-1)^v/S_v$ on $\mathbb{Z}$; $H^{(2)}(N_0(t)-1)$ & Section~\ref{sec:line}\\
 $c$, $C$, $C'$, $C''$ & constants, finite and possibly random & Section~\ref{sec:mart}\\
-$M_e$, $u(e)$, $w(e)$, $z$ & martingale of edge $e$ on $\mathbb{Z}$; alternating and smooth parts of $x_e$; $\mathrm{artanh}\,u$ & Section~\ref{sec:line}\\
+$M_e$, $u(e)$, $w(e)$, $\xi$ & martingale of edge $e$ on $\mathbb{Z}$; alternating and smooth parts of $x_e$; $\mathrm{artanh}\,u$ & Section~\ref{sec:line}\\
 $\zeta$ & Riemann zeta function & Section~\ref{sec:intro}\\
 $\tau_0$ & shift of origin in the fitted form $(\log t+\tau_0)^{-1/4}$ & Section~\ref{sec:num}\\
 $T$ & a deterministic time; the window length in Theorem~\ref{thm:conv}; in Section~\ref{sec:num}, the final time of a run & Section~\ref{sec:mart}\\

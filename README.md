@@ -24,7 +24,9 @@ following statements:
 
 The martingales and the law of the limit on even cycles are due to M. Holmes and V. Kleptsyn, whose work on the
 critical regime is cited as "Infinite WARM graphs II: critical regime" in Hirsch, Holmes and Kleptsyn
-(arXiv:2009.07682) and in Infinite WARM graphs III (Nonlinearity, 2023). The model is due to van der Hofstad,
+(arXiv:2009.07682) and in Infinite WARM graphs III (Nonlinearity, 2023). Their proofs are unpublished; the paper
+gives complete proofs. The law of the limit on general finite graphs and the identity on the integers are not among
+the statements they communicated. The model is due to van der Hofstad,
 Holmes, Kuznetsov and Ruszel (2016); the discrete-time urn and its convergence at linearity to Benaim, Benjamini,
 Chen and Lima (2015), Chen and Lucas (2014) and Lima (2016).
 

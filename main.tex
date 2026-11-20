@@ -137,11 +137,11 @@ $\liminf_{t\to\infty}N_e(t)/t^{\lambda}>0$; in particular every count tends to i
 \begin{proof}
 The count $N_e$ increases at rate $N_e(S_u^{-1}+S_v^{-1})\le2$, and each increase from $n$ to $n+1$ adds $1/n$ to
 $H(N_e-1)$, so $D_e$ is a martingale. Its quadratic variation is $H^{(2)}(N_e(t)-1)\le\zeta(2)$, so it is bounded in
-$L^2$ and converges almost surely and in $L^2$. Let $F_w(t)$ be the number of rings of $w$ by time $t$. Every ring of
-$v$ adds one to $S_v$, so $S_v\ge F_v$ and $\liminf S_v/t\ge1$. A ring of $w$ adds to $S_v$ only if $w=v$ or $w$ lies in the set $N(v)$ of
-neighbours of $v$, and then by at most one, so $S_v(t)\le d+\sum_{w\in\{v\}\cup N(v)}F_w(t)$. Since $F_w(t)/t\to1$ almost surely, for $\varepsilon>0$
-there is an almost surely finite $T$ with $S_w(t)\le(d+1)(1+\varepsilon)t$ for all $w$ and $t\ge T$. Then
-$a_e(t)\ge\lambda'\log t-C$ for $t\ge T$, with $\lambda'=2/((d+1)(1+\varepsilon))$ and $C$ finite and random,
+$L^2$ and converges almost surely and in $L^2$. Let $Z_w(t)$ be the number of rings of $w$ by time $t$. Every ring of
+$v$ adds one to $S_v$, so $S_v\ge Z_v$ and $\liminf S_v/t\ge1$. A ring of $w$ adds to $S_v$ only if $w=v$ or $w$ lies in the set $N(v)$ of
+neighbours of $v$, and then by at most one, so $S_v(t)\le d+\sum_{w\in\{v\}\cup N(v)}Z_w(t)$. Since $Z_w(t)/t\to1$ almost surely, for $\varepsilon>0$
+there is an almost surely finite $T_0$ with $S_w(t)\le(d+1)(1+\varepsilon)t$ for all $w$ and $t\ge T_0$. Then
+$a_e(t)\ge\lambda'\log t-C$ for $t\ge T_0$, with $\lambda'=2/((d+1)(1+\varepsilon))$ and $C$ finite and random,
 as are $C'$ and $C''$ below. Since $D_e$
 converges, $H(N_e(t)-1)\ge\lambda'\log t-C'$, so $N_e\to\infty$ and, as $H(n-1)-\log n\to\gamma$,
 $\log N_e(t)\ge\lambda'\log t-C''$. Taking $\varepsilon$ small gives the claim.
@@ -192,7 +192,7 @@ function $\sum_ex_e(\log x_e-1)-\langle m,x\rangle$ has a unique minimiser on th
 because moving from a boundary point towards a point of $P$ decreases the function at infinite rate, and the first-order
 condition there is $\pi(\log x)=m$; injectivity follows from $\sum_e(x_e-y_e)(\log x_e-\log y_e)>0$ for distinct
 $x,y\in P$. Since $(\ker B)^\perp$ is the range of $B^{\top}$, Theorem~\ref{thm:law} then says that $x_\infty$ has the
-law of the unique point of $P$ of the form $x_e=W_e\,e^{y_u+y_v}$, $e=(u,v)$, with vertex potentials $y$: the scaling of
+law of the unique point of $P$ of the form $x_e=W_e\exp(y_u+y_v)$, $e=(u,v)$, with vertex potentials $y$: the scaling of
 independent exponential edge weights to the vertex sums $b$.
 \end{remark}
 
@@ -231,8 +231,8 @@ $1/S_u+1/S_v=1$ along every edge of the cycle, so $S$ takes two values $s,s'$ al
 $\sum_v S_v=2\sum_e x_e=2L$ gives $s+s'=4$, hence $s=s'=2$ and $x\in\Sigma$. Otherwise the positive edges form paths
 $w_0w_1\cdots w_k$ separated by single zero edges, and along such a path $S(w_i)$ alternates between $s$ and
 $s'=s/(s-1)$. Since the edges outside the path at $w_0$ and $w_k$ are zero, $x_1=S(w_0)=s$, and solving along the path
-gives $x_{2i}=id$, $x_{2i+1}=s-id$ with $d=s'-s$. If $k$ is odd the end condition $x_k=S(w_k)=s'$ forces $d=0$, hence
-$k=1$ and $x_1=2$. If $k$ is even it forces $d=2s/k$, and $1/s+1/s'=1$ gives $s=(2k+2)/(k+2)$; all $x_j$ are then
+gives $x_{2i}=ih$, $x_{2i+1}=s-ih$ with $h=s'-s$. If $k$ is odd the end condition $x_k=S(w_k)=s'$ forces $h=0$, hence
+$k=1$ and $x_1=2$. If $k$ is even it forces $h=2s/k$, and $1/s+1/s'=1$ gives $s=(2k+2)/(k+2)$; all $x_j$ are then
 positive. So every such path is either a single edge of weight $2$ with $S=2$ at both ends, or a path of even length $k$
 with $S=(2k+2)/(k+2)$ at both ends, and the configuration is determined by the path lengths. If all paths have length
 one, $x$ alternates $2,0$ and lies in $\Sigma$ ($u=\pm1$). Otherwise some path of even length $k\le L-1$ meets a zero edge
@@ -249,21 +249,21 @@ where $\sigma_e=(-1)^e$ and $M_{\sigma,\infty}=\lim_{t\to\infty}M_\sigma(t)$.
 \begin{proof}
 The first step follows the proof of~\cite[Theorem~1.1(b)]{BBCL}, with one vertex updated at a time.
 By Lemma~\ref{lem:growth} and since $\sum_eN_e(t)-L$ is a Poisson process of rate $L$, $X(t)$ eventually stays in the
-compact set $K=\{x\in[0,\infty)^E:\sum x_e\le 2L,\ S_v(x)\ge1/2\ \forall v\}$, which is forward invariant for
+compact set $\mathcal{K}=\{x\in[0,\infty)^E:\sum x_e\le 2L,\ S_v(x)\ge1/2\ \forall v\}$, which is forward invariant for
 \eqref{eq:ode}, since $\frac{d}{d\tau}\sum_ex_e=L-\sum_ex_e$ and $\frac{d}{d\tau}S_v=\sum_{e\ni v}x_e\,\partial_e\mathcal{L}\ge1-S_v$,
 and on which the field is Lipschitz. The total jump rate is $L$, so by Doob's inequality the martingale
 term over a window satisfies
 $\mathbb{E}\sup_{h\le T}|\int_{e^\tau}^{e^{\tau+h}}t^{-1}dK_e(t)|^2\le4\int_{e^\tau}^{e^{\tau+T}}Lt^{-2}\,dt\le4Le^{-\tau}$,
 and the Borel--Cantelli lemma along integer $\tau$ shows that it tends to zero almost surely, uniformly over windows of
 length $T$. The jumps of $X$ are at most $1/t$. By Gronwall's lemma the linear interpolation of $\tau\mapsto X(e^\tau)$ is
-then a precompact asymptotic pseudotrajectory of the flow of \eqref{eq:ode} on $K$ in the sense of
+then a precompact asymptotic pseudotrajectory of the flow of \eqref{eq:ode} on $\mathcal{K}$ in the sense of
 \cite[Section~3]{Ben99}, and its limit set is internally chain transitive \cite[Theorem~5.7]{Ben99}. The function
-$-\mathcal{L}$ is strictly decreasing along every nonstationary orbit, and it takes finitely many values on the equilibria in $K$: at such an equilibrium every $S_v>0$, so
+$-\mathcal{L}$ is strictly decreasing along every nonstationary orbit, and it takes finitely many values on the equilibria in $\mathcal{K}$: at such an equilibrium every $S_v>0$, so
 $0=\frac{d}{d\tau}\sum_ex_e=L-\sum_ex_e$ and Lemma~\ref{lem:eq} applies ($\mathcal{L}\equiv L\log2-L$ on $\Sigma$). By \cite[Proposition~6.4]{Ben99} the limit set
 consists of equilibria, and being connected it lies in $\Sigma$ or is a single point as in Lemma~\ref{lem:eq}(2).
 
 Points as in Lemma~\ref{lem:eq}(2): let $x^*$ be such a point, with $x^*_e=0$ and $\partial_e\mathcal{L}(x^*)\ge1/(2L)$, and choose a
-neighbourhood $U$ of $x^*$ in $K$ on which $x_e\le1$ and $\partial_e\mathcal{L}\ge1/(4L)$. On the event
+neighbourhood $U$ of $x^*$ in $\mathcal{K}$ on which $x_e\le1$ and $\partial_e\mathcal{L}\ge1/(4L)$. On the event
 $A_m=\{X(t)\in U\text{ for all }t\ge m\}$, $m\in\mathbb{N}$, the internal time of $e$ satisfies
 $a_e(t)-a_e(m)=\int_m^t(1+\partial_e\mathcal{L}(X(s)))\,s^{-1}ds\ge(1+\delta)\log(t/m)$ with $\delta=1/(4L)$. By
 Lemma~\ref{lem:growth}, $\log N_e(t)-a_e(t)$ converges, so $X_e(t)\ge ct^{\delta}\to\infty$ on $A_m$, which contradicts
@@ -311,7 +311,7 @@ independent clocks, its law is invariant under translations.
 
 \begin{proposition}\label{prop:line}
 For WARM with $\alpha=1$ on $\mathbb{Z}$ with unit initial counts every count tends to infinity almost surely, and
-\[ c:=\mathbb{E}\int_0^\infty\frac{dt}{N_{-1}(t)N_0(t)}=\zeta(2)=\frac{\pi^2}{6}. \]
+\[ \mathbb{E}\int_0^\infty\frac{dt}{N_{-1}(t)N_0(t)}=\zeta(2)=\frac{\pi^2}{6}. \]
 The same expectation, with $N_{v-1}N_v$ in place of $N_{-1}N_0$, equals $\pi^2/6$ for every vertex $v$ of every even cycle
 $C_L$, $L\ge4$.
 \end{proposition}
@@ -332,11 +332,11 @@ On $\mathbb{Z}$ the kernel is replaced by a local conservation law. With $Y_e=(-
 the computation in Theorem~\ref{thm:mart} gives
 \[ dY_e=-(J_{e+1}-J_e)\,dt+dM_e , \]
 with $M_e$ a martingale. Linearising \eqref{eq:ode} at $x\equiv1$ gives the decay rate $(1+\cos k)/2$ for the mode
-$e^{ike}$, which vanishes at $k=\pi$. Suppose that the alternating part of
+$\exp(ike)$, which vanishes at $k=\pi$. Suppose that the alternating part of
 the normalised counts varies slowly along the line, and neglect the martingale terms. Writing $x_e=1+(-1)^eu(e)+w(e)$ with $u$ slowly varying, the field $w$ relaxes to
 $(u^2)''/8$ and, formally, $u$ obeys
-\[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau v=\tfrac14\,\partial_e^2\tanh v,\quad v=\mathrm{artanh}\,u, \]
-which conserves $\int v$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
+\[ \partial_\tau u=\tfrac14(1-u^2)\,\partial_e^2u ,\qquad\text{equivalently}\qquad \partial_\tau z=\tfrac14\,\partial_e^2\tanh z,\quad z=\mathrm{artanh}\,u, \]
+which conserves $\int z$, the continuum form of the charge. Started from the noise of the early stage, this heat flow
 in $\tau=\log t$ predicts that the amplitude of the alternating part decays like $(\log t)^{-1/4}$.
 
 \section{Simulations}\label{sec:num}
@@ -393,7 +393,7 @@ Lima~\cite{BBCL}; Chen and Lucas~\cite{CL} and Lima~\cite{Lima} proved its conve
 the classical urn in exponential processes is due to Rubin and was published by Davis~\cite{Davis}. The
 stochastic-approximation theory is that of Bena\"im~\cite{Ben99}. A Codex agent (OpenAI) wrote the proof of
 Theorem~\ref{thm:law}, the proofs of the identities for $[M_\sigma]$ and $\mathrm{Var}\,\langle M_\sigma\rangle_\infty$, the
-computation of $c=\zeta(2)$ in Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}; Claude Opus~5.5
+computation of the value $\zeta(2)$ in Proposition~\ref{prop:line} and the proof in Remark~\ref{rem:fibre}; Claude Opus~5.5
 (Anthropic) wrote the other proofs, the heuristic at the end of Section~\ref{sec:line}, the
 simulations of Section~\ref{sec:num} and the text. The author directed the work and is responsible for the content of
 the paper and for decisions concerning its dissemination.
@@ -403,8 +403,8 @@ The code, the outputs of the simulations of Section~\ref{sec:num} and the script
 \clearpage
 \appendix
 \section{Notation}
-\begin{center}\footnotesize
-\begin{tabular}{l p{6.1cm} l}
+\begin{center}\scriptsize
+\begin{tabular}{l p{5.6cm} p{2.5cm}}
 \toprule
 Symbol & Meaning & First defined\\
 \midrule
@@ -419,7 +419,8 @@ $\sigma\in\ker B$ & vector with $\sum_{e\ni v}\sigma_e=0$ at every vertex & Sect
 $M_\sigma$, $M_{\sigma,\infty}$ & the charge, its limit & Section~\ref{sec:intro}\\
 $\langle M_\sigma\rangle$, $[M_\sigma]$ & predictable quadratic variation, quadratic variation & Theorem~\ref{thm:mart}\\
 $\psi$, $\gamma$ & digamma function, Euler's constant & Section~\ref{sec:mart}\\
-$F_w(t)$ & number of rings of the clock of $w$ by time $t$ & Lemma~\ref{lem:growth}\\
+$Z_w(t)$, $N(v)$ & number of rings of the clock of $w$ by time $t$; the set of neighbours of $v$ & Lemma~\ref{lem:growth}\\
+$T_0$ & almost surely finite random time after which the vertex sums grow at most linearly & Lemma~\ref{lem:growth}\\
 $\lambda$ & growth exponent of the counts, $\lambda<2/(d+1)$ & Lemma~\ref{lem:growth}\\
 $a_e(t)$ & internal time of edge $e$ & Lemma~\ref{lem:growth}\\
 $D_e$ & the martingale $H(N_e-1)-a_e$ & Lemma~\ref{lem:growth}\\
@@ -427,22 +428,34 @@ $W_e$ & independent standard exponential variables & Section~\ref{sec:intro}\\
 $\Gamma$ & Euler's Gamma function & Section~\ref{sec:intro}\\
 $P_\theta(n)$ & product of Gamma ratios in the proof & Theorem~\ref{thm:law}\\
 $R$ & the martingale $[M_\sigma]-\langle M_\sigma\rangle$ & Theorem~\ref{thm:law}\\
-$P$, $b$, $\pi$ & the set $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Section~\ref{sec:mart}\\
+$P$, $b$, $\pi$ & the set $\{x>0:Bx=b\}$, its vertex sums, orthogonal projection onto $\ker B$ & Remark~\ref{rem:fibre}\\
+$x_\infty$, $y$ & limit of the normalised counts, vertex potentials & Remark~\ref{rem:fibre}\\
 $C_L$ & cycle with $L$ edges & Section~\ref{sec:intro}\\
 $\tau$ & time $\log t$ of the mean-field equation & Section~\ref{sec:mart}\\
 $\mathcal{L}$ & Lyapunov function of the mean-field equation & Section~\ref{sec:cycle}\\
 $K_e$ & compensated count of edge $e$ & Section~\ref{sec:cycle}\\
+$S_v(x)$, $F_e(x)$ & $\sum_{e\ni v}x_e$ at a point $x$; the field $x_e\,\partial_e\mathcal{L}(x)$ & Section~\ref{sec:cycle}\\
+$\mathcal{K}$ & compact forward-invariant set of the mean-field flow & Theorem~\ref{thm:conv}\\
+$\delta$ & $1/(4L)$ & Theorem~\ref{thm:conv}\\
 $x^{(u)}$, $\Sigma$ & equilibrium $x^{(u)}_e=1+(-1)^eu$, segment of equilibria & Section~\ref{sec:cycle}\\
 $U$, $A_m$ & neighbourhood of an equilibrium as in Lemma~\ref{lem:eq}(2), event that $X(t)\in U$ for all $t\ge m$ & Theorem~\ref{thm:conv}\\
 $u_\infty$ & limit point on $\Sigma$ & Section~\ref{sec:intro}, Theorem~\ref{thm:conv}\\
 $\Phi$ & $\sum_e(-1)^e\log x_e$, $\sum_e(-1)^e\log X_e$ as a function of the normalised counts & Theorem~\ref{thm:conv}\\
 $\Lambda_j$ & independent standard logistic variables & Section~\ref{sec:intro}\\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{l p{5.6cm} p{2.5cm}}
+\toprule
+Symbol & Meaning & First defined\\
+\midrule
 $p$ & $(1+u_\infty)/2$ on $C_4$ & Section~\ref{sec:cycle}\\
 $f$ & density of $M_{\sigma,\infty}$ on $C_4$ & Section~\ref{sec:cycle}\\
 $Y_e$, $J_v$ & $(-1)^eH(N_e-1)$ and $(-1)^v/S_v$ on $\mathbb{Z}$ & Section~\ref{sec:line}\\
-$c$ & a constant; in Proposition~\ref{prop:line}, $\mathbb{E}\int_0^\infty dt/(N_{-1}N_0)$ on $\mathbb{Z}$ & Section~\ref{sec:mart}\\
+$c$, $C$, $C'$, $C''$ & constants, finite and possibly random & Section~\ref{sec:mart}\\
+$M_e$, $u(e)$, $w(e)$, $z$ & martingale of edge $e$ on $\mathbb{Z}$; alternating and smooth parts of $x_e$; $\mathrm{artanh}\,u$ & Section~\ref{sec:line}\\
 $\zeta$ & Riemann zeta function & Section~\ref{sec:intro}\\
-$T$ & a fixed time; in Section~\ref{sec:num}, the final time of a run & Section~\ref{sec:mart}\\
+$T$ & a deterministic time; the window length in Theorem~\ref{thm:conv}; in Section~\ref{sec:num}, the final time of a run & Section~\ref{sec:mart}\\
 \bottomrule
 \end{tabular}
 \end{center}
